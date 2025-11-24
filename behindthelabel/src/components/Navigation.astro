@@ -1,7 +1,29 @@
 ---
 import "../styles/global.css";
+import artworks from "../data/artworks.js";
 ---
 
 <a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/collection/">Collection</a>
+<a href="/#about">About</a>
+<a href="/#map">Map</a>
+<label for="artwork-select">Artworks</label>
+
+<select name="artworks" id="artwork-select">
+    <option value="">--Please choose an option--</option>
+    {
+        artworks.map((art) => (
+            <option value={art.slug}>
+                {art.title}
+            </option>
+        ))
+    }
+</select>
+
+<!-- <option value="skribbel">Skribbel</option>
+<option value="mentie">Mentie</option>
+<option value="happilyeverafter">Happily Ever After</option>
+<option value="pedestal">The pedestal</option>
+<option value="ballerinaman">Ballerina and man</option>
+<option value="tiletableaus">Tile tableaus</option>
+<option value="ileadtheway">I Lead the Way</option>
+<option value="squarecircle">Square and Circle</option> -->

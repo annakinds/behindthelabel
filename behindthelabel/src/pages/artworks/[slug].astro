@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import artworks from "../../data/artworks.js";
+
+export async function getStaticPaths() {
+    return artworks.map((art) => ({
+        params: { slug: art.slug },
+        props: { art },
+    }));
+}
+
+const { art } = Astro.props;
+---
+
+<Layout>
+<html>
+    <body>
+        <h1>{art.title}</h1>
+    </body>
+</html>
+</Layout>
