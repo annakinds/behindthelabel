@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Map from "../components/Map.astro";
 ---
 
 <Layout>
@@ -52,7 +53,7 @@ import Layout from "../layouts/Layout.astro";
 		<button>Learn more about us</button>
 		<!-- image -->
 	</section>
-	<section class="map" id="map">
+	<section class="where" id="where">
 		<h2>Where to find them?</h2>
 		<p>
 			Kortrijk has a lot of art to see in their public spaces. 8 artworks
@@ -60,16 +61,18 @@ import Layout from "../layouts/Layout.astro";
 			prejudices. Visit them and rid them of their labels. On the map you
 			can find all the locations of the public artworks in the area.
 		</p>
-		<!-- map -->
-	</section>
-	<section class="extra">
-		<h2>What labels have sticked onto you?</h2>
-		<p>
-			Switch between labels and take a picture with the ones that speak to
-			you. Try out the different labels with our filter on instagram or
-			tiktok, see which artwork you match with and share your results with
-			us.
-		</p>
-		<!-- image -->
+		<div class="map" id="map">
+			<Map />
+		</div>
+		<section class="extra">
+			<h2>What labels have sticked onto you?</h2>
+			<p>
+				Switch between labels and take a picture with the ones that
+				speak to you. Try out the different labels with our filter on
+				instagram or tiktok, see which artwork you match with and share
+				your results with us.
+			</p>
+			<!-- image -->
+		</section>
 	</section>
 </Layout>
