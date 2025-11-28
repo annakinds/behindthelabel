@@ -3,7 +3,7 @@ console.log("Script loaded");
 // const text2 = document.querySelector(".text2");
 const bg = document.body;
 
-const threshold = 1;
+const threshold = 15;
 const handleMotionEvent = (event) => {
     const x = event.accelerationIncludingGravity.x;
     const y = event.accelerationIncludingGravity.y;
