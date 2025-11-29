@@ -1,0 +1,26 @@
+---
+import "../styles/global.css";
+const { subtitle } = Astro.props;
+---
+
+<h2 set:html={subtitle} class="subtitle" />
+
+
+
+<style>
+    h2 {
+        font-family: "obviously", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 2rem;
+        margin: 2rem 0;
+        background-color: var(--white);
+        border: 0.1rem solid var(--black);
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: center;
+        justify-self: center;
+        rotate: 5deg;
+        width: 120%;
+    }
+</style>

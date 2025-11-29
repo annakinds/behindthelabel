@@ -1,20 +1,29 @@
 ---
 import "../styles/global.css";
-import artworks from "../data/artworks.js";
+
+const artworks = [
+    "ballerinaman",
+    "happilyeverafter",
+    "ileadtheway",
+    "mentie",
+    "plinth",
+    "skribbel",
+    "squarecircle",
+    "tiletableaus",
+];
 ---
 
 <a href="/">Home</a>
 <a href="/#about">About</a>
 <a href="/#where">Map</a>
+
 <label for="artwork-select">Artworks</label>
 
-<select name="artworks" id="artwork-select">
+<select
+    name="artworks"
+    id="artwork-select"
+    onchange="if (this.value) window.location.href = `/artworks/${this.value}`;"
+>
     <option value="">--Please choose an option--</option>
-    {
-        artworks.map((art) => (
-            <option value={art.slug}>
-                {art.title}
-            </option>
-        ))
-    }
+    {artworks.map((art) => <option value={art}>{art}</option>)}
 </select>

@@ -1,6 +1,13 @@
-document.getElementById("artwork-select").addEventListener("change", (e) => {
-    const slug = e.target.value;
-    if (slug) {
-        window.location.href = `/artworks/${slug}`;
-    }
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".subtitle", {
+    scrollTrigger: '.subtitle', 
+    x: 200,
+    duration: 1,
 });
+
+
+
