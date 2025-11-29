@@ -1,4 +1,66 @@
 ---
 import "../styles/global.css";
 ---
-<h1>Footer</h1>
+
+<div class="contact">
+    <h1 class="contact__title">Contact</h1>
+    <div class="contact__info">
+        <section>
+            <h2>Anke D’Haene</h2>
+            <p>
+                Programmamaker kunst publieke ruimte en projectleider stadsbrede
+                tentoonstellingen
+            </p>
+            <p class="bold">anke.dhaene@kortrijk.be</p>
+            <p class="bold">+32 473 13 34 95</p>
+        </section>
+        <section>
+            <h2>Lieselotte Peperstraete</h2>
+            <p>Deskundige kunst publieke ruimte</p>
+            <p class="bold">lieselotte.peperstraete@kortrijk.be</p>
+            <p class="bold">+32 478 67 25 90</p>
+        </section>
+        <section>
+            <h2 class="purple">Follow us</h2>
+        </section>
+    </div>
+    <div class="contact__logos"></div>
+</div>
+
+<style>
+    .contact {
+        display: flex;
+        flex-direction: column;
+    }
+    .contact__title {
+        display: flex;
+        text-align: center;
+        align-self: center;
+    }
+    .contact__info {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8rem;
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+    section {
+        max-width: 20rem;
+    }
+
+    h2 {
+        background-color: var(--secondary-color);
+        width: fit-content;
+        padding: 0.5rem 1rem;
+    }
+
+    .purple {
+        background-color: var(--primary-color);
+    }
+
+    .bold {
+        font-weight: 700;
+    }
+</style>
