@@ -1,0 +1,16 @@
+---
+import "../styles/global.css";
+const { text } = Astro.props;
+---
+
+<p class="speechBubble">{text}</p>
+
+<style>
+    .speechBubble {
+        border: .1rem solid var(--black);
+        padding: 1rem;
+        max-width: 40rem;
+        border-radius: 0rem 3rem 3rem 3rem;
+        background-color: var(--white);
+    }
+</style>

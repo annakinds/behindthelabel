@@ -1,0 +1,40 @@
+---
+import Subtitle from "../../components/Subtitle.astro";
+import SpeechBubble from "../../components/Speechbubble.astro";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import tile from "../../assets/tiletableau.png";
+---
+
+<Layout>
+    <div class="detail">
+        <section class="chapter">
+            <Subtitle
+                subtitle="These artworks tell the stories of <span class='h2__highlight'>Aalbeke</span>"
+            />
+            <Image src={tile} alt="Tile tableau from Aalbeke" />
+            <SpeechBubble
+                text={`Created by Peter de Graaff, he listened to stories from locals,
+            dug through the village’s history. They reflect what it was like to live and
+            work in the village, both in the past and today. The stories are about the church fire,
+            working in agriculture or the textile factory, Saint Cornelius and more.`}
+            />
+        </section>
+        <section class="chapter">
+            <Subtitle
+                subtitle="12 ceramic tiles are placed along the <span class='h2__highlight'>sidewalks</span>"
+            />
+            <Image src={tile} alt="Tile tableau from Aalbeke" />
+            <p>blobbloblboblo</p>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .detail {
+        background-color: var(--primary-color);
+    }
+    .chapter {
+        height: 100vh;
+    }
+</style>

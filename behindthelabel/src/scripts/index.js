@@ -7,7 +7,7 @@ const subtitles = document.querySelectorAll(".subtitle");
 subtitles.forEach((subtitle) => {
     gsap.fromTo(
         subtitle,
-        { autoAlpha: 0, x: -50 },
+        { autoAlpha: 0, x: -100 },
         {
             autoAlpha: 1,
             x: 0,
@@ -15,7 +15,7 @@ subtitles.forEach((subtitle) => {
             scrollTrigger: {
                 trigger: subtitle,
                 start: "top 80%",
-                end: "bottom 20%",
+                end: "bottom 10%",
                 toggleActions: "play reverse play reverse",
                 markers: false, 
             },
