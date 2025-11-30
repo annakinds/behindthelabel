@@ -1,13 +1,29 @@
 ---
 import Subtitle from "../../components/Subtitle.astro";
 import Layout from "../../layouts/Layout.astro";
-
-const subtitle = `
-  These artworks tell the stories of  
-  <span class="h2__highlight"> Aalbeke</span>
-`;
+import { Image } from "astro:assets";
+import tile from "../../assets/tiletableau.png";
 ---
 
 <Layout>
-    <Subtitle {subtitle} />
+    <section class="chapter">
+        <Subtitle
+            subtitle="These artworks tell the stories of <span class='highlight'> Aalbeke</span>"
+        />
+        <Image src={tile} alt="Tile tableau from Aalbeke" />
+        <p>blablabla</p>
+    </section>
+    <section class="chapter">
+        <Subtitle
+            subtitle="12 ceramic tiles are placed along the <span class='highlight'> sidewalks</span>"
+        />
+        <Image src={tile} alt="Tile tableau from Aalbeke" />
+        <p>blobbloblboblo</p>
+    </section>
 </Layout>
+
+<style>
+    .chapter {
+        height: 100vh;
+    }
+</style>
