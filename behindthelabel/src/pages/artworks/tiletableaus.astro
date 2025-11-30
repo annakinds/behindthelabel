@@ -4,15 +4,24 @@ import SpeechBubble from "../../components/Speechbubble.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
+import Map from "../../components/Map.astro";
 ---
 
 <Layout>
     <div class="detail">
+        <div class="image-wrapper">
+            <Image class="image" src={tile} alt="Tile tableau from Aalbeke" />
+        </div>
+        <section class="start">
+            <h1>What is hiding behind the labels of Tile Tableaus?</h1>
+        </section>
         <section class="chapter">
             <Subtitle
-                subtitle="These artworks tell the stories of <span class='h2__highlight'>Aalbeke</span>"
+                subtitle="These artworks tell"
             />
-            <Image src={tile} alt="Tile tableau from Aalbeke" />
+            <Subtitle
+                subtitle=" the stories of <span class='h2__highlight'>Aalbeke</span>"
+            />
             <SpeechBubble
                 text={`Created by Peter de Graaff, he listened to stories from locals,
             dug through the village’s history. They reflect what it was like to live and
@@ -24,8 +33,25 @@ import tile from "../../assets/tiletableau.png";
             <Subtitle
                 subtitle="12 ceramic tiles are placed along the <span class='h2__highlight'>sidewalks</span>"
             />
-            <Image src={tile} alt="Tile tableau from Aalbeke" />
-            <p>blobbloblboblo</p>
+            <SpeechBubble
+                text={`He took all those stories and turned them into art. In total, there are 12 ceramic tiles with drawings spread throughout the village. You’ll find them placed in the ground along the sidewalks, each one marking a small resting point in the landscape.`}
+            />
+        </section>
+        <section class="chapter">
+            <Subtitle
+                subtitle="<span class='h2__highlight'>Hugo Claus</span>, the famous writer"
+            />
+            <SpeechBubble
+                text={`One of the scenes shows a young boy writing, and fun fact: that boy turned out to be Hugo Claus, the famous writer. He spent some time living in a boarding school in Aalbeke.`}
+            />
+        </section>
+        <section class="end">
+            <Subtitle
+                subtitle="Where to see <span class='h2__highlight'>Tile Tableaus</span>?"
+            />
+            <div class="map" id="map">
+                <Map />
+            </div>
         </section>
     </div>
 </Layout>
@@ -33,8 +59,28 @@ import tile from "../../assets/tiletableau.png";
 <style>
     .detail {
         background-color: var(--primary-color);
+        max-width: 100%;
+        position: relative;
     }
     .chapter {
-        height: 100vh;
+        min-height: 100vh; /* elke scene = 1 scherm */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 4rem 0;
+    }
+
+    .image-wrapper {
+        position: sticky;
+        top: 30vh; /* afbeelding blijft in het midden */
+        display: flex;
+        justify-content: center;
+        /* height: 40vh; bepaalt waar de afbeelding “hangt” */
+        pointer-events: none;
+    }
+    .image {
+        max-width: 35rem;
+        height: auto;
     }
 </style>
