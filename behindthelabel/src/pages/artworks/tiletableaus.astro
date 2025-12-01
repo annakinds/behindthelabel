@@ -1,4 +1,6 @@
 ---
+import "../../styles/reset.css";
+import "../../styles/global.css";
 import Subtitle from "../../components/Subtitle.astro";
 import SpeechBubble from "../../components/Speechbubble.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -9,11 +11,18 @@ import Map from "../../components/Map.astro";
 
 <Layout>
     <div class="detail">
-        <div class="image-wrapper">
-            <Image class="image" src={tile} alt="Tile tableau from Aalbeke" />
-        </div>
         <section class="start">
-            <h1>What is hiding behind the labels of Tile Tableaus?</h1>
+            <div class="image-wrapper">
+                <Image
+                    class="image"
+                    src={tile}
+                    alt="Tile tableau from Aalbeke"
+                />
+            </div>
+            <h1 class="start__title">
+                What is hiding behind the labels of Tile Tableaus?
+            </h1>
+            <p class="start__cta">Shake the labels off</p>
         </section>
         <section class="chapter">
             <Subtitle subtitle="These artworks tell" />
@@ -63,9 +72,22 @@ import Map from "../../components/Map.astro";
 
     .start {
         background-color: var(--black);
-        min-height: 100vh;
+        min-height: 80vh;
+        padding: 5rem 0;
+    }
+
+    .start__title {
         color: var(--white);
         font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .start__cta {
+        color: var(--white);
+        padding-top: 50vh;
+        text-align: center;
+        font-size: 1.25rem;
     }
 
     .chapter {
@@ -80,14 +102,18 @@ import Map from "../../components/Map.astro";
 
     .image-wrapper {
         position: sticky;
-        top: 30vh;
+        top: 25vh;
+        height: 0;
+        margin: 0;
+        padding: 0;
         display: flex;
         justify-content: center;
         pointer-events: none;
     }
     .image {
-        max-width: 20rem;
+        position: absolute;
+        max-width: 25rem;
         height: auto;
-        border: .5rem solid var(--white);
+        border: 0.5rem solid var(--white);
     }
 </style>
