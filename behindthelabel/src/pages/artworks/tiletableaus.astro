@@ -16,9 +16,7 @@ import Map from "../../components/Map.astro";
             <h1>What is hiding behind the labels of Tile Tableaus?</h1>
         </section>
         <section class="chapter">
-            <Subtitle
-                subtitle="These artworks tell"
-            />
+            <Subtitle subtitle="These artworks tell" />
             <Subtitle
                 subtitle=" the stories of <span class='h2__highlight'>Aalbeke</span>"
             />
@@ -62,25 +60,34 @@ import Map from "../../components/Map.astro";
         max-width: 100%;
         position: relative;
     }
+
+    .start {
+        background-color: var(--black);
+        min-height: 100vh;
+        color: var(--white);
+        font-size: 1.5rem;
+    }
+
     .chapter {
-        min-height: 100vh; /* elke scene = 1 scherm */
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         position: relative;
         padding: 4rem 0;
+        opacity: 0;
     }
 
     .image-wrapper {
         position: sticky;
-        top: 30vh; /* afbeelding blijft in het midden */
+        top: 30vh;
         display: flex;
         justify-content: center;
-        /* height: 40vh; bepaalt waar de afbeelding “hangt” */
         pointer-events: none;
     }
     .image {
-        max-width: 35rem;
+        max-width: 20rem;
         height: auto;
+        border: .5rem solid var(--white);
     }
 </style>
