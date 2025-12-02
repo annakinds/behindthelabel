@@ -1,78 +1,44 @@
 ---
+import "../styles/reset.css";
+import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Map from "../components/Map.astro";
 ---
 
 <Layout>
-	<section class="heroimg">
-		<h1>Behind the label</h1>
-		<p>There is more to art than meets the eye</p>
-		<p>Swipe right to match, left to reject</p>
-		<div id="cardContainer">
-			<div class="card" data-i="8">
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
-				<h3>Ballerina</h3>
-				<p>Kortrijk</p>
+	<div class="home">
+		<div class="heroimg"></div>
+		<div class="info">
+			<div class="subtitle">
+				<p class="subtitle__item">spit</p>
+				<p class="subtitle__item">spit t</p>
+				<p class="subtitle__item">spit th</p>
+				<p class="subtitle__item">spit the</p>
+				<p class="subtitle__item">spit the t</p>
+				<p class="subtitle__item">spit the tr</p>
+				<p class="subtitle__item">spit the tru</p>
+				<p class="subtitle__item">spit the trut</p>
+				<p class="subtitle__item">spit the truth</p>
 			</div>
-			<div class="card" data-i="7"></div>
-			<div class="card" data-i="6"></div>
-			<div class="card" data-i="5"></div>
-			<div class="card" data-i="4"></div>
-			<div class="card" data-i="3"></div>
-			<div class="card" data-i="2"></div>
-			<div class="card" data-i="1"></div>
 		</div>
-		<button>X</button>
-		<button>Heart</button>
-		<p>Learn more</p>
-	</section>
-	<section class="feeling">
-		<h2>Do you ever feel like people put labels on you?</h2>
-		<p>
-			You are too lazy, you don’t want to work and you are too sensitive,
-			these are all prejudices that gen z face because of older
-			generations. We are not defined by our first impressions, our labels
-			or stereotypes, there is always more than meets the eye. The public
-			artworks in Kortrijk are experiencing the same thing. People take a
-			glance at them all the time to make their opinions without knowing
-			the whole story behind them.
-		</p>
-		<!-- image -->
-	</section>
-	<section class="about" id="about">
-		<h2>Shake of those labels!</h2>
-		<p>
-			With ‘Behind the label’, Art in Public Spaces Kortrijk wants to
-			invite you to look past your first impressions and prejudices to see
-			the real story behind the artworks.
-		</p>
-		<button>Learn more about us</button>
-		<!-- image -->
-	</section>
-	<section class="where" id="where">
-		<h2>Where to find them?</h2>
-		<p>
-			Kortrijk has a lot of art to see in their public spaces. 8 artworks
-			in Kortrijk and surrounding districts have been labeled with
-			prejudices. Visit them and rid them of their labels. On the map you
-			can find all the locations of the public artworks in the area.
-		</p>
-		<div class="map" id="map">
-			<Map />
-		</div>
-		<section class="extra">
-			<h2>What labels have sticked onto you?</h2>
-			<p>
-				Switch between labels and take a picture with the ones that
-				speak to you. Try out the different labels with our filter on
-				instagram or tiktok, see which artwork you match with and share
-				your results with us.
-			</p>
-			<!-- image -->
-		</section>
-	</section>
+	</div>
 </Layout>
+
+<style>
+	.home {
+		background-color: var(--primary-color);
+	}
+	.subtitle {
+		padding: 1rem;
+	}
+
+	.subtitle__item {
+		font-size: 3.75rem;
+		font-family: "Obviously-narrow";
+		font-weight: 300;
+		text-transform: uppercase;
+		color: var(--white);
+		opacity: 0;
+		transform: translateY(20px);
+	}
+</style>

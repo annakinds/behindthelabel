@@ -107,7 +107,6 @@ import Map from "../../components/Map.astro";
         justify-content: center;
         position: relative;
         padding: 4rem 0;
-        opacity: 0;
     }
 
     .image-wrapper {
@@ -151,14 +150,14 @@ import Map from "../../components/Map.astro";
         height: 100%;
         background: var(--primary-color);
         transform-origin: bottom right;
-        transform: rotateX(90deg);
+        /* transform: rotateX(90deg); */
         pointer-events: none;
     }
 
     .corner-square {
         display: flex;
         justify-self: end;
-        width: 5rem; 
+        width: 5rem;
         height: 5rem;
         margin-top: 10rem;
         background: linear-gradient(
@@ -166,6 +165,5 @@ import Map from "../../components/Map.astro";
             var(--primary-color) 50%,
             var(--secondary-color) 50%
         );
-
     }
 </style>

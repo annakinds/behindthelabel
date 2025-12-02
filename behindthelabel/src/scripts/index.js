@@ -1,56 +1,26 @@
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const subtitles = document.querySelectorAll(".subtitle");
-// subtitles.forEach((subtitle) => {
-//     gsap.fromTo(
-//         subtitle,
-//         { autoAlpha: 0, x: -100 },
-//         {
-//             autoAlpha: 1,
-//             x: 0,
-//             duration: 0.6, 
-//             scrollTrigger: {
-//                 trigger: subtitle,
-//                 start: "top 80%",
-//                 end: "bottom 10%",
-//                 toggleActions: "play reverse play reverse",
-//                 markers: false, 
-//             },
-//         }
-//     );
-// });
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
-const chapters = document.querySelectorAll(".chapter");
+const items = gsap.utils.toArray(".subtitle__item");
 
-chapters.forEach((chapter) => {
-    const subtitle = chapter.querySelector(".subtitle");
-    const bubble = chapter.querySelector(".bubble");
+const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".subtitle",
+        start: "top 10%",     
+        end: "bottom 30%",   
+        scrub: true,       
+    }
+});
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: chapter,
-            start: "top 50%",
-            end: "bottom 10%",
-            scrub: true,
-            markers: true,
-        },
+items.forEach(item => {
+    tl.to(item, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3
     });
-
-    tl.fromTo(
-        subtitle,
-        { x: 150, autoAlpha: 0 },
-        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out" }
-    ).fromTo(
-        bubble,
-        { x: 150, autoAlpha: 0 },
-        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out" },
-        "-=0.6"
-    );
 });
