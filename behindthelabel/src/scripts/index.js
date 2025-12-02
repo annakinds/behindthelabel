@@ -36,10 +36,10 @@ chapters.forEach((chapter) => {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: chapter,
-            start: "top 60%",
-            end: "top 10%",
+            start: "top 50%",
+            end: "bottom 10%",
             scrub: true,
-            markers: false,
+            markers: true,
         },
     });
 

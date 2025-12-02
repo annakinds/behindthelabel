@@ -10,62 +10,58 @@ import Map from "../../components/Map.astro";
 ---
 
 <Layout>
-    <div id="detail" class="detail">
-        <section class="start">
-            <div class="front sticky">
-                <Image
-                    class="image"
-                    src={tile}
-                    alt="Tile tableau from Aalbeke"
-                />
+    <div id="detail" class="detail peel-container">
+        <div class="peel-rect" id="peelRect">
+            <section class="start">
                 <h1 class="start__title">
                     What is hiding behind the labels of Tile Tableaus?
                 </h1>
-                <p class="start__cta">Shake the labels off</p>
-            </div>
-            <div class="back sticky">
-                <div class="back section_wrapper">
-                    <div class="section"></div>
-                </div>
-            </div>
-        </section>
-        <section class="chapters">
-            <div class="image-wrapper">
                 <Image
                     class="image"
                     src={tile}
                     alt="Tile tableau from Aalbeke"
                 />
-            </div>
-            <div class="chapter">
-                <Subtitle subtitle="These artworks tell" />
-                <Subtitle
-                    subtitle=" the stories of <span class='h2__highlight'>Aalbeke</span>"
-                />
-                <SpeechBubble
-                    text={`Created by Peter de Graaff, he listened to stories from locals,
+                <p class="start__cta">Shake the labels off</p>
+                <div class="corner-square"></div>
+            </section>
+            <section class="chapters peel-fold">
+                <div class="image-wrapper">
+                    <Image
+                        class="image"
+                        src={tile}
+                        alt="Tile tableau from Aalbeke"
+                    />
+                </div>
+                <div class="chapter">
+                    <Subtitle subtitle="These artworks tell" />
+                    <Subtitle
+                        subtitle=" the stories of <span class='h2__highlight'>Aalbeke</span>"
+                    />
+                    <SpeechBubble
+                        text={`Created by Peter de Graaff, he listened to stories from locals,
                 dug through the village’s history. They reflect what it was like to live and
                 work in the village, both in the past and today. The stories are about the church fire,
                 working in agriculture or the textile factory, Saint Cornelius and more.`}
-                />
-            </div>
-            <div class="chapter">
-                <Subtitle
-                    subtitle="12 ceramic tiles are placed along the <span class='h2__highlight'>sidewalks</span>"
-                />
-                <SpeechBubble
-                    text={`He took all those stories and turned them into art. In total, there are 12 ceramic tiles with drawings spread throughout the village. You’ll find them placed in the ground along the sidewalks, each one marking a small resting point in the landscape.`}
-                />
-            </div>
-            <div class="chapter">
-                <Subtitle
-                    subtitle="<span class='h2__highlight'>Hugo Claus</span>, the famous writer"
-                />
-                <SpeechBubble
-                    text={`One of the scenes shows a young boy writing, and fun fact: that boy turned out to be Hugo Claus, the famous writer. He spent some time living in a boarding school in Aalbeke.`}
-                />
-            </div>
-        </section>
+                    />
+                </div>
+                <div class="chapter">
+                    <Subtitle
+                        subtitle="12 ceramic tiles are placed along the <span class='h2__highlight'>sidewalks</span>"
+                    />
+                    <SpeechBubble
+                        text={`He took all those stories and turned them into art. In total, there are 12 ceramic tiles with drawings spread throughout the village. You’ll find them placed in the ground along the sidewalks, each one marking a small resting point in the landscape.`}
+                    />
+                </div>
+                <div class="chapter">
+                    <Subtitle
+                        subtitle="<span class='h2__highlight'>Hugo Claus</span>, the famous writer"
+                    />
+                    <SpeechBubble
+                        text={`One of the scenes shows a young boy writing, and fun fact: that boy turned out to be Hugo Claus, the famous writer. He spent some time living in a boarding school in Aalbeke.`}
+                    />
+                </div>
+            </section>
+        </div>
 
         <!-- <section class="end">
             <Subtitle
@@ -87,8 +83,7 @@ import Map from "../../components/Map.astro";
 
     .start {
         background-color: var(--black);
-        min-height: 80vh;
-        padding: 5rem 0;
+        padding-top: 5rem;
     }
 
     .start__title {
@@ -100,13 +95,13 @@ import Map from "../../components/Map.astro";
 
     .start__cta {
         color: var(--white);
-        padding-top: 50vh;
         text-align: center;
         font-size: 1.25rem;
+        margin-top: 5rem;
     }
 
     .chapter {
-        min-height: 100vh;
+        min-height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -117,23 +112,60 @@ import Map from "../../components/Map.astro";
 
     .image-wrapper {
         position: sticky;
-        top: 25vh;
-        height: 0;
-        margin: 0;
-        padding: 0;
+        top: 15vh;
+        width: 100%;
         display: flex;
         justify-content: center;
         pointer-events: none;
     }
+
     .image {
-        position: absolute;
         max-width: 25rem;
+        width: 90%;
         height: auto;
         border: 0.5rem solid var(--white);
-        margin-top: 15vh;
+        margin-top: 10vh;
+        display: flex;
+        justify-self: center;
     }
 
-    .back {
-        background-color: var(--secondary-color);
+    .peel-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .peel-rect {
+        width: 100%;
+        height: 100%;
+        background: var(--black);
+        position: relative;
+        /* overflow: hidden; */
+    }
+
+    .peel-fold {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color);
+        transform-origin: bottom right;
+        transform: rotateX(90deg);
+        pointer-events: none;
+    }
+
+    .corner-square {
+        display: flex;
+        justify-self: end;
+        width: 5rem; 
+        height: 5rem;
+        margin-top: 10rem;
+        background: linear-gradient(
+            to top left,
+            var(--primary-color) 50%,
+            var(--secondary-color) 50%
+        );
+
     }
 </style>
