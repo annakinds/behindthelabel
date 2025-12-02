@@ -3,6 +3,9 @@ import "../styles/reset.css";
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Map from "../components/Map.astro";
+import { Image } from "astro:assets";
+import mouth from "../../public/assets/img/openmouth.svg";
+import mouth2 from "../../public/assets/img/openmouth.png";
 ---
 
 <Layout>
@@ -20,8 +23,12 @@ import Map from "../components/Map.astro";
 				<p class="subtitle__item">spit the trut</p>
 				<p class="subtitle__item">spit the truth</p>
 			</div>
-			<div>
-				
+			<div class="mouths">
+				<Image class="mouth1" src={mouth} alt="scream image" />
+				<!-- <Image class="image" src={mouth2} alt="scream image" />
+				<Image class="image" src={mouth2} alt="scream image" />
+				<Image class="image" src={mouth2} alt="scream image" />
+				<Image class="image" src={mouth2} alt="scream image" /> -->
 			</div>
 		</div>
 	</div>
@@ -43,5 +50,18 @@ import Map from "../components/Map.astro";
 		color: var(--white);
 		opacity: 0;
 		transform: translateY(20px);
+	}
+
+	.mouth1 {
+		animation: slide-in 1s ease-out forwards;
+	}
+	
+	@keyframes slide-in {
+		from {
+			transform: translateX(100%); /* start off-screen right */
+		}
+		to {
+			transform: translateX(0); /* move into place */
+		}
 	}
 </style>
