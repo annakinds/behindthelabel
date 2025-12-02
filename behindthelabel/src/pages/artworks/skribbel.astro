@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <div class="peel-container">
+        <div class="peel-rect" id="peelRect">
+            <div class="peel-fold"></div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    /* body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #f0f0f0;
+        margin: 0;
+    } */
+
+    .peel-container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .peel-rect {
+        width: 100%;
+        height: 100%;
+        background: var(--black);
+        position: relative;
+        /* overflow: hidden; */
+    }
+
+    .peel-fold {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:  var(--secondary-color);
+        transform-origin: bottom right;
+        transform: rotateX(90deg);
+        pointer-events: none;
+    }
+</style>
