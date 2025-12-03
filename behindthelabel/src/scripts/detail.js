@@ -74,8 +74,9 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 gsap.registerPlugin(ScrollTrigger);
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+gsap.registerPlugin(ScrambleTextPlugin)
 
 const storyTimeline = gsap.timeline({
     scrollTrigger: {
@@ -89,13 +90,34 @@ const storyTimeline = gsap.timeline({
 
 storyTimeline.fromTo(
     ".story__subtitle.top",
-    { x: "-100%", opacity: 0 },  
-    { x: 0, opacity: 1, ease: "none" }
+    { x: "-100%"},  
+    { x: 0 }
 );
 
 storyTimeline.fromTo(
     ".story__subtitle.bottom",
-    { x: "-100%", opacity: 0 },
-    { x: 0, opacity: 1, ease: "none" },
+    { x: "-100%" },
+    { x: 0 },
     0 
 );
+
+const storyText = document.querySelector(".story__text");
+
+gsap.set(storyText, { opacity: 0 });
+
+gsap.to(storyText, {
+    opacity: 1,
+    scrambleText: {
+        text: storyText.textContent,
+        chars: "",         
+        speed: 0.3,
+        revealDelay: 0.05
+    },
+    scrollTrigger: {
+        trigger: ".story",
+        start: "top top",           
+        end: "bottom top",
+        scrub: true
+    }
+});
+
