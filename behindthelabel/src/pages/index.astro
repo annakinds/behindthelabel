@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 import mouth from "../../public/assets/img/openmouth.svg";
 import mouth2 from "../../public/assets/img/openmouth.png";
 import shakeboard from "../../public/assets/img/shakeboard.svg";
+import eye from "../../public/assets/img/eye.svg";
 ---
 
 <Layout>
@@ -72,7 +73,51 @@ import shakeboard from "../../public/assets/img/shakeboard.svg";
 						alt="shake board"
 					/> -->
 				</div>
+				<p class="shake__text">
+					With ‘Behind the label’, <span class="keyword"
+						>Art in Public Spaces Kortrijk</span
+					> wants to invite you to look past your first impressions and
+					prejudices to see the <span class="keyword">real story</span
+					> behind the artworks.
+				</p>
+				<div class="button-wrapper">
+					<a href="../pages/artworks/overview" class="button"
+						>Shake off those labels</a
+					>
+				</div>
 			</div>
+			<div class="where">
+				<div class="eyes">
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+				</div>
+				<h2 class="where__subtitle">Where to find them?</h2>
+				<p class="where__text">
+					<span class="keyword">Kortrijk</span> has a lot of art to see
+					in their public spaces. 8 artworks in Kortrijk and surrounding
+					<span class="keyword">districts</span> have been labeled with
+					prejudices. <span class="keyword">Visit</span> them and rid them
+					of their labels. On the map you can find all the locations of
+					the public artworks in the area.
+				</p>
+			</div>
+			<div class="map"></div>
 		</div>
 	</div>
 </Layout>
@@ -104,7 +149,9 @@ import shakeboard from "../../public/assets/img/shakeboard.svg";
 		margin-right: -9rem;
 	}
 
-	.spit__text {
+	.spit__text,
+	.shake__text,
+	.where__text {
 		color: var(--white);
 		font-size: 1.25rem;
 		line-height: 150%;
@@ -118,5 +165,26 @@ import shakeboard from "../../public/assets/img/shakeboard.svg";
 
 	.shake {
 		margin: 10rem 0;
+	}
+
+	.eyes {
+		margin-top: 15rem;
+	}
+
+	.eye {
+		display: flex;
+		justify-self: center;
+		margin-top: -10rem;
+		opacity: 0;
+		transition:
+			opacity 0.4s ease,
+			transform 0.4s ease;
+	}
+
+	.where__subtitle {
+		font-size: 1.875rem;
+		font-weight: 600;
+		color: var(--white);
+		margin: 1rem;
 	}
 </style>

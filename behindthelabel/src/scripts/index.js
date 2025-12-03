@@ -82,3 +82,21 @@ gsap.fromTo(".shakeboard1",
     }
 );
 
+const eyes = gsap.utils.toArray(".eye");
+
+const tl2 = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".eyes",
+        start: "top top",
+        end: "+=2000",  
+        scrub: true,
+        pin: true,           
+    }
+});
+
+eyes.forEach((eye, i) => {
+    tl2.to(eye, {
+        opacity: 1,
+        scale: 1,
+    }, i); 
+});
