@@ -35,3 +35,19 @@ h2 {
 .h2__highlight {
     color: var(--primary-color);
 }
+
+.button-wrapper {
+    background-color: var(--accent-color);
+    padding: 1rem 0.3rem;
+    width: fit-content;
+    margin: 1rem;
+}
+
+.button {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0.3rem 0.5rem;
+    border: 0.1rem solid var(--black);
+    text-decoration: none;
+    color: var(--black);
+}

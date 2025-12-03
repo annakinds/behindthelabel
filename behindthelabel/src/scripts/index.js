@@ -10,7 +10,7 @@ const quotes = gsap.utils.toArray(".subtitle__item");
 
 const tl = gsap.timeline({
     scrollTrigger: {
-        trigger: ".subtitle",
+        trigger: ".spit__subtitle",
         start: "top 10%",
         end: "bottom 30%",
         scrub: true,
@@ -27,14 +27,14 @@ quotes.forEach(quote => {
 
 
 gsap.fromTo(".mouth1",
-    { x: "-100vw" },       // start buiten links
+    { x: "-50vw" },    
     {
-        x: "70vw",          // eindigt buiten rechts
+        x: "10%",        
         ease: "none",
         scrollTrigger: {
             trigger: ".mouth1",
-            start: "top 90%",
-            end: "top -20%",
+            start: "top 50%",
+            end: "+=500",
             scrub:true, 
         }
     }
@@ -43,18 +43,20 @@ gsap.fromTo(".mouth1",
 const mouths = gsap.utils.toArray(".mouth2");
 mouths.forEach(mouth=> {
     gsap.fromTo(mouth, {
-        x: "-100vw"},
+        x: "-50vw"},
         {
-            x: "70vw",          
+            x: "10%",          
             ease: "none",
             scrollTrigger: {
                 trigger: ".mouth1",
-                start: "top 90%",
-                end: "top -20%",
+                start: "top 50%",
+                end: "+=500",
                 scrub: true,
             }
     }
 
     )
 })
+
+
 
