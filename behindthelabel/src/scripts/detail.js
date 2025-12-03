@@ -71,53 +71,52 @@
 //     );
 // });
 
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-gsap.registerPlugin(ScrambleTextPlugin)
+
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+
+// Select story text
+const storyText = document.querySelector(".story__text");
+
 
 const storyTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".story",
-        start: "top top",     
-        end: "+=500",      
-        scrub: true,        
-        pin: true,           
+        start: "top top",
+        end: "+=800",
+        scrub: true,
+        pin: true,
     }
 });
 
+//top subtitle
 storyTimeline.fromTo(
     ".story__subtitle.top",
-    { x: "-100%"},  
-    { x: 0 }
+    { x: "-100%" },
+    { x: 0, ease: "none" }
 );
 
+//bottom subtitle
 storyTimeline.fromTo(
     ".story__subtitle.bottom",
     { x: "-100%" },
-    { x: 0 },
-    0 
+    { x: 0, ease: "none" }
 );
 
-const storyText = document.querySelector(".story__text");
-
+//scramble text
 gsap.set(storyText, { opacity: 0 });
-
-gsap.to(storyText, {
-    opacity: 1,
+storyTimeline.to(storyText, {
+    opacity:1,
     scrambleText: {
         text: storyText.textContent,
-        chars: "",         
+        chars: "",
         speed: 0.3,
         revealDelay: 0.05
     },
-    scrollTrigger: {
-        trigger: ".story",
-        start: "top top",           
-        end: "bottom top",
-        scrub: true
-    }
+    ease: "none"
 });
+
+
 
