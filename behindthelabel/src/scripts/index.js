@@ -1,10 +1,13 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
-
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(SplitText);
+
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
 
 const quotes = gsap.utils.toArray(".subtitle__item");
 
@@ -87,8 +90,8 @@ const eyes = gsap.utils.toArray(".eye");
 const tl2 = gsap.timeline({
     scrollTrigger: {
         trigger: ".eyes",
-        start: "top top",
-        end: "+=2000",  
+        start: "-40% top",
+        end: "+=1500",  
         scrub: true,
         pin: true,           
     }
