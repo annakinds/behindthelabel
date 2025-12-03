@@ -85,7 +85,7 @@ const storyTimeline = gsap.timeline({
         start: "top top",
         end: "+=800",
         scrub: true,
-        pin: true,
+        pin: false, //moet af staan om shake event te doen werken!!
     }
 });
 

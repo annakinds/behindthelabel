@@ -22,4 +22,10 @@ const handleMotionEvent = (event) => {
     }
 };
 
+start.addEventListener("click", () => {
+    story.classList.remove("hidden");
+    start.classList.add("hidden");
+    hasShaken = true;
+});
+
 window.addEventListener("devicemotion", handleMotionEvent);
