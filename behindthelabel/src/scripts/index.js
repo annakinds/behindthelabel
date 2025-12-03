@@ -6,7 +6,7 @@ import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
 
-const items = gsap.utils.toArray(".subtitle__item");
+const quotes = gsap.utils.toArray(".subtitle__item");
 
 const tl = gsap.timeline({
     scrollTrigger: {
@@ -17,10 +17,17 @@ const tl = gsap.timeline({
     }
 });
 
-items.forEach(item => {
-    tl.to(item, {
+quotes.forEach(quote => {
+    tl.to(quote, {
         opacity: 1,
         y: 0,
         duration: 0.3
     });
+});
+
+const mouth = gsap.utils.toArray(".mouth1");
+
+gsap.to(mouth, {
+    scrollTrigger: mouth, 
+    x: 500
 });

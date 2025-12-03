@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-    site: 'https://annakinds.github.io/behindthelabel/',
+    site: 'https://annakinds.github.io',
+    base: '/behindthelabel/'
 })
