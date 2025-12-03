@@ -7,8 +7,8 @@ import tile from "../../assets/tiletableau.png";
 ---
 
 <Layout>
-    <div>
-        <div class="start">
+    <div class="detail">
+        <div class="start hidden">
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Tegeltableaus?
             </h2>
@@ -16,28 +16,35 @@ import tile from "../../assets/tiletableau.png";
             <p class="start__text">Shake the labels off</p>
             <div class="corner-square"></div>
         </div>
-        <div class="story hidden">
-            <Image class="tile" src={tile} alt="tegeltableaus" />
+        <div class="story">
             <h2 class="story__subtitle top">These artworks tell</h2>
-            <h2 class="story__subtitle bottom">the stories of Aalbeke</h2>
-            <p>
-                Created by <span class="bold">Peter de Graaff</span>, he listened to stories
-                from locals dug through the village’s history. They reflect what
-                it was like to live and work in the village, both in the past
-                and today. The stories are about the church fire, working in
-                agriculture or the textile factory, Saint Cornelius and more.
+            <h2 class="story__subtitle bottom">
+                the stories of <span class="blue bold">Aalbeke</span>
+            </h2>
+            <Image class="image" src={tile} alt="tegeltableaus" />
+            <p class="story__text">
+                Created by <span class="bold">Peter de Graaff</span>, he
+                listened to stories from locals dug through the village’s
+                history. They reflect what it was like to live and work in the
+                village, both in the past and today. The stories are about the
+                church fire, working in agriculture or the textile factory,
+                Saint Cornelius and more.
             </p>
         </div>
     </div>
 </Layout>
 
 <style>
+    .detail {
+        position: relative;
+    }
+
     .start {
         background-color: var(--black);
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 90vh;
+        height: auto;
         position: relative;
     }
     .start__subtitle {
@@ -46,33 +53,35 @@ import tile from "../../assets/tiletableau.png";
         font-weight: 600;
         text-align: center;
         line-height: 170%;
-        padding: 5rem 0rem;
+        padding: 3rem 0rem;
     }
 
     .start__subtitle::after {
         content: "Tegeltableaus";
         background-color: var(--secondary-color);
         display: flex;
+        justify-self: end;
         width: fit-content;
         padding: 0.2rem 0.8rem;
         color: var(--black);
         border-radius: 3rem;
-        justify-self: end;
         margin-right: 4rem;
-        margin-top: -2.5rem;
+        margin-top: -2rem;
         rotate: -3deg;
         font-size: 1.25rem;
     }
 
     .tile {
         border: 0.5rem solid var(--white);
+        display: flex;
+        justify-self: center;
     }
 
     .start__text {
         font-size: 1.25rem;
         font-weight: 500;
         color: var(--white);
-        padding: 3rem;
+        padding: 4rem;
     }
 
     .corner-square {
@@ -96,6 +105,38 @@ import tile from "../../assets/tiletableau.png";
         display: flex;
         margin-top: -2rem;
         margin-left: -2rem;
+    }
+
+    .story {
+        position: relative;
+        margin-top: 3rem;
+    }
+
+    .story__subtitle {
+        background-color: var(--white);
+        font-weight: 500;
+        padding: 0.8rem;
+        text-align: center;
+        font-size: 1.25rem;
+        margin: 1rem 0rem;
+    }
+    .top {
+        rotate: 3deg;
+    }
+
+    .story__text {
+        border: 0.1rem solid var(--black);
+        background-color: var(--white);
+        padding: 1rem;
+        border-radius: 0rem 2.5rem 2.5rem 2.5rem;
+        max-width: 23rem;
+        margin: 2rem 0.8rem;
+        line-height: 150%;
+    }
+
+    .image {
+        display: flex;
+        justify-self: center;
     }
 
 

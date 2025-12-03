@@ -22,24 +22,26 @@
 //         }
 //     );
 // });
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener("DOMContentLoaded", () => {
-    const peel = document.querySelector(".peel-fold");
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    // Trigger de open animatie
-    requestAnimationFrame(() => {
-        peel.classList.add("peel-fold--open");
-    });
+// gsap.registerPlugin(ScrollTrigger);
 
-    // Wanneer overgang klaar is → verwijder overlay volledig
-    peel.addEventListener("transitionend", () => {
-        peel.classList.add("peel-fold--hidden");
-    });
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     const peel = document.querySelector(".peel-fold");
+
+//     // Trigger de open animatie
+//     requestAnimationFrame(() => {
+//         peel.classList.add("peel-fold--open");
+//     });
+
+//     // Wanneer overgang klaar is → verwijder overlay volledig
+//     peel.addEventListener("transitionend", () => {
+//         peel.classList.add("peel-fold--hidden");
+//     });
+// });
 
 // const chapters = document.querySelectorAll(".chapter");
 
@@ -68,3 +70,32 @@ document.addEventListener("DOMContentLoaded", () => {
 //         "-=0.6"
 //     );
 // });
+
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const storyTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".story",
+        start: "top top",     
+        end: "+=500",      
+        scrub: true,        
+        pin: true,           
+    }
+});
+
+storyTimeline.fromTo(
+    ".story__subtitle.top",
+    { x: "-100%", opacity: 0 },  
+    { x: 0, opacity: 1, ease: "none" }
+);
+
+storyTimeline.fromTo(
+    ".story__subtitle.bottom",
+    { x: "-100%", opacity: 0 },
+    { x: 0, opacity: 1, ease: "none" },
+    0 
+);
