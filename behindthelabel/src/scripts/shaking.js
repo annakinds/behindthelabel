@@ -1,6 +1,7 @@
 console.log("Script loaded");
 
 const start = document.querySelector(".start");
+const story = document.querySelector(".story");
 
 let hasShaken = false;  
 const threshold = 15;
@@ -15,8 +16,9 @@ const handleMotionEvent = (event) => {
     const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
     if (totalAcceleration > threshold) {
-        start.style.visibility = "hidden";
+        start.classList.add("hidden");
         hasShaken = true;   
+        story.classList.remove("hidden");
     }
 };
 
