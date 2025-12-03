@@ -16,9 +16,9 @@ const handleMotionEvent = (event) => {
     const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
     if (totalAcceleration > threshold) {
+        story.classList.remove("hidden");
         start.classList.add("hidden");
         hasShaken = true;   
-        story.classList.remove("hidden");
     }
 };
 
