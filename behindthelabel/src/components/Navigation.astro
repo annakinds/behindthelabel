@@ -64,6 +64,35 @@ import museak from "../../public/assets/icons/musea-kortrijk.svg";
 
     .nav-item {
         text-decoration: none;
+        color: var(--white);
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        background-color: var(--black);
+        padding: 1rem 3rem;
+        margin: 1rem;
+        text-align: center;
+        display: flex;
+        justify-self: center;
+        justify-content: center;
+        width: 12rem;
+    }
+
+    .nav-menu li:nth-child(1) .nav-item {
+        transform: rotate(-5deg);
+    }
+
+    .nav-menu li:nth-child(2) .nav-item {
+        transform: rotate(3deg);
+    }
+
+    .nav-menu li:nth-child(3) .nav-item {
+        transform: rotate(8deg);
+    }
+
+    .nav-menu {
+        display: flex;
+        justify-content: center;
     }
 
     .hamburger span {
@@ -79,7 +108,22 @@ import museak from "../../public/assets/icons/musea-kortrijk.svg";
     .nav-menu.active {
         opacity: 1;
         pointer-events: auto;
-        transform: translateY(0);
-        background-color: var(--secondary-color);
+        left: 0;
+        top: 120%;
+        height: 80vh;
+        background-color: var(--primary-color);
+        border-top: .1rem solid var(--black);
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(0.9rem) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-0.9rem) rotate(-45deg);
     }
 </style>
