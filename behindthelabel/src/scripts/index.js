@@ -59,4 +59,26 @@ mouths.forEach(mouth=> {
 })
 
 
+gsap.fromTo(".shakeboard1",
+    { rotation: -10 },
+    {
+        rotation: 10,
+        duration: 0.15,
+        repeat: 5,
+        yoyo: true,
+        ease: "sine.inOut",
+        scrollTrigger: {
+            trigger: ".shakeboard1",
+            start: "top center", 
+            toggleActions: "play none none none"
+        },
+        onComplete() {
+            gsap.to(".shakeboard1", {
+                rotation: 0,     
+                duration: 0.4,   
+                ease: "sine.out" 
+            });
+        }
+    }
+);
 

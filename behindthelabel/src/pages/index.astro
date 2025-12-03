@@ -6,6 +6,7 @@ import Map from "../components/Map.astro";
 import { Image } from "astro:assets";
 import mouth from "../../public/assets/img/openmouth.svg";
 import mouth2 from "../../public/assets/img/openmouth.png";
+import shakeboard from "../../public/assets/img/shakeboard.svg";
 ---
 
 <Layout>
@@ -58,6 +59,20 @@ import mouth2 from "../../public/assets/img/openmouth.png";
 					>
 				</div>
 			</div>
+			<div class="shake">
+				<div class="shake__imgs">
+					<Image
+						class="shakeboard1"
+						src={shakeboard}
+						alt="shake board"
+					/>
+					<!-- <Image
+						class="shakeboard2"
+						src={shakeboard}
+						alt="shake board"
+					/> -->
+				</div>
+			</div>
 		</div>
 	</div>
 </Layout>
@@ -101,6 +116,7 @@ import mouth2 from "../../public/assets/img/openmouth.png";
 		font-weight: 600;
 	}
 
-
-
+	.shake {
+		margin: 10rem 0;
+	}
 </style>
