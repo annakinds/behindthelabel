@@ -190,5 +190,13 @@ import tile from "../../assets/tiletableau.png";
             margin-top: -7rem;
             pointer-events: none;
         }
+
+        .story {
+            position: relative; /* of sticky/absolute als nodig */
+            z-index: 1;
+        }
+        .start {
+            z-index: 2; /* zodat start boven story staat tot shake */
+        }
     </style>
 </Layout>
