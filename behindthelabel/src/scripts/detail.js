@@ -76,8 +76,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
-
-// Select story text
 const storyText = document.querySelector(".story__text");
 
 
