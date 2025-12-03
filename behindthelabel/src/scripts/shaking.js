@@ -1,10 +1,13 @@
 console.log("Script loaded");
 
-// const text2 = document.querySelector(".text2");
-const bg = document.body;
+const start = document.querySelector(".start");
 
+let hasShaken = false;  
 const threshold = 15;
+
 const handleMotionEvent = (event) => {
+    if (hasShaken) return;  
+
     const x = event.accelerationIncludingGravity.x;
     const y = event.accelerationIncludingGravity.y;
     const z = event.accelerationIncludingGravity.z;
@@ -12,12 +15,9 @@ const handleMotionEvent = (event) => {
     const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
     if (totalAcceleration > threshold) {
-        bg.style.backgroundColor = "red";
-        // text2.textContent = "Beweging gedetecteerd!";
-    } else {
-        bg.style.backgroundColor = "white";
-        // text2.textContent = "Geen beweging";
+        start.style.visibility = "hidden";
+        hasShaken = true;   
     }
-}
+};
 
 window.addEventListener("devicemotion", handleMotionEvent);
