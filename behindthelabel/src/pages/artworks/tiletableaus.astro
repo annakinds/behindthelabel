@@ -1,169 +1,89 @@
 ---
-import "../../styles/reset.css";
-import "../../styles/global.css";
 import Subtitle from "../../components/Subtitle.astro";
 import SpeechBubble from "../../components/Speechbubble.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
-import Map from "../../components/Map.astro";
 ---
 
 <Layout>
-    <div id="detail" class="detail peel-container">
-        <div class="peel-rect" id="peelRect">
-            <section class="start">
-                <h1 class="start__title">
-                    What is hiding behind the labels of Tile Tableaus?
-                </h1>
-                <Image
-                    class="image"
-                    src={tile}
-                    alt="Tile tableau from Aalbeke"
-                />
-                <p class="start__cta">Shake the labels off</p>
-                <div class="corner-square"></div>
-            </section>
-            <section class="chapters peel-fold">
-                <div class="image-wrapper">
-                    <Image
-                        class="image"
-                        src={tile}
-                        alt="Tile tableau from Aalbeke"
-                    />
-                </div>
-                <div class="chapter">
-                    <Subtitle subtitle="These artworks tell" />
-                    <Subtitle
-                        subtitle=" the stories of <span class='h2__highlight'>Aalbeke</span>"
-                    />
-                    <SpeechBubble
-                        text={`Created by Peter de Graaff, he listened to stories from locals,
-                dug through the village’s history. They reflect what it was like to live and
-                work in the village, both in the past and today. The stories are about the church fire,
-                working in agriculture or the textile factory, Saint Cornelius and more.`}
-                    />
-                </div>
-                <div class="chapter">
-                    <Subtitle
-                        subtitle="12 ceramic tiles are placed along the <span class='h2__highlight'>sidewalks</span>"
-                    />
-                    <SpeechBubble
-                        text={`He took all those stories and turned them into art. In total, there are 12 ceramic tiles with drawings spread throughout the village. You’ll find them placed in the ground along the sidewalks, each one marking a small resting point in the landscape.`}
-                    />
-                </div>
-                <div class="chapter">
-                    <Subtitle
-                        subtitle="<span class='h2__highlight'>Hugo Claus</span>, the famous writer"
-                    />
-                    <SpeechBubble
-                        text={`One of the scenes shows a young boy writing, and fun fact: that boy turned out to be Hugo Claus, the famous writer. He spent some time living in a boarding school in Aalbeke.`}
-                    />
-                </div>
-            </section>
+    <div>
+        <div class="start">
+            <h2 class="start__subtitle">
+                What is hiding behind the labels of Tegeltableaus?
+            </h2>
+            <Image class="tile" src={tile} alt="tegeltableaus" />
+            <p class="start__text">Shake the labels off</p>
+            <div class="corner-square"></div>
         </div>
-
-        <!-- <section class="end">
-            <Subtitle
-                subtitle="Where to see <span class='h2__highlight'>Tile Tableaus</span>?"
-            />
-            <div class="map" id="map">
-                <Map />
-            </div>
-        </section> -->
     </div>
 </Layout>
 
 <style>
-    .detail {
-        background-color: var(--primary-color);
-        max-width: 100%;
-        position: relative;
-    }
-
     .start {
         background-color: var(--black);
-        padding-top: 5rem;
-    }
-
-    .start__title {
-        color: var(--white);
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .start__cta {
-        color: var(--white);
-        text-align: center;
-        font-size: 1.25rem;
-        margin-top: 5rem;
-    }
-
-    .chapter {
-        min-height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        height: 90vh;
         position: relative;
-        padding: 4rem 0;
+    }
+    .start__subtitle {
+        color: var(--white);
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        line-height: 170%;
+        padding: 5rem 0rem;
     }
 
-    .image-wrapper {
-        position: sticky;
-        top: 15vh;
-        width: 100%;
+    .start__subtitle::after {
+        content: "Tegeltableaus";
+        background-color: var(--secondary-color);
         display: flex;
-        justify-content: center;
-        pointer-events: none;
+        width: fit-content;
+        padding: 0.2rem 0.8rem;
+        color: var(--black);
+        border-radius: 3rem;
+        justify-self: end;
+        margin-right: 4rem;
+        margin-top: -2.5rem;
+        rotate: -3deg;
+        font-size: 1.25rem;
     }
 
-    .image {
-        max-width: 25rem;
-        width: 90%;
-        height: auto;
+    .tile {
         border: 0.5rem solid var(--white);
-        margin-top: 10vh;
-        display: flex;
-        justify-self: center;
     }
 
-    .peel-container {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .peel-rect {
-        width: 100%;
-        height: 100%;
-        background: var(--black);
-        position: relative;
-        /* overflow: hidden; */
-    }
-
-    .peel-fold {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--primary-color);
-        transform-origin: bottom right;
-        /* transform: rotateX(90deg); */
-        pointer-events: none;
+    .start__text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--white);
+        padding: 3rem;
     }
 
     .corner-square {
-        display: flex;
-        justify-self: end;
         width: 5rem;
         height: 5rem;
-        margin-top: 10rem;
         background: linear-gradient(
             to top left,
             var(--primary-color) 50%,
             var(--secondary-color) 50%
         );
+        bottom: 0;
+        right: 0;
+        position: absolute;
+    }
+
+    .corner-square::before {
+        content: "";
+        width: 4.5rem;
+        height: 4.5rem;
+        background: url("../../assets/icon/wiggle.svg") no-repeat center/contain;
+        display: flex;
+        margin-top: -2rem;
+        margin-left: -2rem;
+
     }
 </style>

@@ -17,11 +17,9 @@ import Footer from "../components/Footer.astro";
         <link rel="stylesheet" href="https://use.typekit.net/awf7chx.css" />
         <title>Behind the label</title>
     </head>
+    <Navigation />
     <body>
-        <Navigation />
-        <!-- <h1>{pageTitle}</h1> -->
         <slot />
-        <Footer />
         <script>
             import "../scripts/index.js";
         </script>
@@ -35,4 +33,5 @@ import Footer from "../components/Footer.astro";
             import "../scripts/peel.js";
         </script> -->
     </body>
+    <Footer />
 </html>
