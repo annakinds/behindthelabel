@@ -24,11 +24,13 @@ import mouth2 from "../../public/assets/img/openmouth.png";
 				<p class="subtitle__item">spit the truth</p>
 			</div>
 			<div class="mouths">
-				<Image class="mouth1" src={mouth} alt="scream image" />
-				<!-- <Image class="image" src={mouth2} alt="scream image" />
-				<Image class="image" src={mouth2} alt="scream image" />
-				<Image class="image" src={mouth2} alt="scream image" />
-				<Image class="image" src={mouth2} alt="scream image" /> -->
+				<div class="mouths2">
+					<Image class="mouth2" src={mouth2} alt="scream image" />
+					<Image class="mouth2" src={mouth2} alt="scream image" />
+					<Image class="mouth2" src={mouth2} alt="scream image" />
+					<Image class="mouth2" src={mouth2} alt="scream image" />
+				</div>
+					<Image class="mouth1" src={mouth} alt="scream image" />
 			</div>
 		</div>
 	</div>
@@ -52,16 +54,17 @@ import mouth2 from "../../public/assets/img/openmouth.png";
 		transform: translateY(20px);
 	}
 
-	.mouth1 {
-		animation: slide-in 1s ease-out forwards;
+	.mouths {
+		display: flex;
+		flex-direction: row;
+		max-width: 100%;
 	}
-	
-	@keyframes slide-in {
-		from {
-			transform: translateX(100%); /* start off-screen right */
-		}
-		to {
-			transform: translateX(0); /* move into place */
-		}
+	.mouth2 {
+		margin-right: -9rem;
+	}
+
+	.mouths2 {
+		display: flex;
+		flex-direction: row-reverse;
 	}
 </style>

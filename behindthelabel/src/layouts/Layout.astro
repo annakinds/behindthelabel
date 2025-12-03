@@ -28,9 +28,10 @@ import Footer from "../components/Footer.astro";
         <!-- <h1>{pageTitle}</h1> -->
         <slot />
         <Footer />
-        <script>
+        <script is:inline src="../../public/index.js"></script>
+        <!-- <script>
             import "../../public/index.js";
-        </script>
+        </script> -->
         <!-- <script>
             import "../scripts/shaking.js";
         </script> -->
