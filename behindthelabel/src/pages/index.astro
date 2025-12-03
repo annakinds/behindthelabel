@@ -8,11 +8,26 @@ import mouth from "../../public/assets/img/openmouth.svg";
 import mouth2 from "../../public/assets/img/openmouth.png";
 import shakeboard from "../../public/assets/img/shakeboard.svg";
 import eye from "../../public/assets/img/eye.svg";
+import heroimg from "../../public/assets/img/heroimg.svg";
 ---
 
 <Layout>
 	<div class="home">
-		<div class="heroimg"></div>
+		<div class="heroimg">
+			<h1 class="heroimg__title">
+				Behind the <span class="orangebg">label</span>
+			</h1>
+			<p class="heroimg__text">
+				<span class="underlined">Click</span> the labels away
+			</p>
+			<Image class="heroimg__img" src={heroimg} alt="heroimage" />
+			<div class="button-wrapper">
+				<a class="button" href="/behindthelabel/artworks/tiletableaus"
+					>Discover the artworks</a
+				>
+			</div>
+			<p class="cta">Learn more</p>
+		</div>
 		<div class="info">
 			<div class="spit">
 				<div class="spit__subtitle">
@@ -123,6 +138,70 @@ import eye from "../../public/assets/img/eye.svg";
 </Layout>
 
 <style>
+	.heroimg {
+		background-color: var(--black);
+		color: var(--white);
+		height: fit-content;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem 0;
+	}
+	.heroimg__title {
+		font-weight: 600;
+		font-size: 2rem;
+		padding: 1rem 0;
+	}
+
+	.heroimg__text {
+		font-size: 1.25rem;
+		font-weight: 500;
+		padding: 1rem 0;
+	}
+
+	.heroimg__img {
+		margin: 2rem 0;
+	}
+
+	.orangebg {
+		background-color: var(--secondary-color);
+		font-style: italic;
+		padding: 0rem 1rem;
+	}
+
+	.underlined {
+		border-bottom: 0.2rem solid var(--accent-color);
+		padding-bottom: 0.2rem;
+	}
+
+	.cta {
+		padding-top: 1rem;
+	}
+
+	.cta::after {
+		content: "";
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		justify-self: center;
+		padding-top: 1.5rem;
+		background: url("../assets/icon/triangle.svg") no-repeat center/contain;
+
+		animation: bounceArrow 1.3s ease-in-out infinite;
+	}
+
+	@keyframes bounceArrow {
+		0% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-0.4rem);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
 	.home {
 		background-color: var(--primary-color);
 	}
