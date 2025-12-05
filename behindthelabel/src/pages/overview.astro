@@ -29,7 +29,7 @@ import tile from "../assets/tiletableau.png";
 		</section>
 		<section class="overview">
 			<h2 class="overview__subtitle">Meet meet meet</h2>
-			<h2 class="overview__title">all the artworks</h2>
+			<h2 class="overview__title">Meet the artworks</h2>
 			<p class="overview__text">
 				Read the stories of these <span class="highlight"
 					>8 artworks</span
@@ -41,46 +41,68 @@ import tile from "../assets/tiletableau.png";
 				> of their location.
 			</p>
 			<div class="artworks">
-				<a class="artwork" href="/behindthelabel/artworks/ballerinaman">
+				<a
+					class="artwork ballerina"
+					href="/behindthelabel/artworks/ballerinaman"
+				>
 					<h2 class="artwork__name">Ballerina en Man</h2>
 					<p class="artwork__location">Kortrijk</p>
 				</a>
 				<a
-					class="artwork"
+					class="artwork happilyeverafter"
 					href="/behindthelabel/artworks/happilyeverafter"
 				>
 					<h2 class="artwork__name">Happily Ever After</h2>
 					<p class="artwork__location">Bissegem</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/ileadtheway">
+				<a
+					class="artwork ikleiddeweg"
+					href="/behindthelabel/artworks/ileadtheway"
+				>
 					<h2 class="artwork__name">Ik leid de weg</h2>
 					<p class="artwork__location">Rollegem</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/mentie">
+				<a
+					class="artwork mentie"
+					href="/behindthelabel/artworks/mentie"
+				>
 					<h2 class="artwork__name">Mentie</h2>
 					<p class="artwork__location">Bellegem</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/plinth">
+				<a
+					class="artwork untitled"
+					href="/behindthelabel/artworks/plinth"
+				>
 					<h2 class="artwork__name">Untitled</h2>
 					<p class="artwork__location">Kooigem</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/skribbel">
+				<a
+					class="artwork skribbels"
+					href="/behindthelabel/artworks/skribbel"
+				>
 					<h2 class="artwork__name">De Skribbels</h2>
 					<p class="artwork__location">Heule</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/squarecircle">
+				<a
+					class="artwork cirkelvierkant"
+					href="/behindthelabel/artworks/squarecircle"
+				>
 					<h2 class="artwork__name">Cirkel en Vierkant</h2>
 					<p class="artwork__location">Marke</p>
 				</a>
-				<a class="artwork" href="/behindthelabel/artworks/tiletableaus">
+				<a
+					class="artwork tegeltableaus"
+					href="/behindthelabel/artworks/tiletableaus"
+				>
 					<h2 class="artwork__name">Tegeltableaus</h2>
 					<p class="artwork__location">Aalbeke</p>
 				</a>
 				<div>
 					<h3>Want to learn more about the other artworks?</h3>
 					<p>
-						Read the story of the other <span class="highlight">173</span> artworks in
-						and around Kortrijk.
+						Read the story of the other <span class="highlight"
+							>173</span
+						> artworks in and around Kortrijk.
 					</p>
 					<button>See more</button>
 				</div>
@@ -207,4 +229,51 @@ import tile from "../assets/tiletableau.png";
 		padding: 0rem 0.2rem;
 		padding-bottom: 0.2rem;
 	}
+
+	.artwork {
+		width: 22rem;
+		height: 13rem;
+	}
+
+	.ballerina {
+		background: url("../../public/assets/artworks-mobile/ballerina.png") no-repeat
+			center/contain;
+	}
+
+	.happilyeverafter {
+		background: url("../assets/artworks-mobile/happilyeverafter.png")
+			no-repeat center/contain;
+	}
+
+	.ikleiddeweg {
+		background: url("../assets/artworks-mobile/ikleiddeweg.png") no-repeat
+			center/contain;
+	}
+
+	.mentie {
+		background: url("../assets/artworks-mobile/mentie.png") no-repeat
+			center/contain;
+	}
+
+	.untitled {
+		background: url("../assets/artworks-mobile/untitled.png") no-repeat
+			center/contain;
+	}
+
+	.skribbels {
+		background: url("../assets/artworks-mobile/skribbels.png") no-repeat
+			center/contain;
+	}
+
+	.cirkelvierkant {
+		background: url("../assets/artworks-mobile/cirkelvierkant.png") no-repeat
+			center/contain;
+	}
+
+	.tegeltableaus {
+		background: url("../assets/artworks-mobile/tegeltableaus.png") no-repeat
+			center/contain;
+	}
+
+
 </style>
