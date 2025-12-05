@@ -2,6 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../assets/tiletableau.png";
+import ballerina from "../assets/artworks-mobile/ballerina.png";
+import cirkelvierkant from "../assets/artworks-mobile/cirkelvierkant.png";
+import happilyeverafter from "../assets/artworks-mobile/happilyeverafter.png";
+import ikleiddeweg from "../assets/artworks-mobile/ikleiddeweg.png";
+import mentie from "../assets/artworks-mobile/mentie.png";
+import skribbels from "../assets/artworks-mobile/skribbels.png";
+import tegeltableaus from "../assets/artworks-mobile/tegeltableaus.png";
+import untitled from "../assets/artworks-mobile/untitled.png";
 ---
 
 <Layout>
@@ -41,70 +49,119 @@ import tile from "../assets/tiletableau.png";
 				> of their location.
 			</p>
 			<div class="artworks">
-				<a
-					class="artwork ballerina"
-					href="/behindthelabel/artworks/ballerinaman"
-				>
-					<h2 class="artwork__name">Ballerina en Man</h2>
-					<p class="artwork__location">Kortrijk</p>
+				<a class="artwork ballerina">
+					<Image
+						class="artwork__img"
+						src={ballerina}
+						alt="ballerina"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">Ballerina en Man</h2>
+						<p class="location">Kortrijk</p>
+					</div>
 				</a>
 				<a
 					class="artwork happilyeverafter"
 					href="/behindthelabel/artworks/happilyeverafter"
 				>
-					<h2 class="artwork__name">Happily Ever After</h2>
-					<p class="artwork__location">Bissegem</p>
+					<Image
+						class="artwork__img"
+						src={happilyeverafter}
+						alt="happilyeverafter"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">Happily Ever After</h2>
+						<p class="location">Bissegem</p>
+					</div>
 				</a>
 				<a
 					class="artwork ikleiddeweg"
 					href="/behindthelabel/artworks/ileadtheway"
 				>
-					<h2 class="artwork__name">Ik leid de weg</h2>
-					<p class="artwork__location">Rollegem</p>
+					<Image
+						class="artwork__img"
+						src={ikleiddeweg}
+						alt="ikleiddeweg"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">Ik leid de weg</h2>
+						<p class="location">Rollegem</p>
+					</div>
 				</a>
 				<a
 					class="artwork mentie"
 					href="/behindthelabel/artworks/mentie"
 				>
-					<h2 class="artwork__name">Mentie</h2>
-					<p class="artwork__location">Bellegem</p>
+					<Image class="artwork__img" src={mentie} alt="mentie" />
+					<div class="artwork__info">
+						<h2 class="name">Mentie</h2>
+						<p class="location">Bellegem</p>
+					</div>
 				</a>
 				<a
 					class="artwork untitled"
 					href="/behindthelabel/artworks/plinth"
 				>
-					<h2 class="artwork__name">Untitled</h2>
-					<p class="artwork__location">Kooigem</p>
+					<Image class="artwork__img" src={untitled} alt="untitled" />
+					<div class="artwork__info">
+						<h2 class="name">Untitled</h2>
+						<p class="location">Kooigem</p>
+					</div>
 				</a>
 				<a
 					class="artwork skribbels"
 					href="/behindthelabel/artworks/skribbel"
 				>
-					<h2 class="artwork__name">De Skribbels</h2>
-					<p class="artwork__location">Heule</p>
+					<Image
+						class="artwork__img"
+						src={skribbels}
+						alt="skribbels"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">De Skribbels</h2>
+						<p class="location">Heule</p>
+					</div>
 				</a>
 				<a
 					class="artwork cirkelvierkant"
 					href="/behindthelabel/artworks/squarecircle"
 				>
-					<h2 class="artwork__name">Cirkel en Vierkant</h2>
-					<p class="artwork__location">Marke</p>
+					<Image
+						class="artwork__img"
+						src={cirkelvierkant}
+						alt="cirkelvierkant"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">Cirkel en Vierkant</h2>
+						<p class="location">Marke</p>
+					</div>
 				</a>
 				<a
 					class="artwork tegeltableaus"
 					href="/behindthelabel/artworks/tiletableaus"
 				>
-					<h2 class="artwork__name">Tegeltableaus</h2>
-					<p class="artwork__location">Aalbeke</p>
+					<Image
+						class="artwork__img"
+						src={tegeltableaus}
+						alt="tegeltableaus"
+					/>
+					<div class="artwork__info">
+						<h2 class="name">Tegeltableaus</h2>
+						<p class="location">Aalbeke</p>
+					</div>
 				</a>
-				<div>
-					<h3>Want to learn more about the other artworks?</h3>
-					<p>
+				<div class="others">
+					<h3 class="others__title">
+						Want to learn more about the other artworks?
+					</h3>
+					<p class="others__text">
 						Read the story of the other <span class="highlight"
 							>173</span
 						> artworks in and around Kortrijk.
 					</p>
-					<button>See more</button>
+					<div class="button-wrapper">
+						<a class="button" href="">See more</a>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -232,48 +289,71 @@ import tile from "../assets/tiletableau.png";
 
 	.artwork {
 		width: 22rem;
-		height: 13rem;
+		height: fit-content;
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+		justify-self: center;
+		color: var(--white);
+		text-decoration: none;
+		margin: 1.5rem 0rem;
 	}
 
-	.ballerina {
-		background: url("../../public/assets/artworks-mobile/ballerina.png") no-repeat
-			center/contain;
+	.artwork__img {
+		z-index: 0;
+		grid-column: 1;
+		grid-row: 1;
 	}
 
-	.happilyeverafter {
-		background: url("../assets/artworks-mobile/happilyeverafter.png")
-			no-repeat center/contain;
+	.artwork__info {
+		grid-column: 1;
+		grid-row: 1;
+		display: flex;
+		flex-direction: column;
+		z-index: 1;
+		justify-content: end;
+		align-items: start;
+		padding: 1rem;
 	}
 
-	.ikleiddeweg {
-		background: url("../assets/artworks-mobile/ikleiddeweg.png") no-repeat
-			center/contain;
+	.name {
+		color: var(--accent-color);
+		font-size: 1.5rem;
+		font-weight: 600;
+		padding-bottom: 0.6rem;
 	}
 
-	.mentie {
-		background: url("../assets/artworks-mobile/mentie.png") no-repeat
-			center/contain;
+	.location {
+		font-weight: 300;
+		display: flex;
+		align-items: center;
 	}
 
-	.untitled {
-		background: url("../assets/artworks-mobile/untitled.png") no-repeat
-			center/contain;
+	.location::before {
+		content: "";
+		width: 1rem;
+		height: 1.5rem;
+		display: inline-block;
+		background: url("../assets/icon/pin.svg") no-repeat center/contain;
+		padding-right: 0.6rem;
 	}
 
-	.skribbels {
-		background: url("../assets/artworks-mobile/skribbels.png") no-repeat
-			center/contain;
+	.others {
+		background-color: var(--black);
+		margin: 1rem;
+		padding: 1rem;
+		text-align: start;
+		font-size: 1.25rem;
 	}
 
-	.cirkelvierkant {
-		background: url("../assets/artworks-mobile/cirkelvierkant.png") no-repeat
-			center/contain;
+	.others__title {
+		font-weight: 600;
+		width: 19rem;
 	}
 
-	.tegeltableaus {
-		background: url("../assets/artworks-mobile/tegeltableaus.png") no-repeat
-			center/contain;
+	.others__text {
+		font-weight: 400;
+		padding: 1rem 0rem;
+		line-height: 150%;
 	}
-
-
 </style>
