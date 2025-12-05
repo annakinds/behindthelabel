@@ -1,32 +1,210 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navigation from "../components/Navigation.astro";
+import { Image } from "astro:assets";
+import tile from "../assets/tiletableau.png";
 ---
 
 <Layout>
-	<h1>overview</h1>
-	<a href="/behindthelabel/artworks/ballerinaman">
-		<h2>ballerinaman</h2>
-	</a>
-	<a href="/behindthelabel/artworks/happilyeverafter">
-		<h2>happilyeverafter</h2>
-	</a>
-	<a href="/behindthelabel/artworks/ileadtheway">
-		<h2>ileadtheway</h2>
-	</a>
-	<a href="/behindthelabel/artworks/mentie">
-		<h2>mentie</h2>
-	</a>
-	<a href="/behindthelabel/artworks/plinth">
-		<h2>plinth</h2>
-	</a>
-	<a href="/behindthelabel/artworks/skribbel">
-		<h2>skribbel</h2>
-	</a>
-	<a href="/behindthelabel/artworks/squarecircle">
-		<h2>squarecircle</h2>
-	</a>
-	<a href="/behindthelabel/artworks/tiletableaus">
-		<h2>tiletableaus</h2>
-	</a>
+	<div class="overviewPage">
+		<section class="swipe">
+			<h2 class="swipe__title">
+				<span class="orange">Smash</span> or pass
+			</h2>
+			<h2 class="swipe__subtitle">the artworks</h2>
+			<p class="swipe__text">
+				<span class="yellow">Swipe</span> left to pass, right to smash
+			</p>
+			<Image class="tile" src={tile} alt="tegeltableaus" />
+			<div class="swipe__buttons">
+				<div class="pass">
+					<p class="pass__text">Pass</p>
+					<button class="pass__button"></button>
+				</div>
+				<div class="smash">
+					<p class="smash__text">Smash</p>
+					<button class="smash__button"></button>
+				</div>
+			</div>
+			<p class="swipe__cta">See all artworks</p>
+		</section>
+		<section class="overview">
+			<h2 class="overview__subtitle">Meet meet meet</h2>
+			<h2 class="overview__title">all the artworks</h2>
+			<p class="overview__text">
+				Read the stories of these <span class="highlight"
+					>8 artworks</span
+				> in and around Kortrijk. Each artwork is from a <span
+					class="highlight">different district</span
+				> around Kortrijk and one of them being inside Kortrijk. They all
+				<span class="highlight">tell stories</span> about the <span
+					class="highlight">heritage</span
+				> of their location.
+			</p>
+			<div class="artworks">
+				<a class="artwork" href="/behindthelabel/artworks/ballerinaman">
+					<h2 class="artwork__name">Ballerina en Man</h2>
+					<p class="artwork__location">Kortrijk</p>
+				</a>
+				<a
+					class="artwork"
+					href="/behindthelabel/artworks/happilyeverafter"
+				>
+					<h2 class="artwork__name">Happily Ever After</h2>
+					<p class="artwork__location">Bissegem</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/ileadtheway">
+					<h2 class="artwork__name">Ik leid de weg</h2>
+					<p class="artwork__location">Rollegem</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/mentie">
+					<h2 class="artwork__name">Mentie</h2>
+					<p class="artwork__location">Bellegem</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/plinth">
+					<h2 class="artwork__name">Untitled</h2>
+					<p class="artwork__location">Kooigem</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/skribbel">
+					<h2 class="artwork__name">De Skribbels</h2>
+					<p class="artwork__location">Heule</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/squarecircle">
+					<h2 class="artwork__name">Cirkel en Vierkant</h2>
+					<p class="artwork__location">Marke</p>
+				</a>
+				<a class="artwork" href="/behindthelabel/artworks/tiletableaus">
+					<h2 class="artwork__name">Tegeltableaus</h2>
+					<p class="artwork__location">Aalbeke</p>
+				</a>
+				<div>
+					<h3>Want to learn more about the other artworks?</h3>
+					<p>
+						Read the story of the other <span class="highlight">173</span> artworks in
+						and around Kortrijk.
+					</p>
+					<button>See more</button>
+				</div>
+			</div>
+		</section>
+	</div>
 </Layout>
+
+<style>
+	.overviewPage {
+		color: var(--white);
+		font-weight: 500;
+		text-align: center;
+	}
+
+	.swipe {
+		background-color: var(--black);
+	}
+
+	.orange {
+		background-color: var(--secondary-color);
+		padding: 0rem 0.5rem;
+		font-style: italic;
+	}
+
+	.swipe__title {
+		font-size: 1.25rem;
+		padding: 1rem;
+	}
+
+	.swipe__subtitle {
+		font-weight: 600;
+		font-size: 2rem;
+		padding: 0.5rem;
+	}
+
+	.swipe__text {
+		padding: 2rem 0rem 3rem 0rem;
+	}
+
+	.yellow {
+		color: var(--accent-color);
+	}
+
+	.tile {
+		border: 0.5rem solid var(--white);
+		display: flex;
+		justify-self: center;
+	}
+
+	.swipe__buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		font-size: 1.25rem;
+		font-weight: 500;
+		padding: 3rem 0rem;
+	}
+
+	.pass__button,
+	.smash__button {
+		width: 4rem;
+		height: 4rem;
+		border-radius: 100%;
+		margin: 1rem 0rem;
+	}
+
+	.pass__button {
+		background-color: var(--accent-color);
+	}
+
+	.smash__button {
+		background-color: var(--secondary-color);
+	}
+
+	.swipe__cta::after {
+		content: "";
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		justify-self: center;
+		padding-top: 1.5rem;
+		background: url("../assets/icon/triangle.svg") no-repeat center/contain;
+
+		animation: bounceArrow 1.3s ease-in-out infinite;
+	}
+
+	@keyframes bounceArrow {
+		0% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-0.4rem);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	.overview__subtitle {
+		font-size: 3.25rem;
+		font-family: "obviously-narrow", sans-serif;
+		font-weight: 300;
+		text-transform: uppercase;
+		padding: 1rem 0rem;
+		margin-top: 1rem;
+	}
+
+	.overview__title {
+		font-size: 2rem;
+		font-weight: 600;
+		padding: 0.5rem 0rem;
+	}
+
+	.overview__text {
+		line-height: 150%;
+		padding: 1.5rem 1rem;
+		font-weight: 400;
+	}
+
+	.highlight {
+		background-color: var(--secondary-color);
+		font-weight: 600;
+		padding: 0rem 0.2rem;
+		padding-bottom: 0.2rem;
+	}
+</style>
