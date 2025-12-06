@@ -12,60 +12,80 @@ hamburger.addEventListener("click", () => {
 });
 
 
-//homepage
-const quotes = gsap.utils.toArray(".subtitle__item");
-
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".spit__subtitle",
-        start: "top 10%",
-        end: "bottom 30%",
-        scrub: true,
-    }
-});
-
-quotes.forEach(quote => {
-    tl.to(quote, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3
-    });
-});
-
-
-gsap.fromTo(".mouth1",
-    { x: "-50vw" },    
-    {
-        x: "10%",        
-        ease: "none",
+const pinAndAnimate = ({
+    trigger,
+    endTrigger,
+    pin,
+    animations,
+    markers = false,
+    headerOffset = 0,
+}) => {
+    const end = `top top+=${headerOffset}`;
+    const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: ".mouth1",
-            start: "top 50%",
-            end: "+=500",
-            scrub:true, 
-        }
-    }
-);
+            trigger,
+            start: `top center`,
+            endTrigger,
+            end,
+            scrub: true,
+            pin,
+            pinSpacing: false,
+            markers: markers, 
+            invalidateOnRefresh: true,
+        },
+    });
 
-const mouths = gsap.utils.toArray(".mouth2");
-mouths.forEach(mouth=> {
-    gsap.fromTo(mouth, {
-        x: "-50vw"},
-        {
-            x: "10%",          
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".mouth1",
-                start: "top 50%",
-                end: "+=500",
-                scrub: true,
-            }
-    }
+    animations.forEach(({ target, vars, position = 0 }) => {
+        tl.to(target, vars, position);
+    });
 
-    )
-})
+    return tl;
+}
 
+const header = document.querySelector(".header");
+const setupScrollAnimations = () => {
+    const headerOffset = header.offsetHeight - 1;
 
+    const quotes = gsap.utils.toArray(".subtitle__item");
+    const mouths = gsap.utils.toArray(".mouth2");
+
+    //quotes
+    const quoteAnimations = quotes.map((quote, index) => ({
+        target: quote,
+        vars: { opacity: 1, y: 0, duration: 0.5 },
+        position: index === 0 ? 0 : "+=0.3"
+    }));
+    pinAndAnimate({
+        trigger: ".spit__subtitle",
+        animations: quoteAnimations,
+        headerOffset
+    });
+
+    //mouths
+    pinAndAnimate({
+        trigger: ".mouth1",
+        animations: [
+            { target: ".mouth1", vars: { x: "10%" } },
+        ],        
+        headerOffset
+    });
+    const mouthAnimations = mouths.map((mouth, index) => ({
+        target: mouth,
+        vars: { x: "10%" },
+    }))
+    pinAndAnimate({
+        trigger: ".mouth1",
+        animations: mouthAnimations,
+        headerOffset
+    });
+
+    
+
+};
+
+setupScrollAnimations();
+
+//shake of those labels
 gsap.fromTo(".shakeboard1",
     { rotation: -10 },
     {
