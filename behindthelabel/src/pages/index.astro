@@ -9,6 +9,10 @@ import mouth2 from "../../public/assets/img/openmouth.png";
 import shakeboard from "../../public/assets/img/shakeboard.svg";
 import eye from "../../public/assets/img/eye.svg";
 import heroimg from "../../public/assets/img/heroimg.svg";
+import ballerina from "../../public/assets/img/miniballerina.png";
+import star from "../../public/assets/icons/star.svg";
+import gsm from "../../public/assets/icons/gsm.svg";
+import binoculars from "../../public/assets/icons/binoculars.svg";
 ---
 
 <Layout>
@@ -18,9 +22,36 @@ import heroimg from "../../public/assets/img/heroimg.svg";
 				Behind the <span class="orangebg">label</span>
 			</h1>
 			<p class="heroimg__text">
-				<span class="underlined">Click</span> the labels away
+				<span class="yellow">Click</span> the labels away
 			</p>
-			<Image class="heroimg__img" src={heroimg} alt="heroimage" />
+			<!-- <Image class="heroimg__img" src={heroimg} alt="heroimage" /> -->
+			<div class="heroimg__quote">
+				<div>
+					<p>Public Art</p>
+					<Image class="img" src={ballerina} alt="ballerina" />
+				</div>
+				<div>
+					<p>is</p>
+					<Image class="img" src={star} alt="star icon" />
+					<p>for Gen Z,</p>
+				</div>
+				<p>they're too</p>
+				<div>
+					<Image class="img gsm" src={gsm} alt="gsm" />
+					<p>
+						<span class="bold">real</span>, too <span class="bold"
+							>connected</span
+						>
+					</p>
+				</div>
+				<div>
+					<p>and</p>
+					<Image class="img" src={binoculars} alt="binoculars" />
+				</div>
+				<div class="lastdiv">
+					<p>too <span class="bold">curious.</span></p>
+				</div>
+			</div>
 			<div class="button-wrapper">
 				<a class="button" href="/behindthelabel/artworks/tiletableaus"
 					>Discover the artworks</a
@@ -163,15 +194,54 @@ import heroimg from "../../public/assets/img/heroimg.svg";
 		margin: 2rem 0;
 	}
 
+	.heroimg__quote {
+		font-size: 2.5rem;
+		padding: 1rem 3rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.heroimg__quote > div {
+		display: flex;
+		flex-direction: row;
+		line-height: 120%;
+	}
+
+	.lastdiv {
+		margin-top: -0.5rem;
+	}
+
+	.img {
+		padding: 0rem 0.5rem;
+		display: flex;
+		align-self: center;
+	}
+
+	.gsm {
+		animation: wiggle 1.3s ease-in-out infinite;
+	}
+
+	@keyframes wiggle {
+		0% {
+			rotate: 0deg;
+		}
+		50% {
+			rotate: -5deg;
+		}
+		100% {
+			rotate: 0deg;
+		}
+	}
+
 	.orangebg {
 		background-color: var(--secondary-color);
 		font-style: italic;
 		padding: 0rem 1rem;
 	}
 
-	.underlined {
-		border-bottom: 0.2rem solid var(--accent-color);
-		padding-bottom: 0.2rem;
+	.yellow {
+		color: var(--accent-color);
 	}
 
 	.cta {
