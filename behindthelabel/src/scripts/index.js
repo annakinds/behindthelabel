@@ -24,7 +24,7 @@ const pinAndAnimate = ({
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger,
-            start: `top center`,
+            start: `top 60%`,
             endTrigger,
             end,
             scrub: true,
@@ -48,6 +48,7 @@ const setupScrollAnimations = () => {
 
     const quotes = gsap.utils.toArray(".subtitle__item");
     const mouths = gsap.utils.toArray(".mouth2");
+    const eyes = gsap.utils.toArray(".eye");
 
     //quotes
     const quoteAnimations = quotes.map((quote, index) => ({
@@ -79,51 +80,43 @@ const setupScrollAnimations = () => {
         headerOffset
     });
 
-    
+    //shakeboards
+    pinAndAnimate({
+        trigger: ".shake__imgs",
+        animations:[
+            { target: ".shakeboard1", vars: { rotate: "10deg" } },
+            { target: ".shakeboard2", vars: { rotate: "10deg", height: "12rem", width: "110%" } },
+            { target: ".shakeboard3", vars: { rotate: "10deg", height: "16rem", width: "120%" } },
+            { target: ".shakeboard4", vars: { rotate: "10deg", height: "20rem", width: "120%" } },
+            // { target: ".shakeboard5", vars: { rotate: "10deg", height: "24rem", width: "120%" } },
+            // { target: ".shakeboard6", vars: { rotate: "10deg", height: "28rem", width: "120%" } },
+            { target: ".shakeboard1", vars: { rotate: "-10deg" } },
+            { target: ".shakeboard2", vars: { rotate: "-10deg" } },
+            { target: ".shakeboard3", vars: { rotate: "-10deg" } },
+            { target: ".shakeboard4", vars: { rotate: "-10deg" } },
+            // { target: ".shakeboard5", vars: { rotate: "-10deg" } },
+            // { target: ".shakeboard6", vars: { rotate: "-10deg" } },
+
+
+        ], 
+        headerOffset,
+        yoyo: true
+    });
+
+    //eye
+    const eyeAnimations = eyes.map((eye, index) => ({
+        target: eye,
+        vars: { opacity: 1 },
+        position: index === 0 ? 0 : `+=0.3` 
+
+    }))
+
+    pinAndAnimate({
+        trigger: ".eyes",
+        animations: eyeAnimations,
+        headerOffset, 
+    });
 
 };
 
 setupScrollAnimations();
-
-//shake of those labels
-gsap.fromTo(".shakeboard1",
-    { rotation: -10 },
-    {
-        rotation: 10,
-        duration: 0.15,
-        repeat: 5,
-        yoyo: true,
-        ease: "sine.inOut",
-        scrollTrigger: {
-            trigger: ".shakeboard1",
-            start: "top center", 
-            toggleActions: "play none none none"
-        },
-        onComplete() {
-            gsap.to(".shakeboard1", {
-                rotation: 0,     
-                duration: 0.4,   
-                ease: "sine.out" 
-            });
-        }
-    }
-);
-
-const eyes = gsap.utils.toArray(".eye");
-
-const tl2 = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".eyes",
-        start: "-40% top",
-        end: "+=1500",  
-        scrub: true,
-        pin: true,           
-    }
-});
-
-eyes.forEach((eye, i) => {
-    tl2.to(eye, {
-        opacity: 1,
-        scale: 1,
-    }, i); 
-});

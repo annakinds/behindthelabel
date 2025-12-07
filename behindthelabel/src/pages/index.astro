@@ -113,11 +113,26 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 						src={shakeboard}
 						alt="shake board"
 					/>
-					<!-- <Image
-						class="shakeboard2"
-						src={shakeboard}
-						alt="shake board"
-					/> -->
+					<div class="shakeboard6 bold">
+						<p>Shake</p>
+						<p>labels</p>
+					</div>
+					<div class="shakeboard5 bold">
+						<p>Shake</p>
+						<p>labels</p>
+					</div>
+					<div class="shakeboard4 bold">
+						<p>Shake</p>
+						<p>labels</p>
+					</div>
+					<div class="shakeboard3 bold">
+						<p>Shake</p>
+						<p>labels</p>
+					</div>
+					<div class="shakeboard2 bold">
+						<p>Shake</p>
+						<p>labels</p>
+					</div>
 				</div>
 				<p class="shake__text">
 					With ‘Behind the label’, <span class="keyword"
@@ -295,12 +310,67 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 		max-width: 100%;
 	}
 
-	.mouth1, .mouth2 {
+	.mouth1,
+	.mouth2 {
 		transform: translateX(-50vw);
 	}
-	
+
 	.mouth2 {
 		margin-right: -9rem;
+	}
+
+	.shake__imgs {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+		margin: 8rem 0rem;
+	}
+
+	.shakeboard1,
+	.shakeboard2,
+	.shakeboard3,
+	.shakeboard4,
+	.shakeboard5,
+	.shakeboard6 {
+		grid-column: 1;
+		grid-row: 1;
+		text-align: center;
+		justify-self: center;
+		align-self: center;
+		rotate: -10deg;
+	}
+
+	.shakeboard1 {
+		z-index: 1;
+	}
+
+	.shakeboard2,
+	.shakeboard3,
+	.shakeboard4,
+	.shakeboard5,
+	.shakeboard6 {
+		width: 19rem;
+		height: 5rem;
+		font-family: "obviously-extended", sans-serif;
+		font-size: 2.5rem;
+		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0rem 0rem 0.5rem 0rem;
+		z-index: 0;
+	}
+
+	.shakeboard2, .shakeboard5 {
+		background-color: var(--accent-color);
+	}
+
+	.shakeboard3, .shakeboard6 {
+		background-color: var(--secondary-color);
+	}
+
+	.shakeboard4 {
+		background-color: var(--white);
 	}
 
 	.spit__text,
