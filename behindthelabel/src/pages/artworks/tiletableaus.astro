@@ -17,8 +17,8 @@ import tile from "../../assets/tiletableau.png";
             <div class="corner-square"></div>
         </div>
         <div class="story hidden">
-            <h2 class="story__subtitle top">These artworks tell</h2>
-            <h2 class="story__subtitle bottom">
+            <h2 class="story__subtitle1 top1">These artworks tell</h2>
+            <h2 class="story__subtitle1 bottom1">
                 the stories of <span class="blue bold">Aalbeke</span>
             </h2>
             <div class="image-wrapper">
@@ -32,8 +32,8 @@ import tile from "../../assets/tiletableau.png";
                 church fire, working in agriculture or the textile factory,
                 Saint Cornelius and more.
             </p>
-            <h2 class="story__subtitle top">12 ceramic tiles are placed</h2>
-            <h2 class="story__subtitle bottom">
+            <!-- <h2 class="story__subtitle2 top">12 ceramic tiles are placed</h2>
+            <h2 class="story__subtitle2 bottom">
                 along the <span class="blue bold">sidewalks</span>
             </h2>
             <p class="story__text">
@@ -43,15 +43,15 @@ import tile from "../../assets/tiletableau.png";
                 along the <span class="bold">sidewalks</span>, each one marking
                 a small resting point in the landscape.
             </p>
-            <h2 class="story__subtitle top blue bold">Hugo Claus,</h2>
-            <h2 class="story__subtitle bottom">the famous writer</h2>
+            <h2 class="story__subtitle3 top blue bold">Hugo Claus,</h2>
+            <h2 class="story__subtitle3 bottom">the famous writer</h2>
             <p class="story__text">
                 One of the scenes shows a young boy writing, and fun fact: that
                 boy turned out to be <span>Hugo Claus</span>, the famous writer.
                 He spent some time living in a <span class="bold"
                     >boarding school</span
                 > in Aalbeke.
-            </p>
+            </p> -->
         </div>
     </div>
 
@@ -136,7 +136,9 @@ import tile from "../../assets/tiletableau.png";
             background: url("../../assets/blabla.svg") no-repeat center/contain;
         }
 
-        .story__subtitle {
+        .story__subtitle1,
+        .story__subtitle2,
+        .story__subtitle3 {
             background-color: var(--white);
             font-weight: 500;
             padding: 0.8rem;
@@ -144,9 +146,20 @@ import tile from "../../assets/tiletableau.png";
             font-size: 1.25rem;
             margin: 1rem 0rem;
         }
-        .top {
+        .top1,
+        .top2,
+        .top3 {
             rotate: 3deg;
             margin-top: 5rem;
+            transform: translateX(-100%);
+        }
+
+        .bottom1,
+        .bottom2,
+        .bottom3 {
+            rotate: 3deg;
+            margin-top: 5rem;
+            transform: translateX(100%);
         }
 
         .story__text {

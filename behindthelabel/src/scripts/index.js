@@ -96,8 +96,6 @@ const setupScrollAnimations = () => {
             { target: ".shakeboard4", vars: { rotate: "-10deg" } },
             // { target: ".shakeboard5", vars: { rotate: "-10deg" } },
             // { target: ".shakeboard6", vars: { rotate: "-10deg" } },
-
-
         ], 
         headerOffset,
         yoyo: true
