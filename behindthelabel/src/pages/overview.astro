@@ -10,6 +10,8 @@ import mentie from "../assets/artworks-mobile/mentie.png";
 import skribbels from "../assets/artworks-mobile/skribbels.png";
 import tegeltableaus from "../assets/artworks-mobile/tegeltableaus.png";
 import untitled from "../assets/artworks-mobile/untitled.png";
+import pass from "../../public/assets/icons/pass.svg";
+import smash from "../../public/assets/icons/smash.svg";
 ---
 
 <Layout>
@@ -26,11 +28,15 @@ import untitled from "../assets/artworks-mobile/untitled.png";
 			<div class="swipe__buttons">
 				<div class="pass">
 					<p class="pass__text">Pass</p>
-					<button class="pass__button"></button>
+					<button class="pass__button">
+						<Image class="pass__svg" src={pass} alt="pass svg" />
+					</button>
 				</div>
 				<div class="smash">
 					<p class="smash__text">Smash</p>
-					<button class="smash__button"></button>
+					<button class="smash__button">
+						<Image class="smash__svg" src={smash} alt="smash svg" />
+					</button>
 				</div>
 			</div>
 			<p class="swipe__cta">See all artworks</p>
@@ -221,18 +227,18 @@ import untitled from "../assets/artworks-mobile/untitled.png";
 
 	.pass__button,
 	.smash__button {
-		width: 4rem;
-		height: 4rem;
-		border-radius: 100%;
+		background-color: var(--black);
+		border: none;
 		margin: 1rem 0rem;
 	}
 
-	.pass__button {
-		background-color: var(--accent-color);
-	}
-
-	.smash__button {
-		background-color: var(--secondary-color);
+	.pass__svg,
+	.smash__svg {
+		display: flex;
+		justify-self: center;
+		align-self: center;
+		width: 4rem;
+		height: 4rem;
 	}
 
 	.swipe__cta::after {
