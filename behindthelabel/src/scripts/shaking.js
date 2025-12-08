@@ -1,3 +1,4 @@
+import { setupScrollAnimations } from './detail'
 console.log("Script loaded");
 
 const start = document.querySelector(".start");
@@ -19,6 +20,8 @@ const handleMotionEvent = (event) => {
         story.classList.remove("hidden");
         start.classList.add("hidden");
         hasShaken = true;   
+        setupScrollAnimations();
+
     }
 };
 
@@ -26,6 +29,7 @@ start.addEventListener("click", () => {
     story.classList.remove("hidden");
     start.classList.add("hidden");
     hasShaken = true;
+    setupScrollAnimations();
 });
 
 window.addEventListener("devicemotion", handleMotionEvent);

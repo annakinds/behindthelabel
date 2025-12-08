@@ -7,6 +7,7 @@ const pinAndAnimate = ({
     end = "+=200",
     animations,
     markers = true,
+    pin,
 }) => {
 
     const tl = gsap.timeline({
@@ -16,6 +17,7 @@ const pinAndAnimate = ({
             end,
             scrub: true,
             markers,
+            pin
         },
     });
 
@@ -26,10 +28,10 @@ const pinAndAnimate = ({
     return tl;
 };
 
-const setupScrollAnimations = () => {
+export const setupScrollAnimations = () => {
     pinAndAnimate({
         trigger: ".image-wrapper",
-        end: "+=50",
+        end: "+=100",
         animations: [
             { target: ".top1", vars: { x: "0%", opacity: 1 } },
             { target: ".bottom1", vars: { x: "-0%", opacity: 1 } },
@@ -41,12 +43,11 @@ const setupScrollAnimations = () => {
             { target: ".aha1", vars: { x: "20vw", opacity: 1 } },
             { target: ".aha2", vars: { x: "55vw", opacity: 1 } },
             { target: ".aha3", vars: { x: "75vw", opacity: 1 } },
-        ]
+        ],
+        pin: ".story",
     });
 
 };
-
-setupScrollAnimations();
 
 
 // const storyText = document.querySelector(".story__text");
