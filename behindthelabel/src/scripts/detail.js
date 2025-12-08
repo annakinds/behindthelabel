@@ -42,7 +42,6 @@ export const setupScrollAnimations = () => {
             { target: ".aha1", vars: { x: "20vw", opacity: 1 }, position: 0.7 },
             { target: ".aha2", vars: { x: "55vw", opacity: 1 }, position: 0.8 },
             { target: ".aha3", vars: { x: "75vw", opacity: 1 }, position: 0.9 },
-
             { target: ".story__text1", vars: { opacity: 1 }, position: 1.2 },
         ],
         pin: ".story",

@@ -13,6 +13,7 @@ import ballerina from "../../public/assets/img/miniballerina.png";
 import star from "../../public/assets/icons/star.svg";
 import gsm from "../../public/assets/icons/gsm.svg";
 import binoculars from "../../public/assets/icons/binoculars.svg";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
@@ -181,6 +182,7 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 			<div class="map" id="map"></div>
 		</div>
 	</div>
+	<Footer/>
 </Layout>
 
 <style>
@@ -361,11 +363,13 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 		z-index: 0;
 	}
 
-	.shakeboard2, .shakeboard5 {
+	.shakeboard2,
+	.shakeboard5 {
 		background-color: var(--accent-color);
 	}
 
-	.shakeboard3, .shakeboard6 {
+	.shakeboard3,
+	.shakeboard6 {
 		background-color: var(--secondary-color);
 	}
 
