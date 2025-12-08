@@ -33,8 +33,17 @@ const setupScrollAnimations = () => {
         animations: [
             { target: ".top1", vars: { x: "0%", opacity: 1 } },
             { target: ".bottom1", vars: { x: "-0%", opacity: 1 } },
+            { target: ".mouth", vars: { x: "0%", opacity: 1 } },
+            { target: ".ear", vars: { x: "-0%", opacity: 1 } },
+            { target: ".bla1", vars: { x: "15vw", opacity: 1 } },
+            { target: ".bla2", vars: { x: "20vw", opacity: 1 } },
+            { target: ".bla3", vars: { x: "25vw", opacity: 1 } },
+            { target: ".aha1", vars: { x: "20vw", opacity: 1 } },
+            { target: ".aha2", vars: { x: "55vw", opacity: 1 } },
+            { target: ".aha3", vars: { x: "75vw", opacity: 1 } },
         ]
     });
+
 };
 
 setupScrollAnimations();

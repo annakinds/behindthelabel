@@ -4,6 +4,8 @@ import SpeechBubble from "../../components/Speechbubble.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
+import speak from "../../../public/assets/img/speak.svg";
+import ear from "../../../public/assets/img/ear.svg";
 ---
 
 <Layout>
@@ -21,9 +23,17 @@ import tile from "../../assets/tiletableau.png";
             <h2 class="story__subtitle1 bottom1">
                 the stories of <span class="blue bold">Aalbeke</span>
             </h2>
+            <Image class="mouth" src={speak} alt="mouth" />
+            <p class="bla1">bla</p>
+            <p class="bla2">bla bla</p>
+            <p class="bla3">bla bla bla</p>
             <div class="image-wrapper">
                 <Image class="image" src={tile} alt="tegeltableaus" />
             </div>
+            <p class="aha1">aha aha aha</p>
+            <p class="aha2">aha aha</p>
+            <p class="aha3">aha</p>
+            <Image class="ear" src={ear} alt="mouth" />
             <p class="story__text">
                 Created by <span class="bold">Peter de Graaff</span>, he
                 listened to stories from locals dug through the village’s
@@ -150,16 +160,15 @@ import tile from "../../assets/tiletableau.png";
         .top2,
         .top3 {
             rotate: 3deg;
-            margin-top: 5rem;
             transform: translateX(-100%);
+            margin-bottom: -1rem;
         }
 
         .bottom1,
         .bottom2,
         .bottom3 {
-            rotate: 3deg;
-            margin-top: 5rem;
             transform: translateX(100%);
+            margin-bottom: -2rem;
         }
 
         .story__text {
@@ -176,32 +185,92 @@ import tile from "../../assets/tiletableau.png";
         .image {
             display: flex;
             justify-self: center;
+            z-index: 0;
         }
 
         .image-wrapper {
             position: relative;
+            z-index: 0;
         }
 
-        .image-wrapper::before {
-            content: "";
-            width: 14rem;
-            height: 14rem;
-            background: url("../../assets/speak.svg") no-repeat center/contain;
-            position: absolute;
-            margin-top: -4rem;
-            margin-left: -2rem;
-            pointer-events: none;
+        .mouth {
+            margin-bottom: -5rem;
+            z-index: 1;
+            position: relative;
+            margin-left: -3rem;
+            transform: translateX(-100%);
         }
 
-        .image-wrapper::after {
-            content: "";
-            width: 20rem;
-            height: 20rem;
-            background: url("../../assets/ear.svg") no-repeat center/contain;
-            position: absolute;
-            margin-left: 8rem;
-            margin-top: -7rem;
-            pointer-events: none;
+        .ear {
+            margin-top: -5rem;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            justify-self: end;
+            transform: translateX(100%);
+        }
+
+        .bla1,
+        .bla2,
+        .bla3 {
+            background-color: var(--secondary-color);
+            width: fit-content;
+            padding: 0.5rem;
+            padding-bottom: 0.7rem;
+            font-family: "obviously-narrow", sans-serif;
+            color: var(--white);
+            font-weight: 500;
+            text-transform: uppercase;
+            z-index: 2;
+            position: relative;
+            transform: translateX(-100%);
+        }
+
+        .aha1,
+        .aha2,
+        .aha3 {
+            background-color: var(--black);
+            width: fit-content;
+            padding: 0.5rem;
+            padding-bottom: 0.7rem;
+            font-family: "obviously-narrow", sans-serif;
+            color: var(--white);
+            font-weight: 500;
+            text-transform: uppercase;
+            z-index: 2;
+            position: relative;
+            transform: translateX(100vw);
+        }
+
+        .bla1,
+        .aha3 {
+            font-size: 1rem;
+        }
+
+        .bla2,
+        .aha2 {
+            font-size: 1.5rem;
+        }
+
+        .bla3,
+        .aha1 {
+            font-size: 2rem;
+        }
+
+        .bla1 {
+            margin-top: -3rem;
+        }
+
+        .bla3 {
+            margin-bottom: -6rem;
+        }
+
+        .aha1 {
+            margin-top: -8rem;
+        }
+
+        .aha3 {
+            margin-bottom: -2rem;
         }
 
         .story {
