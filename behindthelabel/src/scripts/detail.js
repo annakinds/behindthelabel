@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pinAndAnimate = ({
     trigger,
-    end = "+=200",
+    end,
     animations,
     markers = true,
     pin,
@@ -43,6 +43,10 @@ export const setupScrollAnimations = () => {
             { target: ".aha2", vars: { x: "55vw", opacity: 1 }, position: 0.8 },
             { target: ".aha3", vars: { x: "75vw", opacity: 1 }, position: 0.9 },
             { target: ".story__text1", vars: { opacity: 1 }, position: 1.2 },
+            { target: ".top1", vars: { x: "-100%", opacity: 1 }, position: 2 },
+            { target: ".bottom1", vars: { x: "100%", opacity: 1 }, position: 2.1 },
+            { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 2.2 },
+            { target: ".bottom2", vars: { x: "-0%", opacity: 1 }, position: 2.3 },
         ],
         pin: ".story",
     });
