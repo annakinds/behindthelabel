@@ -71,8 +71,16 @@ export const setupScrollAnimations = () => {
             { target: ".bottom1", vars: { x: "100%", opacity: 1 }, position: 3.1 },
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 3.2 },
             { target: ".bottom2", vars: { x: "-0%", opacity: 1 }, position: 3.3 },
-            { target: ".stomp", vars: { y: "-150%", opacity: 1 }, position: 3.4 },
-            { target: ".foot1", vars: { y: "-130%", opacity: 1 }, position: 3.4 },
+            { target: ".stomp", vars: { scale: .8, opacity: 1 }, position: 3.4 },
+            { target: ".foot1", vars: { opacity: 1 }, position: 3.4 },
+            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 4 },
+            { target: ".stomp", vars: { y: '-50%', x: '-50%' }, position: 4.2 },
+            { target: ".stomp", vars: { scale: .8, opacity: 1 }, position: 4.5 },
+            { target: ".foot2", vars: { opacity: 1 }, position: 4.5 },
+
+
+
+
             {
                 target: ".story__text2",
                 vars: { opacity: 1 },
@@ -87,7 +95,7 @@ export const setupScrollAnimations = () => {
 
 
             { target: ".story__text2", vars: { opacity: 0 }, position: 4 },
-            
+
 
 
         ],

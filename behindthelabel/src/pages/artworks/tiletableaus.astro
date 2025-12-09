@@ -60,6 +60,7 @@ import foot from "../../../public/assets/icons/foot.svg";
                     <Image class="foot2" src={foot} alt="foot" />
                     <Image class="foot3" src={foot} alt="foot" />
                     <Image class="foot4" src={foot} alt="foot" />
+                    <Image class="foot5" src={foot} alt="foot" />
                 </div>
             </div>
             <div class="story__texts">
@@ -86,26 +87,6 @@ import foot from "../../../public/assets/icons/foot.svg";
                     > in Aalbeke.
                 </p>
             </div>
-            <!-- <h2 class="story__subtitle2 top">12 ceramic tiles are placed</h2>
-            <h2 class="story__subtitle2 bottom">
-                along the <span class="blue bold">sidewalks</span>
-            </h2>
-            <p class="story__text">
-                He took all those stories and turned them into art. In total,
-                there are <span class="bold">12 ceramic tiles</span> with drawings
-                spread throughout the village. You’ll find them placed in the ground
-                along the <span class="bold">sidewalks</span>, each one marking
-                a small resting point in the landscape.
-            </p>
-            <h2 class="story__subtitle3 top blue bold">Hugo Claus,</h2>
-            <h2 class="story__subtitle3 bottom">the famous writer</h2>
-            <p class="story__text">
-                One of the scenes shows a young boy writing, and fun fact: that
-                boy turned out to be <span>Hugo Claus</span>, the famous writer.
-                He spent some time living in a <span class="bold"
-                    >boarding school</span
-                > in Aalbeke.
-            </p> -->
         </div>
     </div>
 
@@ -193,10 +174,17 @@ import foot from "../../../public/assets/icons/foot.svg";
             margin-top: 3rem;
             grid-column: 1;
             grid-row: 1;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: min-content 30% 2fr;
         }
 
         .story__bg {
-            position: absolute;
+            grid-column: 1;
+            grid-row: 1 / span 3;
+            display: flex;
+            justify-self: center;
+            align-self: center;
             inset: 0;
             background: url("../../assets/blabla.svg") no-repeat center/contain;
             z-index: 0;
@@ -205,9 +193,13 @@ import foot from "../../../public/assets/icons/foot.svg";
         }
 
         .story__subtitles {
+            grid-column: 1;
+            grid-row: 1;
             display: grid;
             grid-template-columns: auto;
             grid-template-rows: auto auto;
+            height: 8rem;
+            padding-top: 2rem;
         }
 
         .story__subtitle1,
@@ -218,15 +210,13 @@ import foot from "../../../public/assets/icons/foot.svg";
             padding: 0.8rem;
             text-align: center;
             font-size: 1.25rem;
-            margin: 1rem 0rem;
+            height: fit-content;
         }
         .top1,
         .top2,
         .top3 {
-            rotate: 3deg;
+            rotate: 2deg;
             transform: translateX(-100%);
-            margin-bottom: -1rem;
-            margin-top: 2rem;
             grid-column: 1;
             grid-row: 1;
         }
@@ -235,9 +225,9 @@ import foot from "../../../public/assets/icons/foot.svg";
         .bottom2,
         .bottom3 {
             transform: translateX(100%);
-            margin-bottom: -2rem;
             grid-column: 1;
             grid-row: 2;
+            rotate: -2deg;
         }
 
         .story__texts,
@@ -254,8 +244,22 @@ import foot from "../../../public/assets/icons/foot.svg";
             grid-row: 1;
         }
 
+        .image-wrapper {
+            grid-column: 1;
+            grid-row: 2;
+            display: flex;
+            justify-self: center;
+            align-self: center;
+        }
+
+        .story__animations {
+            grid-column: 1;
+            grid-row: 2 / span 2;
+        }
+
         .story__texts {
-            margin-top: -25rem;
+            grid-column: 1;
+            grid-row: 3;
         }
 
         .story__text1,
@@ -289,18 +293,18 @@ import foot from "../../../public/assets/icons/foot.svg";
         }
 
         .mouth {
-            margin-bottom: -5rem;
             z-index: 1;
             position: relative;
             margin-left: -3rem;
+            margin-top: -5rem;
         }
 
         .ear {
-            margin-top: -5rem;
             z-index: 1;
             position: relative;
             display: flex;
             justify-self: end;
+            margin-top: -10rem;
         }
 
         .bla1,
@@ -336,6 +340,14 @@ import foot from "../../../public/assets/icons/foot.svg";
             height: fit-content;
         }
 
+        .bla1 {
+            margin-top: -8rem;
+        }
+
+        .aha1 {
+            margin-top: 15rem;
+        }
+
         .bla1,
         .aha3 {
             font-size: 1rem;
@@ -351,28 +363,59 @@ import foot from "../../../public/assets/icons/foot.svg";
             font-size: 2rem;
         }
 
-        .bla1 {
-            margin-top: -3rem;
-        }
-
-        .bla3 {
-            margin-bottom: -6rem;
-        }
-
-        .aha1 {
-            margin-top: -8rem;
-        }
-
-        .aha3 {
-            margin-bottom: -2rem;
-        }
-
         .stomp,
         .foot1,
         .foot2,
         .foot3,
+        .foot4,
+        .foot5 {
+            opacity: 0;
+        }
+
+        .stomp {
+            scale: 0.3;
+            z-index: 0;
+            display: flex;
+            justify-self: end;
+        }
+
+        .foot1 {
+            display: flex;
+            justify-self: end;
+            padding-right: 3rem;
+            /* transform: translateY(-130%); */
+            rotate: -10deg;
+        }
+
+        .foot2 {
+            display: flex;
+            justify-self: start;
+            padding-left: 2rem;
+            /* transform: translateY(-300%); */
+            rotate: 10deg;
+        }
+
+        .foot3 {
+            display: flex;
+            justify-self: end;
+            padding-right: 12rem;
+            /* transform: translateY(-450%); */
+            rotate: 10deg;
+        }
+
         .foot4 {
-            transform: translateY(120%);
+            display: flex;
+            justify-self: start;
+            padding-left: 5rem;
+            /* transform: translateY(-630%); */
+        }
+
+        .foot5 {
+            display: flex;
+            justify-self: end;
+            margin-right: -8rem;
+            /* transform: translateY(-800%); */
+            rotate: -10deg;
         }
 
         .story {
