@@ -19,6 +19,7 @@ import ear from "../../../public/assets/img/ear.svg";
             <div class="corner-square"></div>
         </div>
         <div class="story hidden">
+            <div class="story__bg"></div>
             <div class="story__subtitles">
                 <h2 class="story__subtitle1 top1">These artworks tell</h2>
                 <h2 class="story__subtitle1 bottom1">
@@ -77,6 +78,9 @@ import ear from "../../../public/assets/img/ear.svg";
         .detail {
             position: relative;
             height: fit-content;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
         }
 
         .start {
@@ -152,7 +156,23 @@ import ear from "../../../public/assets/img/ear.svg";
         .story {
             position: relative;
             margin-top: 3rem;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .story__bg {
+            position: absolute;
+            inset: 0;
             background: url("../../assets/blabla.svg") no-repeat center/contain;
+            z-index: 0;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .story__subtitles {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
         }
 
         .story__subtitle1,
@@ -172,6 +192,8 @@ import ear from "../../../public/assets/img/ear.svg";
             transform: translateX(-100%);
             margin-bottom: -1rem;
             margin-top: 2rem;
+            grid-column: 1;
+            grid-row: 1;
         }
 
         .bottom1,
@@ -179,6 +201,8 @@ import ear from "../../../public/assets/img/ear.svg";
         .bottom3 {
             transform: translateX(100%);
             margin-bottom: -2rem;
+            grid-column: 1;
+            grid-row: 2;
         }
 
         .story__text1 {
@@ -212,7 +236,6 @@ import ear from "../../../public/assets/img/ear.svg";
             z-index: 1;
             position: relative;
             margin-left: -3rem;
-            transform: translateX(-100%);
         }
 
         .ear {
@@ -221,7 +244,6 @@ import ear from "../../../public/assets/img/ear.svg";
             position: relative;
             display: flex;
             justify-self: end;
-            transform: translateX(100%);
         }
 
         .bla1,
@@ -288,11 +310,11 @@ import ear from "../../../public/assets/img/ear.svg";
         }
 
         .story {
-            position: relative; /* of sticky/absolute als nodig */
+            position: relative;
             z-index: 1;
         }
         .start {
-            z-index: 2; /* zodat start boven story staat tot shake */
+            z-index: 2;
         }
     </style>
 </Layout>
