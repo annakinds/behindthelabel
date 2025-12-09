@@ -25,7 +25,16 @@ import Footer from "../components/Footer.astro";
 			<p class="swipe__text">
 				<span class="yellow">Swipe</span> left to pass, right to smash
 			</p>
-			<Image class="tile" src={tile} alt="tegeltableaus" />
+			<div class="artworks">
+				<Image class="artwork tile" src={tile} alt="tegeltableaus" />
+				<Image class="artwork ballerina" src={ballerina} alt="ballerina en man" />
+				<Image class="artwork cirkelvierkant" src={cirkelvierkant} alt="cirkel en vierkant" />
+				<Image class="artwork happilyeverafter" src={happilyeverafter} alt="happily ever after" />
+				<Image class="artwork ikleiddeweg" src={ikleiddeweg} alt="ik leid de weg" />
+				<Image class="artwork mentie" src={mentie} alt="mentie" />
+				<Image class="artwork skribbels" src={skribbels} alt="skribbels" />
+				<Image class="artwork untitled" src={untitled} alt="untitled" />
+			</div>
 			<div class="swipe__buttons">
 				<div class="pass">
 					<p class="pass__text">Pass</p>
@@ -173,7 +182,7 @@ import Footer from "../components/Footer.astro";
 			</div>
 		</section>
 	</div>
-	<Footer/>
+	<Footer />
 </Layout>
 
 <style>
@@ -212,10 +221,19 @@ import Footer from "../components/Footer.astro";
 		color: var(--accent-color);
 	}
 
-	.tile {
+	.artworks {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+	}
+
+	.artwork {
+		grid-column: 1;
+		grid-row: 1;
 		border: 0.5rem solid var(--white);
 		display: flex;
 		justify-self: center;
+		opacity: 0;
 	}
 
 	.swipe__buttons {

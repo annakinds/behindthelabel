@@ -36,19 +36,15 @@ import foot from "../../../public/assets/icons/foot.svg";
                 <h2 class="story__subtitle3 top3 blue bold">Hugo Claus,</h2>
                 <h2 class="story__subtitle3 bottom3">the famous writer</h2>
             </div>
+            <div class="image-wrapper">
+                <Image class="image" src={tile} alt="tegeltableaus" />
+            </div>
             <div class="story__animations">
                 <div class="story__animation1">
                     <Image class="mouth" src={speak} alt="mouth" />
                     <p class="bla1">bla</p>
                     <p class="bla2">bla bla</p>
                     <p class="bla3">bla bla bla</p>
-                </div>
-            </div>
-            <div class="image-wrapper">
-                <Image class="image" src={tile} alt="tegeltableaus" />
-            </div>
-            <div class="story__animations">
-                <div class="story__animation1">
                     <p class="aha1">aha aha aha</p>
                     <p class="aha2">aha aha</p>
                     <p class="aha3">aha</p>
@@ -255,6 +251,7 @@ import foot from "../../../public/assets/icons/foot.svg";
         .story__animations {
             grid-column: 1;
             grid-row: 2 / span 2;
+            display: block;
         }
 
         .story__texts {
@@ -294,17 +291,17 @@ import foot from "../../../public/assets/icons/foot.svg";
 
         .mouth {
             z-index: 1;
-            position: relative;
-            margin-left: -3rem;
-            margin-top: -5rem;
+            position: absolute;
+            top: 8%;
+            left: -10%;
         }
 
         .ear {
             z-index: 1;
-            position: relative;
+            position: absolute;
             display: flex;
             justify-self: end;
-            margin-top: -10rem;
+            top: 30%;
         }
 
         .bla1,
@@ -319,8 +316,8 @@ import foot from "../../../public/assets/icons/foot.svg";
             font-weight: 500;
             text-transform: uppercase;
             z-index: 2;
-            position: relative;
-            transform: translateX(-100%);
+            position: absolute;
+            left: -50%;
         }
 
         .aha1,
@@ -328,24 +325,16 @@ import foot from "../../../public/assets/icons/foot.svg";
         .aha3 {
             background-color: var(--black);
             width: fit-content;
+            height: fit-content;
             padding: 0.5rem;
             padding-bottom: 0.7rem;
             font-family: "obviously-narrow", sans-serif;
             color: var(--white);
             font-weight: 500;
             text-transform: uppercase;
-            z-index: 2;
-            position: relative;
-            transform: translateX(100vw);
-            height: fit-content;
-        }
-
-        .bla1 {
-            margin-top: -8rem;
-        }
-
-        .aha1 {
-            margin-top: 15rem;
+            z-index: 3;
+            position: absolute;
+            transform: translateX(110vw);
         }
 
         .bla1,
@@ -363,6 +352,30 @@ import foot from "../../../public/assets/icons/foot.svg";
             font-size: 2rem;
         }
 
+        .bla1 {
+            top: 20%;
+        }
+
+        .bla2 {
+            top: 22%;
+        }
+
+        .bla3 {
+            top: 25%;
+        }
+
+        .aha1 {
+            top: 30%;
+        }
+
+        .aha2 {
+            top: 34%;
+        }
+
+        .aha3 {
+            top: 37%;
+        }
+
         .stomp,
         .foot1,
         .foot2,
@@ -377,6 +390,7 @@ import foot from "../../../public/assets/icons/foot.svg";
             z-index: 0;
             display: flex;
             justify-self: end;
+            top: 30%;
         }
 
         .foot1 {
@@ -390,8 +404,8 @@ import foot from "../../../public/assets/icons/foot.svg";
         .foot2 {
             display: flex;
             justify-self: start;
-            padding-left: 2rem;
-            /* transform: translateY(-300%); */
+            padding-left: 4rem;
+            transform: translateY(-30vh);
             rotate: 10deg;
         }
 
@@ -418,10 +432,6 @@ import foot from "../../../public/assets/icons/foot.svg";
             rotate: -10deg;
         }
 
-        .story {
-            position: relative;
-            z-index: 1;
-        }
         .start {
             z-index: 2;
         }
