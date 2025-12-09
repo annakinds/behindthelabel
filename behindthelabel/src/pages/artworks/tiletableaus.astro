@@ -6,6 +6,8 @@ import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
 import speak from "../../../public/assets/img/speak.svg";
 import ear from "../../../public/assets/img/ear.svg";
+import stomp from "../../../public/assets/icons/stomp.svg";
+import foot from "../../../public/assets/icons/foot.svg";
 ---
 
 <Layout>
@@ -31,26 +33,59 @@ import ear from "../../../public/assets/img/ear.svg";
                 <h2 class="story__subtitle2 bottom2">
                     along the <span class="blue bold">sidewalks</span>
                 </h2>
+                <h2 class="story__subtitle3 top3 blue bold">Hugo Claus,</h2>
+                <h2 class="story__subtitle3 bottom3">the famous writer</h2>
             </div>
-            <Image class="mouth" src={speak} alt="mouth" />
-            <p class="bla1">bla</p>
-            <p class="bla2">bla bla</p>
-            <p class="bla3">bla bla bla</p>
+            <div class="story__animations">
+                <div class="story__animation1">
+                    <Image class="mouth" src={speak} alt="mouth" />
+                    <p class="bla1">bla</p>
+                    <p class="bla2">bla bla</p>
+                    <p class="bla3">bla bla bla</p>
+                </div>
+            </div>
             <div class="image-wrapper">
                 <Image class="image" src={tile} alt="tegeltableaus" />
             </div>
-            <p class="aha1">aha aha aha</p>
-            <p class="aha2">aha aha</p>
-            <p class="aha3">aha</p>
-            <Image class="ear" src={ear} alt="mouth" />
-            <p class="story__text1">
-                Created by <span class="bold">Peter de Graaff</span>, he
-                listened to stories from locals dug through the village’s
-                history. They reflect what it was like to live and work in the
-                village, both in the past and today. The stories are about the
-                church fire, working in agriculture or the textile factory,
-                Saint Cornelius and more.
-            </p>
+            <div class="story__animations">
+                <div class="story__animation1">
+                    <p class="aha1">aha aha aha</p>
+                    <p class="aha2">aha aha</p>
+                    <p class="aha3">aha</p>
+                    <Image class="ear" src={ear} alt="mouth" />
+                </div>
+                <div class="story__animation2">
+                    <Image class="stomp" src={stomp} alt="stomp foot" />
+                    <Image class="foot1" src={foot} alt="foot" />
+                    <Image class="foot2" src={foot} alt="foot" />
+                    <Image class="foot3" src={foot} alt="foot" />
+                    <Image class="foot4" src={foot} alt="foot" />
+                </div>
+            </div>
+            <div class="story__texts">
+                <p class="story__text1">
+                    Created by <span class="bold">Peter de Graaff</span>, he
+                    listened to stories from locals dug through the village’s
+                    history. They reflect what it was like to live and work in
+                    the village, both in the past and today. The stories are
+                    about the church fire, working in agriculture or the textile
+                    factory, Saint Cornelius and more.
+                </p>
+                <p class="story__text2">
+                    He took all those stories and turned them into art. In
+                    total, there are <span class="bold">12 ceramic tiles</span> with
+                    drawings spread throughout the village. You’ll find them placed
+                    in the ground along the <span class="bold">sidewalks</span>,
+                    each one marking a small resting point in the landscape.
+                </p>
+                <p class="story__text3">
+                    One of the scenes shows a young boy writing, and fun fact:
+                    that boy turned out to be <span>Hugo Claus</span>, the
+                    famous writer. He spent some time living in a <span
+                        class="bold">boarding school</span
+                    > in Aalbeke.
+                </p>
+            </div>
             <!-- <h2 class="story__subtitle2 top">12 ceramic tiles are placed</h2>
             <h2 class="story__subtitle2 bottom">
                 along the <span class="blue bold">sidewalks</span>
@@ -205,7 +240,27 @@ import ear from "../../../public/assets/img/ear.svg";
             grid-row: 2;
         }
 
-        .story__text1 {
+        .story__texts,
+        .story__animations {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+        }
+
+        .story__animation1,
+        .story__animation2,
+        .story__animation3 {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .story__texts {
+            margin-top: -25rem;
+        }
+
+        .story__text1,
+        .story__text2,
+        .story__text3 {
             border: 0.1rem solid var(--black);
             background-color: var(--white);
             padding: 1rem;
@@ -215,9 +270,11 @@ import ear from "../../../public/assets/img/ear.svg";
             line-height: 150%;
             overflow: hidden;
             opacity: 0;
-            margin-top: -10rem;
             position: relative;
             z-index: 3;
+            grid-column: 1;
+            grid-row: 1;
+            height: fit-content;
         }
 
         .image {
@@ -276,6 +333,7 @@ import ear from "../../../public/assets/img/ear.svg";
             z-index: 2;
             position: relative;
             transform: translateX(100vw);
+            height: fit-content;
         }
 
         .bla1,
@@ -307,6 +365,14 @@ import ear from "../../../public/assets/img/ear.svg";
 
         .aha3 {
             margin-bottom: -2rem;
+        }
+
+        .stomp,
+        .foot1,
+        .foot2,
+        .foot3,
+        .foot4 {
+            transform: translateY(120%);
         }
 
         .story {

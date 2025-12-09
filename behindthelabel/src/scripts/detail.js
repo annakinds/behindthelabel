@@ -32,7 +32,8 @@ const pinAndAnimate = ({ trigger, end, animations, markers = true, pin }) => {
 
 export const setupScrollAnimations = () => {
     const text1 = document.querySelector(".story__text1")?.textContent || "";
-
+    const text2 = document.querySelector(".story__text2")?.textContent || "";
+    const text3 = document.querySelector(".story__text3")?.textContent || "";
     pinAndAnimate({
         trigger: ".story",
         animations: [
@@ -70,6 +71,25 @@ export const setupScrollAnimations = () => {
             { target: ".bottom1", vars: { x: "100%", opacity: 1 }, position: 3.1 },
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 3.2 },
             { target: ".bottom2", vars: { x: "-0%", opacity: 1 }, position: 3.3 },
+            { target: ".stomp", vars: { y: "-150%", opacity: 1 }, position: 3.4 },
+            { target: ".foot1", vars: { y: "-130%", opacity: 1 }, position: 3.4 },
+            {
+                target: ".story__text2",
+                vars: { opacity: 1 },
+                position: 3.5,
+                scramble: {
+                    text: text2,
+                    chars: "",
+                    speed: 0.3,
+                    revealDelay: 0.05,
+                }
+            },
+
+
+            { target: ".story__text2", vars: { opacity: 0 }, position: 4 },
+            
+
+
         ],
         pin: ".story",
     });
