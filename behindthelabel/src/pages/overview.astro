@@ -25,15 +25,47 @@ import Footer from "../components/Footer.astro";
 			<p class="swipe__text">
 				<span class="yellow">Swipe</span> left to pass, right to smash
 			</p>
-			<div class="artworks">
-				<Image class="artwork tile" src={tile} alt="tegeltableaus" />
-				<Image class="artwork ballerina" src={ballerina} alt="ballerina en man" />
-				<Image class="artwork cirkelvierkant" src={cirkelvierkant} alt="cirkel en vierkant" />
-				<Image class="artwork happilyeverafter" src={happilyeverafter} alt="happily ever after" />
-				<Image class="artwork ikleiddeweg" src={ikleiddeweg} alt="ik leid de weg" />
-				<Image class="artwork mentie" src={mentie} alt="mentie" />
-				<Image class="artwork skribbels" src={skribbels} alt="skribbels" />
-				<Image class="artwork untitled" src={untitled} alt="untitled" />
+			<div class="swipe__artworks">
+				<Image
+					class="swipe__artwork tile"
+					src={tile}
+					alt="tegeltableaus"
+				/>
+				<Image
+					class="swipe__artwork ballerina"
+					src={ballerina}
+					alt="ballerina en man"
+				/>
+				<Image
+					class="swipe__artwork cirkelvierkant"
+					src={cirkelvierkant}
+					alt="cirkel en vierkant"
+				/>
+				<Image
+					class="swipe__artwork happilyeverafter"
+					src={happilyeverafter}
+					alt="happily ever after"
+				/>
+				<Image
+					class="swipe__artwork ikleiddeweg"
+					src={ikleiddeweg}
+					alt="ik leid de weg"
+				/>
+				<Image
+					class="swipe__artwork mentie"
+					src={mentie}
+					alt="mentie"
+				/>
+				<Image
+					class="swipe__artwork skribbels"
+					src={skribbels}
+					alt="skribbels"
+				/>
+				<Image
+					class="swipe__artwork untitled"
+					src={untitled}
+					alt="untitled"
+				/>
 			</div>
 			<div class="swipe__buttons">
 				<div class="pass">
@@ -64,8 +96,8 @@ import Footer from "../components/Footer.astro";
 					class="highlight">heritage</span
 				> of their location.
 			</p>
-			<div class="artworks">
-				<a class="artwork ballerina">
+			<div class="overview__artworks">
+				<a class="overview__artwork ballerina">
 					<Image
 						class="artwork__img"
 						src={ballerina}
@@ -77,7 +109,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork happilyeverafter"
+					class="overview__artwork happilyeverafter"
 					href="/behindthelabel/artworks/happilyeverafter"
 				>
 					<Image
@@ -91,7 +123,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork ikleiddeweg"
+					class="overview__artwork ikleiddeweg"
 					href="/behindthelabel/artworks/ileadtheway"
 				>
 					<Image
@@ -105,7 +137,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork mentie"
+					class="overview__artwork mentie"
 					href="/behindthelabel/artworks/mentie"
 				>
 					<Image class="artwork__img" src={mentie} alt="mentie" />
@@ -115,7 +147,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork untitled"
+					class="overview__artwork untitled"
 					href="/behindthelabel/artworks/plinth"
 				>
 					<Image class="artwork__img" src={untitled} alt="untitled" />
@@ -125,7 +157,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork skribbels"
+					class="overview__artwork skribbels"
 					href="/behindthelabel/artworks/skribbel"
 				>
 					<Image
@@ -139,7 +171,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork cirkelvierkant"
+					class="overview__artwork cirkelvierkant"
 					href="/behindthelabel/artworks/squarecircle"
 				>
 					<Image
@@ -153,7 +185,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</a>
 				<a
-					class="artwork tegeltableaus"
+					class="overview__artwork tegeltableaus"
 					href="/behindthelabel/artworks/tiletableaus"
 				>
 					<Image
@@ -194,6 +226,8 @@ import Footer from "../components/Footer.astro";
 
 	.swipe {
 		background-color: var(--black);
+		position: relative;
+		height: 45rem;
 	}
 
 	.orange {
@@ -221,28 +255,28 @@ import Footer from "../components/Footer.astro";
 		color: var(--accent-color);
 	}
 
-	.artworks {
+	.swipe__artworks {
 		display: grid;
-		grid-template-columns: auto;
-		grid-template-rows: auto;
+		position: relative;
+		width: 100%;
+		justify-items: center;
 	}
 
-	.artwork {
+	.swipe__artwork {
+		position: absolute;
+		border: 0.5rem solid var(--white);
+		opacity: 0;
 		grid-column: 1;
 		grid-row: 1;
-		border: 0.5rem solid var(--white);
-		display: flex;
-		justify-self: center;
-		opacity: 0;
 	}
 
 	.swipe__buttons {
+		position: relative;
+		z-index: 20;
 		display: flex;
-		flex-direction: row;
 		justify-content: space-evenly;
-		font-size: 1.25rem;
-		font-weight: 500;
-		padding: 3rem 0rem;
+		padding: 3rem 0;
+		margin-top: 15rem;
 	}
 
 	.pass__button,
@@ -313,16 +347,33 @@ import Footer from "../components/Footer.astro";
 		padding-bottom: 0.2rem;
 	}
 
-	.artwork {
-		width: 22rem;
-		height: fit-content;
+	.overview__artworks {
 		display: grid;
-		grid-template-columns: auto;
-		grid-template-rows: auto;
-		justify-self: center;
-		color: var(--white);
+		justify-items: center;
+	}
+
+	.overview__artwork {
+		width: 22rem;
+		display: grid;
 		text-decoration: none;
-		margin: 1.5rem 0rem;
+		color: var(--white);
+		margin: 1.5rem 0;
+		position: relative;
+	}
+
+	.overview__artwork .artwork__img {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.overview__artwork .artwork__info {
+		grid-column: 1;
+		grid-row: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		padding: 1rem;
+		z-index: 10;
 	}
 
 	.artwork__img {
