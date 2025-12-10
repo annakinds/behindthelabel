@@ -228,6 +228,8 @@ import Footer from "../components/Footer.astro";
 		background-color: var(--black);
 		position: relative;
 		height: 45rem;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.orange {
@@ -256,27 +258,31 @@ import Footer from "../components/Footer.astro";
 	}
 
 	.swipe__artworks {
-		display: grid;
-		position: relative;
 		width: 100%;
+		height: 15rem;
+		position: relative;
 		justify-items: center;
 	}
 
 	.swipe__artwork {
-		position: absolute;
 		border: 0.5rem solid var(--white);
-		opacity: 0;
-		grid-column: 1;
-		grid-row: 1;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 90%;
+		height: auto;
+		z-index: 1;
+		cursor: grab;
+		pointer-events: auto;
 	}
 
 	.swipe__buttons {
-		position: relative;
+		bottom: 2rem;
 		z-index: 20;
 		display: flex;
 		justify-content: space-evenly;
-		padding: 3rem 0;
-		margin-top: 15rem;
+		margin: 3rem 0rem;
 	}
 
 	.pass__button,
@@ -303,7 +309,6 @@ import Footer from "../components/Footer.astro";
 		justify-self: center;
 		padding-top: 1.5rem;
 		background: url("../assets/icon/triangle.svg") no-repeat center/contain;
-
 		animation: bounceArrow 1.3s ease-in-out infinite;
 	}
 
