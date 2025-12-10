@@ -236,9 +236,9 @@ import foot from "../../../public/assets/icons/foot.svg";
         .story__animation1,
         .story__animation2,
         .story__animation3 {
-            grid-column: 1;
-            grid-row: 1;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .image-wrapper {
@@ -252,12 +252,19 @@ import foot from "../../../public/assets/icons/foot.svg";
         .story__animations {
             grid-column: 1;
             grid-row: 2 / span 2;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
         }
 
         .story__texts {
             grid-column: 1;
             grid-row: 3;
+            transform: translateY(25%);
+            z-index: 4;
         }
 
         .story__text1,
@@ -288,28 +295,29 @@ import foot from "../../../public/assets/icons/foot.svg";
         .image-wrapper {
             position: relative;
             z-index: 0;
+            margin-top: 3rem;
         }
 
         .mouth {
             z-index: 1;
             position: absolute;
-            top: 8%;
-            left: -10%;
+            top: -20vw;
+            left: -10vw;
         }
 
         .ear {
             z-index: 1;
             position: absolute;
-            display: flex;
-            justify-self: end;
-            top: 30%;
+            left: 40vw;
+            top: 30vw;
         }
 
         .bla1,
         .bla2,
         .bla3 {
             background-color: var(--secondary-color);
-            width: fit-content;
+            min-width: max-content;
+            white-space: nowrap;
             padding: 0.5rem;
             padding-bottom: 0.7rem;
             font-family: "obviously-narrow", sans-serif;
@@ -318,14 +326,15 @@ import foot from "../../../public/assets/icons/foot.svg";
             text-transform: uppercase;
             z-index: 2;
             position: absolute;
-            left: -50%;
+            left: -50vw;
         }
 
         .aha1,
         .aha2,
         .aha3 {
             background-color: var(--black);
-            width: fit-content;
+            min-width: max-content;
+            white-space: nowrap;
             height: fit-content;
             padding: 0.5rem;
             padding-bottom: 0.7rem;
@@ -354,27 +363,27 @@ import foot from "../../../public/assets/icons/foot.svg";
         }
 
         .bla1 {
-            top: 20%;
+            top: 20vw;
         }
 
         .bla2 {
-            top: 22%;
+            top: 27vw;
         }
 
         .bla3 {
-            top: 25%;
+            top: 35vw;
         }
 
         .aha1 {
-            top: 30%;
+            top: 50vw;
         }
 
         .aha2 {
-            top: 34%;
+            top: 60vw;
         }
 
         .aha3 {
-            top: 37%;
+            top: 68vw;
         }
 
         .stomp,
@@ -383,54 +392,45 @@ import foot from "../../../public/assets/icons/foot.svg";
         .foot3,
         .foot4,
         .foot5 {
-            opacity: 0;
+            opacity: 1;
             position: absolute;
+            z-index: 5;
         }
 
         .stomp {
             scale: 0.3;
             z-index: 0;
-            display: flex;
-            justify-self: end;
+            top: 50vw;
+            left: 30vw;
         }
 
         .foot1 {
-            display: flex;
-            justify-self: end;
-            padding-right: 3rem;
-            /* transform: translateY(-130%); */
             rotate: -10deg;
+            top: 65vw;
+            left: 50vw;
         }
 
         .foot2 {
-            display: flex;
-            justify-self: start;
-            padding-left: 4rem;
-            transform: translateY(-30vh);
             rotate: 10deg;
+            top: 45vw;
+            left: 20vw;
         }
 
         .foot3 {
-            display: flex;
-            justify-self: end;
-            padding-right: 12rem;
-            /* transform: translateY(-450%); */
             rotate: 10deg;
+            top: 25vw;
+            left: 50vw;
         }
 
         .foot4 {
-            display: flex;
-            justify-self: start;
-            padding-left: 5rem;
-            /* transform: translateY(-630%); */
+            top: 5vw;
+            left: 20vw;
         }
 
         .foot5 {
-            display: flex;
-            justify-self: end;
-            margin-right: -8rem;
-            /* transform: translateY(-800%); */
             rotate: -10deg;
+            top: -15vw;
+            left: 50vw;
         }
 
         .start {
