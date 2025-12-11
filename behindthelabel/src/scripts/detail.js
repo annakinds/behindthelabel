@@ -53,7 +53,7 @@ export const setupScrollAnimations = () => {
                 position: 1.2,
                 scramble: {
                     text: text1,
-                    chars: "",
+                    chars: ".",
                     speed: 0.3,
                     revealDelay: 0.05,
                 }
@@ -98,7 +98,7 @@ export const setupScrollAnimations = () => {
                 position: 6.5,
                 scramble: {
                     text: text2,
-                    chars: "",
+                    chars: ".",
                     speed: 0.3,
                     revealDelay: 0.05,
                 }
@@ -128,7 +128,7 @@ export const setupScrollAnimations = () => {
                 position: 8.8,
                 scramble: {
                     text: text3,
-                    chars: "",
+                    chars: ".",
                     speed: 0.3,
                     revealDelay: 0.05,
                 }
@@ -146,8 +146,6 @@ export const setupScrollAnimations = () => {
             //map
             { target: ".top4", vars: { x: "0%", opacity: 1 }, position: 10.3 },
             { target: ".map", vars: { x: "0%", opacity: 1 }, position: 10.3 },
-
-
         ],
         pin: ".story",
     });

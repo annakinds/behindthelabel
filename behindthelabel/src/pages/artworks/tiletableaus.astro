@@ -1,6 +1,4 @@
 ---
-import Subtitle from "../../components/Subtitle.astro";
-import SpeechBubble from "../../components/Speechbubble.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
@@ -292,8 +290,8 @@ import writing from "../../../public/assets/img/writing.svg";
             margin: 2rem 0.8rem;
             line-height: 150%;
             overflow: hidden;
-            opacity: 0;
             position: relative;
+            opacity: 0;
             z-index: 3;
             grid-column: 1;
             grid-row: 1;
@@ -513,5 +511,7 @@ import writing from "../../../public/assets/img/writing.svg";
         .start {
             z-index: 2;
         }
+
+        
     </style>
 </Layout>
