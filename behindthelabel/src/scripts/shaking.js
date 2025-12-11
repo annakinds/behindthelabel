@@ -1,15 +1,15 @@
-import { setupScrollAnimations } from './artworks/tile'
+import { setupScrollAnimations } from './artworks/tileTableausSetup.js'
 
 console.log("Script loaded");
 
 const start = document.querySelector(".start");
 const story = document.querySelector(".story");
 
-let hasShaken = false;  
+let hasShaken = false;
 const threshold = 15;
 
 const handleMotionEvent = (event) => {
-    if (hasShaken) return;  
+    if (hasShaken) return;
 
     const x = event.accelerationIncludingGravity.x;
     const y = event.accelerationIncludingGravity.y;
@@ -20,7 +20,7 @@ const handleMotionEvent = (event) => {
     if (totalAcceleration > threshold) {
         story.classList.remove("hidden");
         start.classList.add("hidden");
-        hasShaken = true;   
+        hasShaken = true;
         setupScrollAnimations();
 
     }

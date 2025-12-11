@@ -134,7 +134,7 @@ h2 {
      content: "";
      width: 4.5rem;
      height: 4.5rem;
-     background: url("../../assets/icon/wiggle.svg") no-repeat center/contain;
+     background: url("../assets/icon/wiggle.svg") no-repeat center/contain;
      display: flex;
      margin-top: -2rem;
      margin-left: -2rem;
@@ -157,7 +157,7 @@ h2 {
      justify-self: center;
      align-self: center;
      inset: 0;
-     background: url("../../assets/blabla.svg") no-repeat center/contain;
+     background: url("../assets/blabla.svg") no-repeat center/contain;
      z-index: 0;
      opacity: 1;
      pointer-events: none;
