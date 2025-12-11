@@ -1,4 +1,5 @@
 import { setupScrollAnimations } from './artworks/tile'
+
 console.log("Script loaded");
 
 const start = document.querySelector(".start");

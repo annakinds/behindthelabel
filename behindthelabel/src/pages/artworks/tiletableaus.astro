@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import TileTableausAnimations from "../../components/TileTableausAnimations.astro";
 import { Image } from "astro:assets";
 import tile from "../../assets/tiletableau.png";
 import speak from "../../../public/assets/img/speak.svg";
@@ -96,9 +97,7 @@ import writing from "../../../public/assets/img/writing.svg";
             </div>
         </div>
     </div>
-    <script>
-        import "../../scripts/artworks/tile.js";
-    </script>
+    <TileTableausAnimations />
 </Layout>
 <style>
     .mouth {

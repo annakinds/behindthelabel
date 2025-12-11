@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
-export const pinAndAnimate = ({ trigger, end, animations, markers = true, pin }) => {
+export const pinAndAnimate = ({ trigger, end, animations, pin }) => {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger,
