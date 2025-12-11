@@ -1,11 +1,71 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import squarecircle from "../../../public/assets/img/squarecircle.png";
 ---
 
 <Layout>
-
+    <div class="detail">
+        <div class="start">
+            <h2 class="start__subtitle">
+                What is hiding behind the labels of Cirkel & Vierkant?
+            </h2>
+            <Image
+                class="squarecircle"
+                src={squarecircle}
+                alt="square and circle"
+            />
+            <p class="start__text">Shake the labels off</p>
+            <div class="corner-square"></div>
+        </div>
+        <div class="story hidden">
+            <div class="story__bg"></div>
+            <div class="story__subtitles">
+                <h2 class="story__subtitle1 top1">These artworks tell</h2>
+                <h2 class="story__subtitle1 bottom1">
+                    the stories of <span class="blue bold">Aalbeke</span>
+                </h2>
+                <h2 class="story__subtitle2 top2">
+                    12 ceramic tiles are placed
+                </h2>
+                <h2 class="story__subtitle2 bottom2">
+                    along the <span class="blue bold">sidewalks</span>
+                </h2>
+                <h2 class="story__subtitle3 top3 blue bold">Hugo Claus,</h2>
+                <h2 class="story__subtitle3 bottom3">the famous writer</h2>
+                <h2 class="story__subtitle4 top4">
+                    Where to see <span class="bold blue">Tegel Tableaus</span>?
+                </h2>
+            </div>
+            <div class="image-wrapper">
+            </div>
+            <div class="story__animations">
+                <div class="story__animation1">
+                    <p class="bla1">bla</p>
+                    <p class="bla2">bla bla</p>
+                    <p class="bla3">bla bla bla</p>
+                    <p class="aha1">aha aha aha</p>
+                    <p class="aha2">aha aha</p>
+                    <p class="aha3">aha</p>
+                </div>
+                <div class="story__animation2">
+    
+                </div>
+                <div class="story__animation3">
+                    <p class="HC">Hugo Claus</p>
+                    <p class="titleHC1">Het verdriet van België</p>
+                    <p class="titleHC2">Het jaar van de kreeft</p>
+                    <p class="titleHC2">Omtrent Deedee</p>
+                    <p class="titleHC3">De verwondering</p>
+                    <p class="titleHC4">De metsiers</p>
+                </div>
+            </div>
+            <div class="story__texts">
+                <p class="story__text1"></p>
+                <p class="story__text2"></p>
+                <p class="story__text3"></p>
+            </div>
+        </div>
+    </div>
+    <style></style>
 </Layout>
-
-<style>
-   
-</style>
