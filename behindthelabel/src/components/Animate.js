@@ -1,29 +1,34 @@
-const pinAndAnimate = ({
-    trigger,
-    endTrigger,
-    pin,
-    animations,
-    markers = false,
-    headerOffset = 0,
-}) => {
-    const end = `top top+=${headerOffset}`;
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+
+export const pinAndAnimate = ({ trigger, end, animations, markers = true, pin }) => {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger,
-            start: `top 60%`,
-            endTrigger,
+            start: "top top",
             end,
             scrub: true,
-            pin,
-            pinSpacing: false,
-            markers: markers,
-            invalidateOnRefresh: true,
+            markers,
+            pin
         },
     });
 
-    animations.forEach(({ target, vars, position = 0 }) => {
-        tl.to(target, vars, position);
+    animations.forEach(({ target, vars, position = 0, scramble }) => {
+        if (scramble) {
+            tl.to(target, {
+                scrambleText: scramble,
+                ...vars
+            }, position);
+        } else {
+            tl.to(target, vars, position);
+        }
     });
 
     return tl;
 };
+
+
+
+

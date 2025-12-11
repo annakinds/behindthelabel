@@ -1,34 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
-
-const pinAndAnimate = ({ trigger, end, animations, markers = true, pin }) => {
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger,
-            start: "top top",
-            end,
-            scrub: true,
-            markers,
-            pin
-        },
-    });
-
-    animations.forEach(({ target, vars, position = 0, scramble }) => {
-        if (scramble) {
-            tl.to(target, {
-                scrambleText: scramble,
-                ...vars
-            }, position);
-        } else {
-            tl.to(target, vars, position);
-        }
-    });
-
-    return tl;
-};
+import { pinAndAnimate } from '../../components/Animate.js'
 
 export const setupScrollAnimations = () => {
     const text1 = document.querySelector(".story__text1")?.textContent || "";
@@ -36,7 +10,7 @@ export const setupScrollAnimations = () => {
     const text3 = document.querySelector(".story__text3")?.textContent || "";
     pinAndAnimate({
         trigger: ".story",
-        end: "+=20000", 
+        end: "+=20000",
         animations: [
             //chapter 1
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
@@ -111,7 +85,7 @@ export const setupScrollAnimations = () => {
             { target: ".foot5", vars: { opacity: 0 }, position: 7.1 },
             { target: ".story__text2", vars: { opacity: 0 }, position: 8 },
             { target: ".top2", vars: { x: "-100%", opacity: 1 }, position: 8 },
-            { target: ".bottom2", vars: { x: "100%", opacity: 1 }, position: 8},
+            { target: ".bottom2", vars: { x: "100%", opacity: 1 }, position: 8 },
 
             //chapter3
             { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 8.2 },
