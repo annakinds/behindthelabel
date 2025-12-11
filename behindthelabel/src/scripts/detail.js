@@ -36,7 +36,7 @@ export const setupScrollAnimations = () => {
     const text3 = document.querySelector(".story__text3")?.textContent || "";
     pinAndAnimate({
         trigger: ".story",
-        end: "+=10000", 
+        end: "+=20000", 
         animations: [
             //chapter 1
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
@@ -116,7 +116,36 @@ export const setupScrollAnimations = () => {
             //chapter3
             { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 8.2 },
             { target: ".bottom3", vars: { x: "-0%", opacity: 1 }, position: 8.3 },
-            
+            { target: ".HC", vars: { opacity: 1 }, position: 8.3 },
+            { target: ".writing", vars: { opacity: 1 }, position: 8.3 },
+            { target: ".titleHC4", vars: { opacity: 1 }, position: 8.4 },
+            { target: ".titleHC3", vars: { opacity: 1 }, position: 8.5 },
+            { target: ".titleHC2", vars: { opacity: 1 }, position: 8.6 },
+            { target: ".titleHC1", vars: { opacity: 1 }, position: 8.7 },
+            {
+                target: ".story__text3",
+                vars: { opacity: 1 },
+                position: 8.8,
+                scramble: {
+                    text: text3,
+                    chars: "",
+                    speed: 0.3,
+                    revealDelay: 0.05,
+                }
+            },
+            { target: ".HC", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".writing", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".titleHC4", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".titleHC3", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".titleHC2", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".titleHC1", vars: { opacity: 0 }, position: 9.5 },
+            { target: ".story__text3", vars: { opacity: 0 }, position: 10 },
+            { target: ".top3", vars: { x: "-100%", opacity: 1 }, position: 10.2 },
+            { target: ".bottom3", vars: { x: "100%", opacity: 1 }, position: 10.2 },
+
+            //map
+            { target: ".top4", vars: { x: "0%", opacity: 1 }, position: 10.3 },
+            { target: ".map", vars: { x: "0%", opacity: 1 }, position: 10.3 },
 
 
         ],

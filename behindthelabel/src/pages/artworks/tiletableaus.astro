@@ -8,6 +8,7 @@ import speak from "../../../public/assets/img/speak.svg";
 import ear from "../../../public/assets/img/ear.svg";
 import stomp from "../../../public/assets/icons/stomp.svg";
 import foot from "../../../public/assets/icons/foot.svg";
+import writing from "../../../public/assets/img/writing.svg";
 ---
 
 <Layout>
@@ -35,6 +36,9 @@ import foot from "../../../public/assets/icons/foot.svg";
                 </h2>
                 <h2 class="story__subtitle3 top3 blue bold">Hugo Claus,</h2>
                 <h2 class="story__subtitle3 bottom3">the famous writer</h2>
+                <h2 class="story__subtitle4 top4">
+                    Where to see <span class="bold blue">Tegel Tableaus</span>?
+                </h2>
             </div>
             <div class="image-wrapper">
                 <Image class="image" src={tile} alt="tegeltableaus" />
@@ -57,6 +61,15 @@ import foot from "../../../public/assets/icons/foot.svg";
                     <Image class="foot3" src={foot} alt="foot" />
                     <Image class="foot4" src={foot} alt="foot" />
                     <Image class="foot5" src={foot} alt="foot" />
+                </div>
+                <div class="story__animation3">
+                    <p class="HC">Hugo Claus</p>
+                    <p class="titleHC1">Het verdriet van België</p>
+                    <p class="titleHC2">Het jaar van de kreeft</p>
+                    <p class="titleHC2">Omtrent Deedee</p>
+                    <p class="titleHC3">De verwondering</p>
+                    <p class="titleHC4">De metsiers</p>
+                    <Image class="writing" src={writing} alt="writing hand" />
                 </div>
             </div>
             <div class="story__texts">
@@ -85,7 +98,6 @@ import foot from "../../../public/assets/icons/foot.svg";
             </div>
         </div>
     </div>
-
     <style>
         .detail {
             position: relative;
@@ -200,7 +212,8 @@ import foot from "../../../public/assets/icons/foot.svg";
 
         .story__subtitle1,
         .story__subtitle2,
-        .story__subtitle3 {
+        .story__subtitle3,
+        .story__subtitle4 {
             background-color: var(--white);
             font-weight: 500;
             padding: 0.8rem;
@@ -210,7 +223,8 @@ import foot from "../../../public/assets/icons/foot.svg";
         }
         .top1,
         .top2,
-        .top3 {
+        .top3,
+        .top4 {
             rotate: 2deg;
             transform: translateX(-100%);
             grid-column: 1;
@@ -431,6 +445,69 @@ import foot from "../../../public/assets/icons/foot.svg";
             rotate: -10deg;
             top: -15vw;
             left: 50vw;
+        }
+
+        .HC {
+            font-size: 1.25rem;
+            background-color: var(--accent-color);
+            font-family: "obviously-narrow", "sans-serif";
+            font-weight: 600;
+            padding: 0.3rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            left: 60vw;
+            opacity: 0;
+        }
+
+        .HC::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -0.8rem;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 1rem solid transparent;
+            border-right: 1rem solid transparent;
+            border-top: 1rem solid var(--accent-color);
+        }
+
+        .titleHC1,
+        .titleHC2,
+        .titleHC3,
+        .titleHC4 {
+            font-family: "obviously-narrow", "sans-serif";
+            font-weight: 500;
+            background-color: var(--black);
+            padding: 0.5rem;
+            padding-bottom: 0.7rem;
+            color: var(--white);
+            width: fit-content;
+            opacity: 0;
+        }
+
+        .titleHC1 {
+            font-size: 2rem;
+        }
+
+        .titleHC2 {
+            font-size: 1.8rem;
+        }
+
+        .titleHC3 {
+            font-size: 1.6rem;
+        }
+
+        .titleHC4 {
+            font-size: 1.4rem;
+        }
+
+        .writing {
+            position: absolute;
+            left: -15%;
+            opacity: 0;
         }
 
         .start {
