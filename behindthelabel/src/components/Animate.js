@@ -10,7 +10,6 @@ export const pinAndAnimate = ({ trigger, end, animations, markers = true, pin })
             start: "top top",
             end,
             scrub: true,
-            markers,
             pin
         },
     });

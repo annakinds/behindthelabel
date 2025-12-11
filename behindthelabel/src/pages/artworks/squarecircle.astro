@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import squarecircle from "../../../public/assets/img/squarecircle.png";
+import ring from "../../../public/assets/img/ring.svg";
 ---
 
 <Layout>
@@ -21,51 +22,159 @@ import squarecircle from "../../../public/assets/img/squarecircle.png";
         <div class="story hidden">
             <div class="story__bg"></div>
             <div class="story__subtitles">
-                <h2 class="story__subtitle1 top1">These artworks tell</h2>
+                <h2 class="story__subtitle1 top1">This artwork was created</h2>
                 <h2 class="story__subtitle1 bottom1">
-                    the stories of <span class="blue bold">Aalbeke</span>
+                    by jeweller <span class="blue bold">Tine Vindevogel</span>
                 </h2>
                 <h2 class="story__subtitle2 top2">
-                    12 ceramic tiles are placed
+                    <span class="blue bold">Balance </span>each other out
                 </h2>
-                <h2 class="story__subtitle2 bottom2">
-                    along the <span class="blue bold">sidewalks</span>
+                <h2 class="story__subtitle3 top3">
+                    A window for <span class="blue bold">nature</span>
                 </h2>
-                <h2 class="story__subtitle3 top3 blue bold">Hugo Claus,</h2>
-                <h2 class="story__subtitle3 bottom3">the famous writer</h2>
                 <h2 class="story__subtitle4 top4">
-                    Where to see <span class="bold blue">Tegel Tableaus</span>?
+                    Where to see <span class="bold blue"
+                        >Cirkel en vierkant</span
+                    >?
                 </h2>
             </div>
             <div class="image-wrapper">
+                <Image
+                    class="image"
+                    src={squarecircle}
+                    alt="square and circle"
+                />
             </div>
             <div class="story__animations">
                 <div class="story__animation1">
-                    <p class="bla1">bla</p>
-                    <p class="bla2">bla bla</p>
-                    <p class="bla3">bla bla bla</p>
-                    <p class="aha1">aha aha aha</p>
-                    <p class="aha2">aha aha</p>
-                    <p class="aha3">aha</p>
+                    <Image class="ring" src={ring} alt="ring" />
+                    <p class="bling bling1">bling</p>
+                    <p class="bling bling2">bling</p>
+                    <p class="bling bling3">bling</p>
                 </div>
-                <div class="story__animation2">
-    
-                </div>
-                <div class="story__animation3">
-                    <p class="HC">Hugo Claus</p>
-                    <p class="titleHC1">Het verdriet van België</p>
-                    <p class="titleHC2">Het jaar van de kreeft</p>
-                    <p class="titleHC2">Omtrent Deedee</p>
-                    <p class="titleHC3">De verwondering</p>
-                    <p class="titleHC4">De metsiers</p>
-                </div>
+                <div class="story__animation2"></div>
+                <div class="story__animation3"></div>
             </div>
             <div class="story__texts">
-                <p class="story__text1"></p>
-                <p class="story__text2"></p>
-                <p class="story__text3"></p>
+                <p class="story__text1">
+                    It’s actually a <span class="bold">blown-up</span> version of
+                    a jewel she originally designed for a provincial competition for
+                    young artists. The <span class="bold">story</span>
+                    behind the work is pretty cool: the large square acts like a frame,
+                    giving the circle space to <span class="bold">“talk”</span> with
+                    the <span class="bold">background</span>.
+                </p>
+                <p class="story__text2">
+                    The sculpture is made from <span class="bold"
+                        >two simple shapes</span
+                    > that are complete <span class="bold">opposites</span>, but
+                    still
+                    <span class="bold">balance</span> each other out. It feels almost
+                    like an <span class="bold">abstract</span>
+                    code based on nature.
+                </p>
+                <p class="story__text3">
+                    The <span class="bold">ring</span> between the two shapes links
+                    them together and works like a <span class="bold"
+                        >window</span
+                    > looking into the garden and surrounding <span class="bold"
+                        >nature</span
+                    >. The environment isn’t just the setting, it’s part of the
+                    artwork.
+                </p>
             </div>
         </div>
     </div>
-    <style></style>
+    <script>
+        import "../../scripts/artworks/squarecircle.js";
+    </script>
 </Layout>
+<style>
+    .image {
+        z-index: 0;
+        margin-top: 4rem;
+    }
+
+    .ring {
+        position: absolute;
+        left: 50vw;
+        top: -8vw;
+    }
+
+    .bling {
+        background-color: var(--black);
+        color: var(--white);
+        font-family: "obviously-narrow", "sans-serif";
+        font-weight: 500;
+        padding: 0.5rem 0.8rem;
+        padding-bottom: 0.8rem;
+        text-transform: uppercase;
+        height: min-content;
+        position: relative;
+        font-size: 2.25rem;
+        opacity: 0;
+    }
+
+    .bling1 {
+        rotate: -5deg;
+        position: absolute;
+        z-index: 2;
+        top: 15vh;
+        left: 10vw;
+    }
+
+    .bling1::after {
+        content: "";
+        width: 3rem;
+        height: 3rem;
+        background: url("../../assets/icon/bling.svg") no-repeat center/contain;
+        background-color: transparent;
+        position: absolute;
+        top: -2rem;
+        left: 4.9rem;
+        rotate: 5deg;
+        z-index: 3;
+    }
+
+    .bling2 {
+        rotate: 5deg;
+        position: absolute;
+        z-index: 2;
+        top: 25vh;
+        left: 60vw;
+    }
+
+    .bling2::before {
+        content: "";
+        width: 3rem;
+        height: 3rem;
+        background: url("../../assets/icon/bling.svg") no-repeat center/contain;
+        background-color: transparent;
+        position: absolute;
+        top: -1.4rem;
+        left: -2rem;
+        rotate: 5deg;
+        z-index: 3;
+    }
+
+    .bling3 {
+        rotate: 10deg;
+        position: absolute;
+        z-index: 2;
+        top: 35vh;
+        left: 20vw;
+    }
+
+    .bling3::after {
+        content: "";
+        width: 3rem;
+        height: 3rem;
+        background: url("../../assets/icon/bling.svg") no-repeat center/contain;
+        background-color: transparent;
+        position: absolute;
+        top: 2rem;
+        left: 5.5rem;
+        rotate: 10deg;
+        z-index: 3;
+    }
+</style>

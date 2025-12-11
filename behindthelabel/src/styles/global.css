@@ -171,6 +171,7 @@ h2 {
      grid-template-rows: auto auto;
      height: 8rem;
      padding-top: 2rem;
+     z-index: 2;
  }
 
  .story__subtitle1,

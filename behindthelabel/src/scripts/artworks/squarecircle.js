@@ -15,6 +15,11 @@ export const setupScrollAnimations = () => {
             //chapter 1
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
             { target: ".bottom1", vars: { x: "-0%", opacity: 1 }, position: 0.1 },
+            { target: ".bling1", vars: { opacity: 1 }, position: 0.2 },
+            { target: ".bling2", vars: { opacity: 1 }, position: 0.3 },
+            { target: ".bling3", vars: { opacity: 1 }, position: 0.4 },
+
+
             
         ],
         pin: ".story",
