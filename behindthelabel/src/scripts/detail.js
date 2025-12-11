@@ -36,6 +36,7 @@ export const setupScrollAnimations = () => {
     const text3 = document.querySelector(".story__text3")?.textContent || "";
     pinAndAnimate({
         trigger: ".story",
+        end: "+=10000", 
         animations: [
             //chapter 1
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
@@ -76,19 +77,25 @@ export const setupScrollAnimations = () => {
             { target: ".stomp", vars: { scale: .6, opacity: 1 }, position: 3.4 },
             { target: ".foot1", vars: { opacity: 1 }, position: 3.4 },
             { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 4 },
-            { target: ".stomp", vars: { y: '15vh', x: '-50%' }, position: 4.2 },
+            { target: ".stomp", vars: { y: '-10vh', x: '-30vw' }, position: 4.2 },
             { target: ".stomp", vars: { scale: .8, opacity: 1 }, position: 4.5 },
             { target: ".foot2", vars: { opacity: 1 }, position: 4.5 },
-            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 4.6 },
-            { target: ".stomp", vars: { y: '5vh', x: '10%' }, position: 4.7 },
-            { target: ".stomp", vars: { scale: .8, opacity: 1 }, position: 4.8 },
-            { target: ".foot3", vars: { opacity: 1 }, position: 4.9 },
-
-
+            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 4.7 },
+            { target: ".stomp", vars: { y: '-20vh', x: '0vw' }, position: 5 },
+            { target: ".stomp", vars: { scale: .6, opacity: 1 }, position: 5.1 },
+            { target: ".foot3", vars: { opacity: 1 }, position: 5.1 },
+            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 5.3 },
+            { target: ".stomp", vars: { y: '-30vh', x: '-30vw' }, position: 5.4 },
+            { target: ".stomp", vars: { scale: .6, opacity: 1 }, position: 5.6 },
+            { target: ".foot4", vars: { opacity: 1 }, position: 5.6 },
+            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 5.7 },
+            { target: ".stomp", vars: { y: '-40vh', x: '0vw' }, position: 6 },
+            { target: ".stomp", vars: { scale: .6, opacity: 1 }, position: 6.2 },
+            { target: ".foot5", vars: { opacity: 1 }, position: 6.2 },
             {
                 target: ".story__text2",
                 vars: { opacity: 1 },
-                position: 3.5,
+                position: 6.5,
                 scramble: {
                     text: text2,
                     chars: "",
@@ -96,10 +103,20 @@ export const setupScrollAnimations = () => {
                     revealDelay: 0.05,
                 }
             },
+            { target: ".stomp", vars: { scale: .3, opacity: 0 }, position: 7 },
+            { target: ".foot1", vars: { opacity: 0 }, position: 7.1 },
+            { target: ".foot2", vars: { opacity: 0 }, position: 7.1 },
+            { target: ".foot3", vars: { opacity: 0 }, position: 7.1 },
+            { target: ".foot4", vars: { opacity: 0 }, position: 7.1 },
+            { target: ".foot5", vars: { opacity: 0 }, position: 7.1 },
+            { target: ".story__text2", vars: { opacity: 0 }, position: 8 },
+            { target: ".top2", vars: { x: "-100%", opacity: 1 }, position: 8 },
+            { target: ".bottom2", vars: { x: "100%", opacity: 1 }, position: 8},
 
-
-            { target: ".story__text2", vars: { opacity: 0 }, position: 4 },
-
+            //chapter3
+            { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 8.2 },
+            { target: ".bottom3", vars: { x: "-0%", opacity: 1 }, position: 8.3 },
+            
 
 
         ],
