@@ -1,7 +1,8 @@
+import { pinAndAnimate } from '../../components/Animate.js'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-import { pinAndAnimate } from '../../components/Animate.js'
+
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 

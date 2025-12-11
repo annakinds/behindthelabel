@@ -1,8 +1,8 @@
+import { pinAndAnimate } from '../../components/Animate.js'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
-import { pinAndAnimate } from '../../components/Animate.js'
 
 export const setupScrollAnimations = () => {
     const text1 = document.querySelector(".story__text1")?.textContent || "";

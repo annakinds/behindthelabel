@@ -25,6 +25,7 @@ export const pinAndAnimate = ({ trigger, end, animations, pin }) => {
         }
     });
 
+    console.log("pin animate");
     return tl;
 };
 

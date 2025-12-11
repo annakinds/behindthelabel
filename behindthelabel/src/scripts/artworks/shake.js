@@ -1,11 +1,8 @@
 
-import { setupScrollAnimations } from './tileTableausSetup.js'
+// import { setupScrollAnimations } from './tileTableausSetup.js'
 
-console.log("done");
 
-console.log("Script loaded");
-
-const shakeScreen = () => {
+export const shakeScreen = () => {
     const start = document.querySelector(".start");
     const story = document.querySelector(".story");
 
@@ -25,7 +22,7 @@ const shakeScreen = () => {
             story.classList.remove("hidden");
             start.classList.add("hidden");
             hasShaken = true;
-            setupScrollAnimations();
+            // setupScrollAnimations();
         }
     };
 
@@ -33,11 +30,11 @@ const shakeScreen = () => {
         story.classList.remove("hidden");
         start.classList.add("hidden");
         hasShaken = true;
-        setupScrollAnimations();
+        // setupScrollAnimations();
     });
 
+    console.log("shake");
     window.addEventListener("devicemotion", handleMotionEvent);
 
 }
-shakeScreen();
 
