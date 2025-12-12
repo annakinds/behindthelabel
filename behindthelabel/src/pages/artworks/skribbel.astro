@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import skribbel from "../../assets/artworks/skribbel.png";
-
 ---
 
 <Layout>
@@ -11,58 +10,66 @@ import skribbel from "../../assets/artworks/skribbel.png";
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Skribbels?
             </h2>
-            <Image
-                class="skribbel"
-                src={skribbel}
-                alt="skribbels"
-            />
+            <Image class="skribbel" src={skribbel} alt="skribbels" />
             <p class="start__text">Shake the labels off</p>
             <div class="corner-square"></div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>
             <div class="story__subtitles">
-                <h2 class="story__subtitle1 top1"></h2>
-                <h2 class="story__subtitle1 bottom1"></h2>
-                <h2 class="story__subtitle2 top2"></h2>
-                <h2 class="story__subtitle3 top3"></h2>
-                <h2 class="story__subtitle4 top4"></h2>
+                <h2 class="story__subtitle1 top1">You might think this</h2>
+                <h2 class="story__subtitle1 bottom1">
+                    is just one <span class="blue bold">statue</span> but...
+                </h2>
+                <h2 class="story__subtitle2 top2">5 locals teamed up</h2>
+                <h2 class="story__subtitle2 bottom2">
+                    with the city of <span class="blue bold">Kortrijk</span>
+                </h2>
+                <h2 class="story__subtitle3 top3">
+                    The <span class="bold blue">bronze</span> statues
+                </h2>
+                <h2 class="story__subtitle4 top4">
+                    Where to see <span class="bold blue">Skribbel</span>?
+                </h2>
             </div>
             <div class="image-wrapper">
-                <Image
-                    class="image"
-                    src={skribbel}
-                    alt="skribbels"
-                />
+                <Image class="image" src={skribbel} alt="skribbels" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1">
-
-                </div>
-                <div class="story__animation2">
-
-                </div>
-                <div class="story__animation3">
-
-                </div>
+                <div class="story__animation1"></div>
+                <div class="story__animation2"></div>
+                <div class="story__animation3"></div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
-
+                    Each one shows <span class="bold">a character trait</span> that
+                    represents the people of <span class="bold">Heule</span>.
+                    From curiosity and determination to being super welcoming or
+                    always ready for a party, there’s at least one statue every
+                    Heule resident can see themselves in.
                 </p>
                 <p class="story__text2">
-                  
+                    The idea for these statues came from the <span class="bold"
+                        >Beeldenaars Heule collective</span
+                    >: five locals with a passion for visual arts who teamed up
+                    with the city of Kortrijk. The four figures were created as
+                    a tribute to the late <span class="bold"
+                        >Gilbert Dekyvere</span
+                    >, also known as <span class="bold">Skribbel</span>.
                 </p>
                 <p class="story__text3">
-
+                    All the statues are made of <span class="bold">bronze</span> and
+                    wear a <span class="bold">quirky hat</span> and a <span class="bold"
+                        >bright blue coat</span
+                    >. Each one also has its own name: “Skribbel De
+                    Vastberadenheid,” “Skribbel Hoedje Af,” “Skribbel De
+                    Curieuzeneuze,” and “Skribbel De Feestvierder.”
                 </p>
             </div>
         </div>
     </div>
 </Layout>
-<style>
-
-</style>
+<style></style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/skribbel.js";
 
