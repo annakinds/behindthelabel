@@ -2,17 +2,16 @@
 import "../styles/reset.css";
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import Map from "../components/Map.astro";
+// import Map from "../components/Map.astro";
 import { Image } from "astro:assets";
-import mouth from "../../public/assets/img/openmouth.svg";
-import mouth2 from "../../public/assets/img/openmouth.png";
-import shakeboard from "../../public/assets/img/shakeboard.svg";
-import eye from "../../public/assets/img/eye.svg";
-import heroimg from "../../public/assets/img/heroimg.svg";
-import ballerina from "../../public/assets/img/miniballerina.png";
-import star from "../../public/assets/icons/star.svg";
-import gsm from "../../public/assets/icons/gsm.svg";
-import binoculars from "../../public/assets/icons/binoculars.svg";
+import mouth from "../assets/animations/openmouth.svg";
+import mouth2 from "../assets/animations/scream.png";
+import shakeboard from "../assets/heroimg/shakeboard.svg";
+import eye from "../assets/heroimg/eye.svg";
+import ballerina from "../assets/heroimg/miniballerina.png";
+import star from "../assets/heroimg/star.svg";
+import gsm from "../assets/heroimg/gsm.svg";
+import binoculars from "../assets/heroimg/binoculars.svg";
 ---
 
 <Layout>
@@ -24,7 +23,6 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 			<p class="heroimg__text">
 				<span class="yellow">Click</span> the labels away
 			</p>
-			<!-- <Image class="heroimg__img" src={heroimg} alt="heroimage" /> -->
 			<div class="heroimg__quote">
 				<div>
 					<p>Public Art</p>
@@ -273,7 +271,7 @@ import binoculars from "../../public/assets/icons/binoculars.svg";
 		display: flex;
 		justify-self: center;
 		padding-top: 1.5rem;
-		background: url("../assets/icon/triangle.svg") no-repeat center/contain;
+		background: url("../assets/heroimg/triangle.svg") no-repeat center/contain;
 
 		animation: bounceArrow 1.3s ease-in-out infinite;
 	}

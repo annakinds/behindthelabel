@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import tile from "../assets/tiletableau.png";
 import ballerina from "../assets/artworks-mobile/ballerina.png";
 import cirkelvierkant from "../assets/artworks-mobile/cirkelvierkant.png";
 import happilyeverafter from "../assets/artworks-mobile/happilyeverafter.png";
@@ -10,8 +9,8 @@ import mentie from "../assets/artworks-mobile/mentie.png";
 import skribbels from "../assets/artworks-mobile/skribbels.png";
 import tegeltableaus from "../assets/artworks-mobile/tegeltableaus.png";
 import untitled from "../assets/artworks-mobile/untitled.png";
-import pass from "../../public/assets/icons/pass.svg";
-import smash from "../../public/assets/icons/smash.svg";
+import pass from "../assets/icon/pass.svg";
+import smash from "../assets/icon/smash.svg";
 ---
 
 <Layout>
@@ -27,7 +26,7 @@ import smash from "../../public/assets/icons/smash.svg";
 			<div class="swipe__artworks">
 				<Image
 					class="swipe__artwork tile"
-					src={tile}
+					src={tegeltableaus}
 					alt="tegeltableaus"
 				/>
 				<Image
@@ -309,7 +308,8 @@ import smash from "../../public/assets/icons/smash.svg";
 		display: flex;
 		justify-self: center;
 		padding-top: 1.5rem;
-		background: url("../assets/icon/triangle.svg") no-repeat center/contain;
+		background: url("../assets/heroimg/triangle.svg") no-repeat
+			center/contain;
 		animation: bounceArrow 1.3s ease-in-out infinite;
 	}
 
