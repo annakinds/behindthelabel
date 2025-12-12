@@ -1,5 +1,86 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import mentie from "../../assets/artworks/mentie.png";
 ---
 
-<Layout />
+<Layout>
+    <div class="detail">
+        <div class="start">
+            <h2 class="start__subtitle">
+                What is hiding behind the labels of Mentie?
+            </h2>
+            <Image class="mentie" src={mentie} alt="mentie" />
+            <p class="start__text">Shake the labels off</p>
+            <div class="corner-square"></div>
+        </div>
+        <div class="story hidden">
+            <div class="story__bg"></div>
+            <div class="story__subtitles">
+                <h2 class="story__subtitle1 top1"></h2>
+                <h2 class="story__subtitle1 bottom1"></h2>
+                <h2 class="story__subtitle2 top2"></h2>
+                <h2 class="story__subtitle3 top3"></h2>
+                <h2 class="story__subtitle4 top4"></h2>
+            </div>
+            <div class="image-wrapper">
+                <Image class="image" src={mentie} alt="mentie" />
+            </div>
+            <div class="story__animations">
+                <div class="story__animation1"></div>
+                <div class="story__animation2"></div>
+                <div class="story__animation3"></div>
+            </div>
+            <div class="story__texts">
+                <p class="story__text1"></p>
+                <p class="story__text2"></p>
+                <p class="story__text3"></p>
+            </div>
+        </div>
+    </div>
+</Layout>
+<style></style>
+<script>
+    import { setupScrollAnimations } from "../../scripts/artworks/mentie.js";
+
+    const start = document.querySelector(".start");
+    const story = document.querySelector(".story");
+
+    if (start && story) {
+        let hasShaken = false;
+        const threshold = 15;
+
+        const handleMotionEvent = (event: DeviceMotionEvent) => {
+            if (hasShaken) return;
+
+            const x = event.accelerationIncludingGravity?.x || 0;
+            const y = event.accelerationIncludingGravity?.y || 0;
+            const z = event.accelerationIncludingGravity?.z || 0;
+
+            const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
+
+            if (totalAcceleration > threshold) {
+                story.classList.remove("hidden");
+                start.classList.add("hidden");
+                hasShaken = true;
+                requestAnimationFrame(() => {
+                    setupScrollAnimations();
+                });
+            }
+        };
+
+        start.addEventListener("click", () => {
+            if (hasShaken) return;
+            story.classList.remove("hidden");
+            start.classList.add("hidden");
+            hasShaken = true;
+            requestAnimationFrame(() => {
+                setupScrollAnimations();
+            });
+        });
+        console.log("shake");
+        window.addEventListener("devicemotion", (event: DeviceMotionEvent) => {
+            handleMotionEvent(event);
+        });
+    }
+</script>
