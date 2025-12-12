@@ -3,6 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import squarecircle from "../../assets/artworks/squarecircle.png";
 import ring from "../../assets/animations/ring.svg";
+import scale from "../../assets/animations/scale.svg";
+import rectangle from "../../assets/animations/rectangle.svg";
+import circle from "../../assets/animations/circle.svg";
+import window from "../../assets/animations/window.svg";
 ---
 
 <Layout>
@@ -52,8 +56,18 @@ import ring from "../../assets/animations/ring.svg";
                     <p class="bling bling2">bling</p>
                     <p class="bling bling3">bling</p>
                 </div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation2">
+                    <p class="balance">balance balance balance</p>
+                    <Image class="scale-left" src={scale} alt="scale" />
+                    <Image class="scale-right" src={scale} alt="scale" />
+                    <Image class="rectangle" src={rectangle} alt="rectangle" />
+                    <Image class="circle" src={circle} alt="circle" />
+                </div>
+                <div class="story__animation3">
+                    <Image class="window-top" src={window} alt="window" />
+                    <Image class="window-bottom" src={window} alt="window" />
+                    <p class="link">Ring links them</p>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -176,6 +190,98 @@ import ring from "../../assets/animations/ring.svg";
         left: 5.5rem;
         rotate: 10deg;
         z-index: 3;
+    }
+
+    .balance {
+        background-color: var(--black);
+        color: var(--white);
+        font-family: "obviously-narrow", "sans-serif";
+        font-weight: 500;
+        padding: 0.5rem 0.8rem;
+        padding-bottom: 0.8rem;
+        text-transform: uppercase;
+        width: max-content;
+        font-size: 1.5rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        opacity: 0;
+        top: 5vh;
+    }
+
+    .scale-right,
+    .scale-left {
+        position: absolute;
+        top: 25vh;
+        opacity: 0;
+    }
+
+    .scale-left {
+        left: 0;
+    }
+
+    .scale-right {
+        transform: scaleX(-1);
+        left: 67vw;
+    }
+
+    .rectangle {
+        position: absolute;
+        top: 37vh;
+        left: 75vw;
+        opacity: 0;
+    }
+
+    .circle {
+        position: absolute;
+        left: 15vw;
+        top: 22vh;
+        opacity: 0;
+    }
+
+    .window-top {
+        position: absolute;
+        top: -10vh;
+        left: 5vw;
+        text-align: center;
+        opacity: 0;
+    }
+
+    .window-bottom {
+        position: absolute;
+        top: 40vh;
+        left: 5vw;
+        transform: scaleY(-1);
+        opacity: 0;
+    }
+
+    .link {
+        font-size: 1rem;
+        background-color: var(--accent-color);
+        font-family: "obviously-narrow", "sans-serif";
+        font-weight: 500;
+        padding: 0.3rem;
+        padding-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+        left: 50vw;
+        top: 30vh;
+        opacity: 0;
+    }
+
+    .link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.8rem;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-top: 1rem solid var(--accent-color);
     }
 </style>
 <script>
