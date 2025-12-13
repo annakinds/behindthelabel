@@ -68,14 +68,30 @@ import ballerinaman from "../../assets/artworks/ballerinaman.png";
                     For the artist, <span class="bold">freedom</span> comes from <span
                         class="bold">letting go of fear</span
                     >, facing criticism, and trusting ourselves. Analucia
-                    designed the piece to show how we can <span class="bold">break out</span> of
-                    the boxes we create and follow our own path.
+                    designed the piece to show how we can <span class="bold"
+                        >break out</span
+                    > of the boxes we create and follow our own path.
                 </p>
             </div>
         </div>
     </div>
 </Layout>
-<style></style>
+<style>
+    .start__subtitle::after {
+        content: "Ballerina en man";
+        background-color: var(--secondary-color);
+        display: flex;
+        justify-self: end;
+        width: fit-content;
+        padding: 0.2rem 0.8rem;
+        color: var(--black);
+        border-radius: 3rem;
+        margin-right: 4rem;
+        margin-top: -2rem;
+        rotate: -3deg;
+        font-size: 1.25rem;
+    }
+</style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/ballerinaman.js";
 

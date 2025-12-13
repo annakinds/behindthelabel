@@ -98,6 +98,21 @@ import writing from "../../assets/animations/writing.svg";
     </div>
 </Layout>
 <style>
+    .start__subtitle::after {
+        content: "Tegeltableaus";
+        background-color: var(--secondary-color);
+        display: flex;
+        justify-self: end;
+        width: fit-content;
+        padding: 0.2rem 0.8rem;
+        color: var(--black);
+        border-radius: 3rem;
+        margin-right: 4rem;
+        margin-top: -2rem;
+        rotate: -3deg;
+        font-size: 1.25rem;
+    }
+    
     .story__bg {
         grid-column: 1;
         grid-row: 1 / span 3;
@@ -105,7 +120,8 @@ import writing from "../../assets/animations/writing.svg";
         justify-self: center;
         align-self: center;
         inset: 0;
-        background: url("../../assets/animations/blabla.svg") no-repeat center/contain;
+        background: url("../../assets/animations/blabla.svg") no-repeat
+            center/contain;
         z-index: 0;
         opacity: 1;
         pointer-events: none;

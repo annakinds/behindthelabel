@@ -2,6 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import skribbel from "../../assets/artworks/skribbel.png";
+import clap from "../../assets/animations/clap.svg";
+import megaphone from "../../assets/animations/megaphone.svg";
+import hand from "../../assets/animations/hand.svg";
+import star from "../../assets/animations/star.svg";
+import music from "../../assets/animations/music.svg";
+import party from "../../assets/animations/party.svg";
+import weight from "../../assets/animations/weight.svg";
+import littlemagnifyingglass from "../../assets/animations/littlemagnifyingglass.svg";
+import heart from "../../assets/animations/heart.svg";
 ---
 
 <Layout>
@@ -32,13 +41,47 @@ import skribbel from "../../assets/artworks/skribbel.png";
                     Where to see <span class="bold blue">Skribbel</span>?
                 </h2>
             </div>
+            <Image class="clap" src={clap} alt="clap" />
             <div class="image-wrapper">
                 <Image class="image" src={skribbel} alt="skribbels" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image class="megaphone" src={megaphone} alt="megaphone" />
+                    <p class="different1">we</p>
+                    <p class="different2">are</p>
+                    <p class="different3">different</p>
+                    <p class="different4">people</p>
+                </div>
+                <div class="story__animation2">
+                    <Image class="hand1" src={hand} alt="hand" />
+                    <Image class="hand2" src={hand} alt="hand" />
+                    <Image class="star" src={star} alt="star" />
+                </div>
+                <div class="story__animation3">
+                    <div class="person1">
+                        <Image class="music" src={music} alt="music" />
+                        <Image class="party" src={party} alt="party" />
+                        <p class="person1__name">Feestvierder</p>
+                    </div>
+                    <div class="person2">
+                        <Image class="weight" src={weight} alt="weight" />
+                        <p class="person2__name">Vastberadenheid</p>
+                    </div>
+                    <div class="person3">
+                        <Image
+                            class="littlemagnifyingglass"
+                            src={littlemagnifyingglass}
+                            alt="littlemagnifyingglass"
+                        />
+                        <p class="person3__name">curieuzeneuze</p>
+                    </div>
+                    <div class="person4">
+                        <Image class="heart1" src={heart} alt="heart" />
+                        <Image class="heart2" src={heart} alt="heart" />
+                        <p class="person4__name">Hoedje af</p>
+                    </div>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -59,8 +102,8 @@ import skribbel from "../../assets/artworks/skribbel.png";
                 </p>
                 <p class="story__text3">
                     All the statues are made of <span class="bold">bronze</span> and
-                    wear a <span class="bold">quirky hat</span> and a <span class="bold"
-                        >bright blue coat</span
+                    wear a <span class="bold">quirky hat</span> and a <span
+                        class="bold">bright blue coat</span
                     >. Each one also has its own name: “Skribbel De
                     Vastberadenheid,” “Skribbel Hoedje Af,” “Skribbel De
                     Curieuzeneuze,” and “Skribbel De Feestvierder.”
@@ -69,7 +112,214 @@ import skribbel from "../../assets/artworks/skribbel.png";
         </div>
     </div>
 </Layout>
-<style></style>
+<style>
+    .start__subtitle::after {
+        content: "Skribbels";
+        background-color: var(--secondary-color);
+        display: flex;
+        justify-self: end;
+        width: fit-content;
+        padding: 0.2rem 0.8rem;
+        color: var(--black);
+        border-radius: 3rem;
+        margin-right: 4.5rem;
+        margin-top: -2.5rem;
+        rotate: -3deg;
+        font-size: 1.25rem;
+    }
+
+    .megaphone {
+        position: absolute;
+        top: 25vh;
+        left: 40vw;
+        opacity: 0;
+    }
+
+    .different1,
+    .different2,
+    .different3,
+    .different4 {
+        font-family: "obviously-narrow", "sans-serif";
+        background-color: var(--black);
+        color: var(--white);
+        width: fit-content;
+        padding: 0.5rem 0.8rem;
+        padding-bottom: 0.6rem;
+        text-transform: uppercase;
+        position: absolute;
+        opacity: 0;
+    }
+
+    .different1 {
+        font-size: 3.5rem;
+        top: 12vh;
+        left: 1vw;
+    }
+
+    .different2 {
+        font-size: 2.5rem;
+        top: 22vh;
+        left: 10vw;
+    }
+
+    .different3 {
+        font-size: 1.5rem;
+        top: 29vh;
+        left: 20vw;
+    }
+    .different4 {
+        font-size: 1rem;
+        top: 34vh;
+        left: 40vw;
+    }
+
+    .clap {
+        position: absolute;
+        z-index: 0;
+        top: 15vh;
+        opacity: 0;
+    }
+
+    .hand1 {
+        position: absolute;
+        top: -15vh;
+        left: -25vw;
+        opacity: 0;
+    }
+
+    .hand2 {
+        transform: scaleX(-1);
+        rotate: 80deg;
+        position: absolute;
+        top: 35vh;
+        left: 50vw;
+        opacity: 0;
+    }
+
+    .star {
+        opacity: 0;
+    }
+
+    .person1__name,
+    .person2__name,
+    .person3__name,
+    .person4__name {
+        font-size: 1.5rem;
+        background-color: var(--accent-color);
+        font-family: "obviously-narrow", "sans-serif";
+        font-weight: 500;
+        padding: 0.5rem;
+        padding-bottom: 0.7rem;
+        position: absolute;
+        display: inline-block;
+        text-transform: uppercase;
+        left: 50vw;
+        top: 30vh;
+        opacity: 1;
+    }
+
+    .person1__name::after,
+    .person3__name::after {
+        content: "";
+        position: absolute;
+        bottom: 2.5rem;
+        width: 0;
+        height: 0;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-bottom: 1rem solid var(--accent-color);
+    }
+
+    .person1__name::after {
+        left: 50%;
+    }
+    .person3__name::after {
+        left: 70%;
+    }
+
+    .person2__name::after,
+    .person4__name::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.8rem;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 1rem solid transparent;
+        border-right: 1rem solid transparent;
+        border-top: 1rem solid var(--accent-color);
+    }
+
+    .person2__name::after {
+        left: 20%;
+    }
+
+    .person4__name::after {
+        left: 70%;
+    }
+
+    .music {
+        position: absolute;
+        top: -12vh;
+        left: 5vw;
+    }
+
+    .party {
+        position: absolute;
+        top: 5vh;
+        left: 12vw;
+    }
+
+    .person1__name {
+        top: 33vh;
+        left: 5vw;
+    }
+
+    .weight {
+        position: absolute;
+        top: 7vh;
+        left: 23vw;
+    }
+
+    .person2__name {
+        top: -8vh;
+        left: 30vw;
+    }
+
+    .littlemagnifyingglass {
+        position: absolute;
+        top: 15vh;
+        left: 50vw;
+    }
+
+    .person3__name {
+        top: 18vh;
+        left: 20vw;
+    }
+
+    .heart1 {
+        position: absolute;
+        top: 35vh;
+        left: 70vw;
+    }
+
+    .heart2 {
+        rotate: -40deg;
+        position: absolute;
+        top: 30vh;
+        left: 85vw;
+    }
+
+    .person4__name {
+        top: 0vh;
+        left: 65vw;
+    }
+
+    .person1, .person2, .person3, .person4 {
+        opacity: 0;
+    }
+</style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/skribbel.js";
 

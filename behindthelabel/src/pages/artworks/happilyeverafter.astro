@@ -75,7 +75,22 @@ import happily from "../../assets/artworks/happily.png";
         </div>
     </div>
 </Layout>
-<style></style>
+<style>
+    .start__subtitle::after {
+        content: "Happily ever after";
+        background-color: var(--secondary-color);
+        display: flex;
+        justify-self: end;
+        width: fit-content;
+        padding: 0.2rem 0.8rem;
+        color: var(--black);
+        border-radius: 3rem;
+        margin-right: 4rem;
+        margin-top: -2rem;
+        rotate: -3deg;
+        font-size: 1.25rem;
+    }
+</style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/happily.js";
 
