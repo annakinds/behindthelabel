@@ -2,6 +2,14 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import plinth from "../../assets/artworks/plinth.png";
+import machine from "../../assets/animations/machine.svg";
+import made from "../../assets/animations/made.svg";
+import star from "../../assets/animations/star.svg";
+import loop1 from "../../assets/animations/loop1.svg";
+import loop2 from "../../assets/animations/loop2.svg";
+import loop3 from "../../assets/animations/loop3.svg";
+import loop4 from "../../assets/animations/loop4.svg";
+import bling from "../../assets/animations/bling.svg";
 ---
 
 <Layout>
@@ -35,9 +43,45 @@ import plinth from "../../assets/artworks/plinth.png";
                 <Image class="image" src={plinth} alt="plinth" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image class="machine" src={machine} alt="machine" />
+                    <p class="vroom1">VRRRRROOOM</p>
+                    <p class="vroom2">VRRRRROOOM</p>
+                    <p class="vroom3">VRRRRROOOM</p>
+                    <Image class="made" src={made} alt="made" />
+                </div>
+                <div class="story__animation2">
+                    <p class="bigquestion">?</p>
+                    <Image class="star" src={star} alt="star" />
+                    <p class="smallquestion-left">?</p>
+                    <p class="smallquestion-right">?</p>
+                    <p class="what">WHAT THE F*CK IS THIS?!?</p>
+                </div>
+                <div class="story__animation3">
+                    <div class="part1">
+                        <Image class="loop1" src={loop1} alt="loop1" />
+                        <Image class="bling1" src={bling} alt="bling" />
+                        <p class="finished1">It is finished!!!!!!!!!!!</p>
+                    </div>
+
+                    <div class="part2">
+                        <Image class="loop2" src={loop2} alt="loop2" />
+                        <Image class="bling2" src={bling} alt="bling" />
+                        <p class="finished2">It is finished!!!!!!!!!!!</p>
+                    </div>
+
+                    <div class="part3">
+                        <Image class="loop3" src={loop3} alt="loop3" />
+                        <Image class="bling3" src={bling} alt="bling" />
+                        <p class="finished3">It is finished!!!!!!!!!!!</p>
+                    </div>
+
+                    <div class="part4">
+                        <Image class="loop4" src={loop4} alt="loop4" />
+                        <Image class="bling4" src={bling} alt="bling" />
+                        <p class="finished4">It is finished!!!!!!!!!!!</p>
+                    </div>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -80,10 +124,218 @@ import plinth from "../../assets/artworks/plinth.png";
         padding: 0.2rem 0.8rem;
         color: var(--black);
         border-radius: 3rem;
-        margin-right: 4rem;
-        margin-top: -2rem;
+        margin-right: 5rem;
+        margin-top: -2.5rem;
         rotate: -3deg;
         font-size: 1.25rem;
+    }
+
+    .image-wrapper {
+        margin-top: 10rem;
+    }
+
+    .machine {
+        position: absolute;
+        top: -20vh;
+        animation: wiggle 1.3s ease-in-out infinite;
+        opacity: 0;
+    }
+
+    @keyframes wiggle {
+        0% {
+            rotate: 0deg;
+        }
+        50% {
+            rotate: -5deg;
+        }
+        100% {
+            rotate: 0deg;
+        }
+    }
+
+    .vroom1,
+    .vroom2,
+    .vroom3,
+    .finished1,
+    .finished2,
+    .finished3,
+    .finished4 {
+        background-color: var(--black);
+        width: fit-content;
+        color: var(--white);
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        padding: 0.8rem;
+        position: absolute;
+        rotate: -10deg;
+    }
+
+    .vroom1 {
+        top: 10vh;
+        left: 50vw;
+        opacity: 0;
+    }
+
+    .vroom2 {
+        top: 16vh;
+        left: 45vw;
+        opacity: 0;
+    }
+
+    .vroom3 {
+        top: 20vh;
+        left: 57vw;
+        opacity: 0;
+    }
+
+    .made {
+        position: absolute;
+        top: 30vh;
+        opacity: 0;
+    }
+
+    .bigquestion {
+        z-index: 11;
+        font-weight: bold;
+        font-size: 8rem;
+        font-family: "obviously", "sans-serif";
+        position: absolute;
+        top: -2vh;
+        left: 39vw;
+        opacity: 0;
+    }
+
+    .star {
+        z-index: 10;
+        scale: 0.7;
+        position: absolute;
+        top: -18vh;
+        opacity: 0;
+    }
+
+    .smallquestion-left,
+    .smallquestion-right {
+        font-weight: bold;
+        font-size: 5rem;
+        font-family: "obviously", "sans-serif";
+        position: absolute;
+        color: var(--accent-color);
+        top: 20vh;
+        opacity: 0;
+    }
+
+    .smallquestion-left {
+        left: 10vw;
+        rotate: -10deg;
+    }
+
+    .smallquestion-right {
+        left: 75vw;
+        rotate: 10deg;
+    }
+
+    .what {
+        background-color: var(--black);
+        color: var(--white);
+        font-size: 1.5rem;
+        width: fit-content;
+        padding: 0.6rem;
+        position: absolute;
+        top: 35vh;
+        left: 10vw;
+        rotate: -5deg;
+        opacity: 0;
+    }
+
+    .loop1 {
+        position: absolute;
+        left: -50vw;
+        top: -25vh;
+        z-index: 10;
+    }
+
+    .bling1 {
+        z-index: 11;
+        position: absolute;
+        top: -5vh;
+        scale: 1.5;
+        rotate: 40deg;
+        left: 30vw;
+    }
+
+    .finished1 {
+        z-index: 12;
+        top: 15vh;
+    }
+
+    .loop2 {
+        position: absolute;
+        top: -20vh;
+        left: 5vw;
+    }
+
+    .bling2 {
+        position: absolute;
+        top: 14vh;
+        z-index: 11;
+        left: 67vw;
+        scale: 1.2;
+        rotate: -5deg;
+    }
+
+    .finished2 {
+        z-index: 12;
+        top: -2vh;
+        right: -15vw;
+        rotate: 10deg;
+    }
+
+    .loop3 {
+        position: absolute;
+        top: 5vh;
+        left: -60vw;
+    }
+
+    .bling3 {
+        position: absolute;
+        top: 30vh;
+        left: 10vw;
+        scale: 1.5;
+    }
+
+    .finished3 {
+        position: absolute;
+        z-index: 12;
+        top: 45vh;
+        rotate: 10deg;
+    }
+
+    .loop4 {
+        position: absolute;
+        left: 18vw;
+        top: 5vh;
+    }
+
+    .bling4 {
+        position: absolute;
+        left: 80vw;
+        top: 40vh;
+        scale: 1.3;
+        rotate: 35deg;
+    }
+
+    .finished4 {
+        z-index: 12;
+        top: 53vh;
+        right: -15vw;
+    }
+
+    .part1,
+    .part2,
+    .part3,
+    .part4 {
+        opacity: 0;
     }
 </style>
 <script>
