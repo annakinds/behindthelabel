@@ -2,6 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import mentie from "../../assets/artworks/mentie.png";
+import trophy from "../../assets/animations/trophy.svg";
+import milan from "../../assets/animations/milaan.svg";
+import liège from "../../assets/animations/liège.svg";
+import paris from "../../assets/animations/paris.svg";
+import disco from "../../assets/animations/disco.svg";
+import yellowstar from "../../assets/animations/yellowstar.svg";
+import glass from "../../assets/animations/glass.svg";
+import star from "../../assets/animations/bling.svg";
+import cyclist from "../../assets/animations/cyclist.svg";
 ---
 
 <Layout>
@@ -25,8 +34,7 @@ import mentie from "../../assets/artworks/mentie.png";
                 </h2>
                 <h2 class="story__subtitle2 top2">Bellegem gets lit for the</h2>
                 <h2 class="story__subtitle2 bottom2">
-                    <span class="bold blue">‘Village of the Tour’</span> ‘Village
-                    of the Tour’
+                    <span class="bold blue">‘Village of the Tour’</span> achievement
                 </h2>
                 <h2 class="story__subtitle3 top3">The cyclist's hometown</h2>
                 <h2 class="story__subtitle3 bottom3">
@@ -40,9 +48,37 @@ import mentie from "../../assets/artworks/mentie.png";
                 <Image class="image" src={mentie} alt="mentie" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image class="trophy" src={trophy} alt="trophy" />
+                    <p class="winner">Winner</p>
+                    <Image class="milan" src={milan} alt="milan" />
+                    <p class="milan__text">Milan</p>
+                    <Image class="liège" src={liège} alt="liège" />
+                    <p class="liège__text">Liège</p>
+                    <Image class="paris" src={paris} alt="paris" />
+                    <p class="paris__text">Paris</p>
+                </div>
+                <div class="story__animation2">
+                    <Image class="disco" src={disco} alt="disco" />
+                    <p class="party1">party party</p>
+                    <p class="party2">party party</p>
+                    <p class="party3">party party</p>
+                    <Image class="star" src={star} alt="star" />
+                    <Image class="glass1" src={glass} alt="glass" />
+                    <Image class="glass2" src={glass} alt="glass" />
+                    <p class="cheers">cheers</p>
+                    <Image
+                        class="yellowstar"
+                        src={yellowstar}
+                        alt="yellowstar"
+                    />
+                </div>
+                <div class="story__animation3">
+                    <Image class="cyclist" src={cyclist} alt="cyclist" />
+                    <p class="vroom1">VROOOOMMMMMMM</p>
+                    <p class="vroom2">VROOOOMMMMMMM</p>
+                    <p class="vroom3">VROOOOMMMMMMM</p>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -84,6 +120,212 @@ import mentie from "../../assets/artworks/mentie.png";
         margin-top: -2rem;
         rotate: -3deg;
         font-size: 1.25rem;
+    }
+
+    .image-wrapper {
+        margin-top: 10rem;
+    }
+
+    .trophy {
+        position: absolute;
+        top: -20vh;
+        opacity: 0;
+    }
+
+    .winner,
+    .party1,
+    .party2,
+    .party3 {
+        background-color: var(--secondary-color);
+        color: var(--white);
+        width: fit-content;
+        font-family: "obviously-narrow", "sans-serif";
+        text-transform: uppercase;
+        font-weight: 500;
+        padding: 0.3rem 0.5rem;
+        padding-bottom: 0.5rem;
+        position: absolute;
+        font-size: 2rem;
+        rotate: 10deg;
+        opacity: 0;
+    }
+
+    .winner {
+        top: 15vh;
+        left: 10vw;
+    }
+
+    .milan {
+        position: absolute;
+        top: 55vh;
+        left: 10vw;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .liège {
+        position: absolute;
+        top: 50vh;
+        left: 40vw;
+        z-index: 9;
+        opacity: 0;
+    }
+
+    .paris {
+        position: absolute;
+        top: 40vh;
+        left: 70vw;
+        z-index: 8;
+        opacity: 0;
+    }
+
+    .milan__text,
+    .liège__text,
+    .paris__text {
+        font-size: 1rem;
+        background-color: var(--accent-color);
+        font-family: "obviously-narrow", "sans-serif";
+        font-weight: 500;
+        padding: 0.3rem;
+        padding-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+        opacity: 0;
+    }
+
+    .milan__text::after,
+    .liège__text::after,
+    .paris__text::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.6rem;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 0.8rem solid transparent;
+        border-right: 0.8rem solid transparent;
+        border-top: 0.8rem solid var(--accent-color);
+    }
+
+    .milan__text {
+        top: 50vh;
+        left: 20vw;
+    }
+
+    .liège__text {
+        top: 45vh;
+        left: 50vw;
+    }
+
+    .paris__text {
+        top: 35vh;
+        left: 50vw;
+    }
+
+    .disco {
+        position: absolute;
+        left: -3vw;
+        opacity: 0;
+    }
+
+    .party1 {
+        top: 20vh;
+        rotate: 0deg;
+        z-index: 10;
+        left: 2vw;
+        font-size: 1.5rem;
+    }
+
+    .party2 {
+        top: 23vh;
+        rotate: 0deg;
+        z-index: 9;
+        left: 7vw;
+        font-size: 1.5rem;
+    }
+
+    .party3 {
+        top: 26vh;
+        rotate: 0deg;
+        z-index: 8;
+        left: 12vw;
+        font-size: 1.5rem;
+    }
+
+    .glass1 {
+        position: absolute;
+        top: 40vh;
+        left: 50vw;
+        opacity: 0;
+    }
+
+    .glass2 {
+        position: absolute;
+        top: 40vh;
+        left: 75vw;
+        transform: scaleX(-1);
+        opacity: 0;
+    }
+
+    .star {
+        position: absolute;
+        top: 38vh;
+        left: 70vw;
+        opacity: 0;
+        z-index: 10;
+    }
+
+    .cheers,
+    .vroom1,
+    .vroom2,
+    .vroom3 {
+        background-color: var(--black);
+        width: fit-content;
+        color: var(--white);
+        font-size: 2rem;
+        text-transform: uppercase;
+        padding: 0.6rem;
+        padding-bottom: 0.7rem;
+        position: absolute;
+        font-weight: 500;
+        font-family: "obviously-narrow", "sans-serif";
+        top: 30vh;
+        left: 60vw;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .yellowstar {
+        position: absolute;
+        top: 25vh;
+        left: 45vw;
+        opacity: 0;
+    }
+
+    .cyclist {
+        position: absolute;
+        top: 20vh;
+        left: 20vw;
+        opacity: 0;
+    }
+
+    .vroom1 {
+        left: 55vw;
+        top: 55vh;
+        font-size: 1.5rem;
+    }
+
+    .vroom2 {
+        left: 50vw;
+        top: 50vh;
+        font-size: 1.5rem;
+    }
+    .vroom3 {
+        left: 45vw;
+        top: 45vh;
+        font-size: 1.5rem;
     }
 </style>
 <script>
