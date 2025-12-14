@@ -12,6 +12,8 @@ import ballerina from "../assets/heroimg/miniballerina.png";
 import star from "../assets/heroimg/star.svg";
 import gsm from "../assets/heroimg/gsm.svg";
 import binoculars from "../assets/heroimg/binoculars.svg";
+import selfie from "../assets/heroimg/selfie.svg";
+import bigstar from "../assets/heroimg/bigstar.svg";
 ---
 
 <Layout>
@@ -145,6 +147,32 @@ import binoculars from "../assets/heroimg/binoculars.svg";
 					>
 				</div>
 			</div>
+			<div class="filter">
+				<!-- filter section -->
+				<p class="filter__word">ORRRRRRRRRR</p>
+				<p class="filter__title">Shake off your labels</p>
+				<div class="filter__example">
+					<Image
+						class="selfie"
+						src={selfie}
+						alt="example of the filter"
+					/>
+					<p class="filter__hastag">#BehindTheLabel</p>
+					<Image class="bigstar" src={bigstar} alt="bigstar" />
+				</div>
+				<p class="filter__text">
+					Shake off your labels! Switch between labels and take a
+					picture with the ones that speak to you. Try out the
+					different labels with our <span class="keyword">filter</span> on
+					instagram or tiktok, see which artwork you <span
+						class="keyword">match</span
+					> with and <span class="keyword">share</span> your results with
+					us.
+				</p>
+				<div class="button-wrapper">
+					<a class="button">Try our filter</a>
+				</div>
+			</div>
 			<div class="where">
 				<div class="eyes">
 					<Image class="eye" src={eye} alt="eye" />
@@ -271,7 +299,8 @@ import binoculars from "../assets/heroimg/binoculars.svg";
 		display: flex;
 		justify-self: center;
 		padding-top: 1.5rem;
-		background: url("../assets/heroimg/triangle.svg") no-repeat center/contain;
+		background: url("../assets/heroimg/triangle.svg") no-repeat
+			center/contain;
 
 		animation: bounceArrow 1.3s ease-in-out infinite;
 	}
@@ -378,7 +407,7 @@ import binoculars from "../assets/heroimg/binoculars.svg";
 
 	.spit__text,
 	.shake__text,
-	.where__text {
+	.where__text, .filter__text {
 		color: var(--white);
 		font-size: 1.25rem;
 		line-height: 150%;
@@ -391,7 +420,67 @@ import binoculars from "../assets/heroimg/binoculars.svg";
 	}
 
 	.shake {
-		margin: 10rem 0;
+		margin-top: 10rem
+	}
+
+	.filter {
+		color: var(--white);
+		margin: 5rem 0rem;
+	}
+
+	.filter__word {
+		font-family: "obviously-narrow", "sans-serif";
+		font-weight: 200;
+		font-size: 3.75rem;
+		margin-left: 0.7rem;
+	}
+
+	.filter__title {
+		font-family: "obviously", "sans-serif";
+		font-weight: bold;
+		font-size: 1.8rem;
+		display: flex;
+		justify-self: center;
+		margin: 3rem 0rem;
+	}
+
+	.filter__example {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto;
+	}
+
+	.selfie {
+		grid-column: 1;
+		grid-row: 1;
+		z-index: 3;
+		margin-left: 1rem;
+		display: flex;
+		align-self: center;
+	}
+
+	.filter__hastag {
+		grid-column: 2;
+		grid-row: 1;
+		background-color: var(--black);
+		padding: 0.5rem;
+		padding-bottom: 0.6rem;
+		font-family: "obviously-narrow", "sans-serif";
+		font-weight: 500;
+		rotate: -10deg;
+		z-index: 3;
+		height: fit-content;
+		width: fit-content;
+		margin-left: 5rem;
+		display: flex;
+		align-self: center;
+	}
+
+	.bigstar {
+		grid-column: 2;
+		grid-row: 1;
+		margin-top: 0rem;
+		margin-left: -15rem;
 	}
 
 	.eyes {

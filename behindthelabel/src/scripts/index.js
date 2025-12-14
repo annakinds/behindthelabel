@@ -91,6 +91,27 @@ const setupScrollAnimations = () => {
         yoyo: true
     });
 
+    //filter 
+    pinAndAnimate({
+        trigger: ".filter",
+        animations: [
+            {
+                target: ".filter__word",
+                vars: {
+                    onUpdate: function () {
+                        const progress = this.progress(); // 0 → 1
+                        const maxR = 10;
+                        const count = Math.round(progress * maxR);
+
+                        this.targets()[0].textContent = "O" + "R".repeat(count + 1);
+                    }
+                }
+            }
+        ],
+        headerOffset,
+        yoyo: true
+    });
+
     //eye
     const eyeAnimations = eyes.map((eye, index) => ({
         target: eye,
