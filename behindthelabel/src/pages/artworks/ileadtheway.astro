@@ -2,6 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ileadtheway from "../../assets/artworks/ileadtheway.png";
+import brush from "../../assets/animations/brush.svg";
+import yellowstar from "../../assets/animations/yellowstarSmall.svg";
+import star from "../../assets/animations/star.svg";
+import bottle from "../../assets/animations/bottle.svg";
+import free from "../../assets/animations/free.svg";
+import bigstar1 from "../../assets/animations/yellowstar.svg";
+import bigstar2 from "../../assets/animations/bigStar.svg";
 ---
 
 <Layout>
@@ -38,9 +45,34 @@ import ileadtheway from "../../assets/artworks/ileadtheway.png";
                 <Image class="image" src={ileadtheway} alt="ileadtheway" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image class="brush" src={brush} alt="brush" />
+                    <Image
+                        class="yellowstar"
+                        src={yellowstar}
+                        alt="yellowstar"
+                    />
+                    <Image class="star" src={star} alt="star" />
+                    <div class="anniversary">
+                        <p class="anniversary1">50th</p>
+                        <p class="anniversary2">anniversary</p>
+                    </div>
+                </div>
+                <div class="story__animation2">
+                    <Image class="bottle" src={bottle} alt="bottle" />
+                    <Image class="star2" src={star} alt="star" />
+                    <p class="pop1">pop</p>
+                    <p class="pop2">pop</p>
+                    <p class="pop3">pop</p>
+                    <p class="pop4">pop</p>
+                </div>
+                <div class="story__animation3">
+                    <Image class="free" src={free} alt="free" />
+                    <Image class="bigstar1" src={bigstar1} alt="bigstar1" />
+                    <Image class="bigstar2" src={bigstar2} alt="bigstar2" />
+                    <p class="break">break free</p>
+                    <p class="fear">let go of fear</p>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -91,6 +123,152 @@ import ileadtheway from "../../assets/artworks/ileadtheway.png";
         margin-top: -2rem;
         rotate: -3deg;
         font-size: 1.25rem;
+    }
+
+    .image-wrapper {
+        margin-top: 10rem;
+    }
+
+    .brush {
+        position: absolute;
+        top: 30vh;
+        right: -30vw;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .yellowstar {
+        position: absolute;
+        top: 20vh;
+        left: 20vw;
+        opacity: 0;
+    }
+
+    .star {
+        scale: 0.5;
+        position: absolute;
+        top: -20vh;
+        right: -25vw;
+        opacity: 0;
+    }
+
+    .anniversary {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-self: end;
+        margin-right: 1.5rem;
+        gap: 0.3rem;
+        text-align: center;
+        font-family: "obviously-narrow", "sans-serif";
+        top: -2vh;
+        opacity: 0;
+    }
+
+    .anniversary > p,
+    .pop1,
+    .pop2,
+    .pop3,
+    .pop4,
+    .break,
+    .fear {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        width: fit-content;
+        background-color: var(--black);
+        color: var(--white);
+        font-weight: 500;
+        padding: 0.6rem;
+        padding-bottom: 0.7rem;
+        text-align: center;
+        opacity: 0;
+    }
+
+    .bottle {
+        position: absolute;
+        top: 40vh;
+        left: 50vw;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .star2 {
+        position: absolute;
+        top: 5vh;
+        left: 5vw;
+        scale: 0.2;
+        opacity: 0;
+    }
+
+    .pop1 {
+        position: absolute;
+        top: 0vh;
+        left: 50vw;
+        rotate: 5deg;
+    }
+
+    .pop2 {
+        position: absolute;
+        top: 5vh;
+        left: 20vw;
+        rotate: -10deg;
+    }
+
+    .pop3 {
+        position: absolute;
+        top: 15vh;
+        left: 10vw;
+        rotate: 5deg;
+    }
+
+    .pop4 {
+        position: absolute;
+        top: 10vh;
+        left: 70vw;
+        rotate: -5deg;
+    }
+
+    .free {
+        position: absolute;
+        top: -2vh;
+        left: 31vw;
+        opacity: 0;
+    }
+
+    .break {
+        position: absolute;
+        top: 20vh;
+        left: 10vw;
+        font-size: 1.5rem;
+        rotate: -10deg;
+        z-index: 10;
+    }
+
+    .fear {
+        position: absolute;
+        top: 30vh;
+        left: 30vw;
+        font-size: 2rem;
+        width: max-content;
+        rotate: 10deg;
+        z-index: 10;
+    }
+
+    .bigstar1 {
+        position: absolute;
+        top: 15vh;
+        rotate: -10deg;
+        scale: .2;
+        opacity: 0;
+    }
+
+    .bigstar2 {
+        position: absolute;
+        top: 20vh;
+        left: 25vw;
+        opacity: 0;
+        scale: .2;
     }
 </style>
 <script>
