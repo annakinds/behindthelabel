@@ -2,6 +2,11 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import happily from "../../assets/artworks/happily.png";
+import sun from "../../assets/animations/sun.svg";
+import thunder from "../../assets/animations/thunder.svg";
+import meter from "../../assets/animations/meter.svg";
+import bigstar from "../../assets/animations/bigstar.svg";
+import eye from "../../assets/animations/eye.svg";
 ---
 
 <Layout>
@@ -39,9 +44,33 @@ import happily from "../../assets/artworks/happily.png";
                 <Image class="image" src={happily} alt="happily" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image class="sun" src={sun} alt="sun" />
+                    <p class="shine1">shinnneeee</p>
+                    <p class="shine2">shinnneeee</p>
+                    <p class="shine3">shinnneeee</p>
+                    <Image class="thunder" src={thunder} alt="thunder" />
+                    <p class="flash1">flassshhhhh</p>
+                    <p class="boom1">boooommmm</p>
+                    <p class="flash2">flassshhhhh</p>
+                    <p class="boom2">boooommmm</p>
+                </div>
+                <div class="story__animation2">
+                    <Image class="meter" src={meter} alt="meter" />
+                    <Image class="bigstar" src={bigstar} alt="bigstar" />
+                    <p class="m">16 meter</p>
+                    <p class="whut1">whuuuuuttttt</p>
+                    <p class="whut2">whuuuuuttttt</p>
+                    <p class="whut3">whuuuuuttttt</p>
+                </div>
+                <div class="story__animation3">
+                    <Image class="eye1" src={eye} alt="eye" />
+                    <Image class="eye2" src={eye} alt="eye" />
+                    <Image class="eye3" src={eye} alt="eye" />
+                    <p class="wauw1">WAUUUWWWWWWWW</p>
+                    <p class="wauw2">WAUUUWWWWWWWW</p>
+                    <p class="wauw3">WAUUUWWWWWWWW</p>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -89,6 +118,167 @@ import happily from "../../assets/artworks/happily.png";
         margin-top: -2rem;
         rotate: -3deg;
         font-size: 1.25rem;
+    }
+
+    .sun {
+        position: absolute;
+        left: -40vw;
+        opacity: 0;
+    }
+
+    .thunder {
+        position: absolute;
+        left: 30vw;
+        top: 0vh;
+        opacity: 0;
+    }
+
+    .shine1,
+    .shine2,
+    .shine3,
+    .flash1,
+    .flash2,
+    .boom1,
+    .boom2,
+    .whut1,
+    .whut2,
+    .whut3,
+    .wauw1,
+    .wauw2,
+    .wauw3 {
+        background-color: var(--black);
+        color: var(--white);
+        width: fit-content;
+        padding: 0.5rem;
+        padding-bottom: 0.6rem;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        rotate: 10deg;
+        position: absolute;
+        font-weight: 500;
+        font-family: "obviously-narrow", "sans-serif";
+        opacity: 0;
+    }
+
+    .shine1 {
+        top: 30vh;
+        right: 5vw;
+    }
+
+    .shine2 {
+        top: 36vh;
+        right: 5vw;
+    }
+
+    .shine3 {
+        top: 42vh;
+        right: 5vw;
+    }
+
+    .flash1 {
+        top: 25vh;
+        left: 5vw;
+    }
+
+    .boom1 {
+        top: 32vh;
+        left: 10vw;
+    }
+
+    .flash2 {
+        top: 39vh;
+        left: 5vw;
+    }
+
+    .boom2 {
+        top: 47vh;
+        left: 10vw;
+    }
+
+    .meter {
+        position: absolute;
+        top: 30vh;
+        left: 60vw;
+        opacity: 0;
+    }
+
+    .bigstar {
+        rotate: -12deg;
+        position: absolute;
+        left: 15vw;
+        opacity: 0;
+    }
+
+    .m {
+        position: absolute;
+        font-family: "obviously", "sans-serif";
+        font-weight: bold;
+        font-size: 1.5rem;
+        top: 10vh;
+        left: 35vw;
+        opacity: 0;
+    }
+
+    .whut1 {
+        top: 30vh;
+        rotate: 0deg;
+        left: 40vw;
+    }
+
+    .whut2 {
+        top: 35vh;
+        rotate: 0deg;
+        left: 45vw;
+    }
+
+    .whut3 {
+        top: 40vh;
+        rotate: 0deg;
+        left: 50vw;
+    }
+
+    .eye1 {
+        position: absolute;
+        top: -5vh;
+        left: 50vw;
+        rotate: 50deg;
+        opacity: 0;
+    }
+
+    .eye2 {
+        position: absolute;
+        top: 5vh;
+        left: -5vw;
+        opacity: 0;
+    }
+
+    .eye3 {
+        position: absolute;
+        top: 30vh;
+        left: 50vw;
+        rotate: 30deg;
+        opacity: 0;
+    }
+
+    .wauw1 {
+        rotate: 0deg;
+        top: 40vh;
+        left: 5vw;
+        z-index: 10;
+    }
+
+    .wauw2 {
+        rotate: 0deg;
+        top: 43vh;
+        left: 10vw;
+        z-index: 9;
+    }
+
+    .wauw3 {
+        rotate: 0deg;
+        top: 46vh;
+        left: 15vw;
+        z-index: 8;
     }
 </style>
 <script>
