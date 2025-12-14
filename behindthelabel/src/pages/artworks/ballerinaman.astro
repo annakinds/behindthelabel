@@ -2,6 +2,14 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ballerinaman from "../../assets/artworks/ballerinaman.png";
+import binoculars from "../../assets/animations/binoculars.svg";
+import eye from "../../assets/animations/eye.svg";
+import cloud from "../../assets/animations/cloud.svg";
+import bling from "../../assets/animations/bling.svg";
+import yellowstar from "../../assets/animations/yellowstar.svg";
+import hammer from "../../assets/animations/hammer.svg";
+import chisel from "../../assets/animations/chisel.svg";
+import bigstar from "../../assets/animations/bigStar.svg";
 ---
 
 <Layout>
@@ -38,9 +46,44 @@ import ballerinaman from "../../assets/artworks/ballerinaman.png";
                 <Image class="image" src={ballerinaman} alt="ballerinaman" />
             </div>
             <div class="story__animations">
-                <div class="story__animation1"></div>
-                <div class="story__animation2"></div>
-                <div class="story__animation3"></div>
+                <div class="story__animation1">
+                    <Image
+                        class="binoculars"
+                        src={binoculars}
+                        alt="binoculars"
+                    />
+                    <p class="watching1">I'm watching you</p>
+                    <p class="watching2">I'm watching you</p>
+                    <p class="watching3">I'm watching you</p>
+                </div>
+                <div class="story__animation2">
+                    <div class="cloud-top">
+                        <Image class="cloud" src={cloud} alt="cloud" />
+                        <Image class="eye" src={eye} alt="eye" />
+                        <Image class="bling" src={bling} alt="bling" />
+                    </div>
+                    <p class="me">me, myself and i</p>
+                    <Image
+                        class="yellowstar"
+                        src={yellowstar}
+                        alt="yellowstar"
+                    />
+                    <div class="cloud-bottom">
+                        <Image class="cloud" src={cloud} alt="cloud" />
+                        <Image class="eye" src={eye} alt="eye" />
+                        <Image class="bling" src={bling} alt="bling" />
+                    </div>
+                </div>
+                <div class="story__animation3">
+                    <Image class="hammer1" src={hammer} alt="hammer" />
+                    <Image class="hammer2" src={hammer} alt="hammer" />
+                    <Image class="chisel1" src={chisel} alt="chisel" />
+                    <Image class="chisel2" src={chisel} alt="chisel" />
+                    <Image class="bigstar1" src={bigstar} alt="bigstar" />
+                    <Image class="bigstar2" src={bigstar} alt="bigstar" />
+                    <p class="bam1">bam</p>
+                    <p class="bam2">bam</p>
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -86,10 +129,150 @@ import ballerinaman from "../../assets/artworks/ballerinaman.png";
         padding: 0.2rem 0.8rem;
         color: var(--black);
         border-radius: 3rem;
-        margin-right: 4rem;
+        margin-right: 2rem;
         margin-top: -2rem;
-        rotate: -3deg;
+        rotate: -2deg;
         font-size: 1.25rem;
+    }
+
+    .binoculars {
+        position: absolute;
+        left: -40vw;
+        top: -10vh;
+        opacity: 0;
+    }
+
+    .watching1,
+    .watching2,
+    .watching3,
+    .me,
+    .bam1,
+    .bam2 {
+        background-color: var(--black);
+        color: var(--white);
+        width: fit-content;
+        padding: 0.5rem;
+        padding-bottom: 0.6rem;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        position: absolute;
+        font-weight: 500;
+        font-family: "obviously-narrow", "sans-serif";
+        opacity: 0;
+    }
+
+    .watching1 {
+        top: 35vh;
+        left: 20vw;
+    }
+
+    .watching2 {
+        top: 40vh;
+        left: 25vw;
+    }
+
+    .watching3 {
+        top: 45vh;
+        left: 18vw;
+    }
+
+    .cloud-top {
+        position: absolute;
+        left: -80vw;
+        top: -5vh;
+    }
+
+    .eye {
+        position: absolute;
+        left: 15vw;
+        rotate: 25deg;
+    }
+
+    .bling {
+        position: absolute;
+        left: 25vw;
+        top: 0vh;
+    }
+
+    .cloud-bottom {
+        position: absolute;
+        transform: scaleX(-1);
+        right: -80vw;
+        top: 40vh;
+    }
+
+    .yellowstar {
+        position: absolute;
+        left: 20vw;
+        top: 20vh;
+        opacity: 0;
+    }
+
+    .me {
+        position: absolute;
+        left: 25vw;
+        top: 25vh;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .hammer1 {
+        position: absolute;
+        left: 40vw;
+        top: -8vh;
+        opacity: 0;
+    }
+
+    .chisel1 {
+        position: absolute;
+        left: 30vw;
+        top: 5vh;
+        scale: 0.8;
+        opacity: 0;
+    }
+
+    .hammer2 {
+        position: absolute;
+        top: 20vh;
+        transform: scale(-1);
+        left: -20vw;
+        opacity: 0;
+    }
+
+    .chisel2 {
+        transform: scale(-1);
+        position: absolute;
+        top: 25vh;
+        left: 45vw;
+        opacity: 0;
+    }
+
+    .bigstar1,
+    .bigstar2 {
+        scale: 0.5;
+        position: absolute;
+        opacity: 0;
+    }
+
+    .bigstar1 {
+        top: -6vh;
+        rotate: -15deg;
+        left: 20vw;
+    }
+
+    .bigstar2 {
+        top: 33vh;
+        left: 12vw;
+    }
+
+    .bam1 {
+        top: 3.5vh;
+        left: 48vw;
+    }
+
+    .bam2 {
+        top: 42vh;
+        left: 40vw;
     }
 </style>
 <script>
