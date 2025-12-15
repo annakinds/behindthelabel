@@ -1,42 +1,44 @@
 ---
-import "leaflet/dist/leaflet.css";
+
 ---
 
 <div id="map"></div>
 
 <script>
+    import "leaflet/dist/leaflet.css";
     import L from "leaflet";
 
     const map = L.map("map").setView([50.8285, 3.264], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "Â© OpenStreetMap",
+        attribution: "© OpenStreetMap",
     }).addTo(map);
 
-    let selectedMarker = 0;
+    let selectedMarker: any = 0;
 
-    function artworkIcon(feature) {
+    // Type toevoegen aan feature parameter
+    const artworkIcon = (feature: any) => {
         const isFeatured = feature.properties.featured;
         const image = feature.properties.image;
 
         return L.divIcon({
             className: "artwork-marker",
             html: `
-      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
-        <img src="${image || "/behindthelabel/public/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
-        <div class="artwork-pin"></div>
-      </div>
-    `,
+                <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
+                    <img src="${image || "/behindthelabel/public/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
+                    <div class="artwork-pin"></div>
+                </div>
+            `,
             iconSize: [220, 160],
             iconAnchor: [110, 160],
         });
-    }
+    };
 
     fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
             L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => {
+                pointToLayer: (feature: any, latlng: any) => {
                     if (feature.properties.image) {
                         return L.marker(latlng, { icon: artworkIcon(feature) });
                     }
@@ -53,35 +55,29 @@ import "leaflet/dist/leaflet.css";
                     return L.marker(latlng, { icon: customIcon });
                 },
 
-                onEachFeature(feature, layer) {
+                onEachFeature: (feature: any, layer: any) => {
                     layer.feature = feature;
                     const coords = feature.geometry.coordinates;
                     const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
 
                     let popup = `
-                     <div class="card">
-                     
-                         <div class="card-place">
-                             ${feature.properties.location || ""}
-                         </div>
-                     
-                         <div class="card-body">
-                     
-                             ${
-                                 feature.properties.image
-                                     ? `<img src="${feature.properties.image}" class="card-image" />`
-                                     : ""
-                             }
-                     
-                             <div class="card-title">${feature.properties.name}</div>
-                     
-                             <a href="${routeUrl}" target="_blank" class="card-button">
-                                 See route
-                             </a>
-                         </div>
-                     
-                     </div>
-                     `;
+                        <div class="card">
+                            <div class="card-place">
+                                ${feature.properties.location || ""}
+                            </div>
+                            <div class="card-body">
+                                ${
+                                    feature.properties.image
+                                        ? `<img src="${feature.properties.image}" class="card-image" />`
+                                        : ""
+                                }
+                                <div class="card-title">${feature.properties.name}</div>
+                                <a href="${routeUrl}" target="_blank" class="card-button">
+                                    See route
+                                </a>
+                            </div>
+                        </div>
+                    `;
 
                     layer.bindPopup(popup);
 
