@@ -16,10 +16,10 @@ export const setupScrollAnimations = () => {
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
             { target: ".bottom1", vars: { x: "-0%", opacity: 1 }, position: 0.1 },
             { target: ".megaphone", vars: { opacity: 1 }, position: 0.2 },
-            { target: ".different4", vars: { opacity: 1 }, position: 0.3 },
-            { target: ".different3", vars: { opacity: 1 }, position: 0.5 },
-            { target: ".different2", vars: { opacity: 1 }, position: 0.7 },
-            { target: ".different1", vars: { opacity: 1 }, position: 0.9 },
+            { target: ".different4", vars: { opacity: 1, duration: 0 }, position: 0.3 },
+            { target: ".different3", vars: { opacity: 1, duration: 0 }, position: 0.5 },
+            { target: ".different2", vars: { opacity: 1, duration: 0 }, position: 0.7 },
+            { target: ".different1", vars: { opacity: 1, duration: 0 }, position: 0.9 },
             {
                 target: ".story__text1",
                 vars: { opacity: 1 },
@@ -48,7 +48,7 @@ export const setupScrollAnimations = () => {
             { target: ".hand2", vars: { opacity: 1 }, position: 2 },
             { target: ".hand1", vars: { left: "5vw", top: "5vh" }, position: 2.5 },
             { target: ".hand2", vars: { left: "30vw", top: "15vh" }, position: 2.5 },
-            { target: ".star", vars: { opacity: 1 }, position: 2.7 },
+            { target: ".star", vars: { opacity: 1, duration: 0 }, position: 2.9 },
             {
                 target: ".story__text2",
                 vars: { opacity: 1 },

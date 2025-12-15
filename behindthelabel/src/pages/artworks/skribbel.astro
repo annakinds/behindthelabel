@@ -152,7 +152,7 @@ import heart from "../../assets/animations/heart.svg";
 
     .different1 {
         font-size: 3.5rem;
-        top: 12vh;
+        top: 13vh;
         left: 1vw;
     }
 
@@ -263,6 +263,7 @@ import heart from "../../assets/animations/heart.svg";
         position: absolute;
         top: -12vh;
         left: 5vw;
+        animation: wiggle 1.3s ease-in-out infinite;
     }
 
     .party {
@@ -280,6 +281,7 @@ import heart from "../../assets/animations/heart.svg";
         position: absolute;
         top: 7vh;
         left: 23vw;
+        animation: wiggle 1.3s ease-in-out infinite;
     }
 
     .person2__name {
@@ -291,6 +293,7 @@ import heart from "../../assets/animations/heart.svg";
         position: absolute;
         top: 15vh;
         left: 50vw;
+        animation: wiggle 1.3s ease-in-out infinite;
     }
 
     .person3__name {
@@ -302,6 +305,7 @@ import heart from "../../assets/animations/heart.svg";
         position: absolute;
         top: 35vh;
         left: 70vw;
+        animation: wiggle 1.3s ease-in-out infinite;
     }
 
     .heart2 {
@@ -309,6 +313,7 @@ import heart from "../../assets/animations/heart.svg";
         position: absolute;
         top: 30vh;
         left: 85vw;
+        animation: wiggle 1.3s ease-in-out infinite;
     }
 
     .person4__name {
@@ -316,8 +321,23 @@ import heart from "../../assets/animations/heart.svg";
         left: 65vw;
     }
 
-    .person1, .person2, .person3, .person4 {
+    .person1,
+    .person2,
+    .person3,
+    .person4 {
         opacity: 0;
+    }
+
+    @keyframes wiggle {
+        0% {
+            rotate: 5deg;
+        }
+        50% {
+            rotate: -5deg;
+        }
+        100% {
+            rotate: 5deg;
+        }
     }
 </style>
 <script>
