@@ -14,6 +14,7 @@ import gsm from "../assets/heroimg/gsm.svg";
 import binoculars from "../assets/heroimg/binoculars.svg";
 import selfie from "../assets/heroimg/selfie.svg";
 import bigstar from "../assets/heroimg/bigstar.svg";
+import wiggle from "../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -23,8 +24,9 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 				Behind the <span class="orangebg">label</span>
 			</h1>
 			<p class="heroimg__text">
-				<span class="yellow">Click</span> the labels away
+				<span class="yellow">Shake</span> the labels away
 			</p>
+			<Image class="wiggle" src={wiggle} alt="wiggle" />
 			<div class="heroimg__quote">
 				<div>
 					<p>Public Art</p>
@@ -35,13 +37,11 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 					<Image class="img" src={star} alt="star icon" />
 					<p>for Gen Z,</p>
 				</div>
-				<p>they're too</p>
+				<p>they're too <span class="bold">real,</span></p>
 				<div>
 					<Image class="img gsm" src={gsm} alt="gsm" />
 					<p>
-						<span class="bold">real</span>, too <span class="bold"
-							>connected</span
-						>
+						too <span class="bold">connected</span>
 					</p>
 				</div>
 				<div>
@@ -163,8 +163,8 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 				<p class="filter__text">
 					Shake off your labels! Switch between labels and take a
 					picture with the ones that speak to you. Try out the
-					different labels with our <span class="keyword">filter</span> on
-					instagram or tiktok, see which artwork you <span
+					different labels with our <span class="keyword">filter</span
+					> on instagram or tiktok, see which artwork you <span
 						class="keyword">match</span
 					> with and <span class="keyword">share</span> your results with
 					us.
@@ -221,6 +221,7 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 		flex-direction: column;
 		align-items: center;
 		padding: 2rem 0;
+		font-family: "obviously", "sans-serif";
 	}
 	.heroimg__title {
 		font-weight: 600;
@@ -243,13 +244,13 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 		padding: 1rem 3rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.6rem;
 	}
 
 	.heroimg__quote > div {
 		display: flex;
 		flex-direction: row;
-		line-height: 120%;
+		line-height: 100%;
+		white-space: nowrap;
 	}
 
 	.lastdiv {
@@ -407,7 +408,8 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 
 	.spit__text,
 	.shake__text,
-	.where__text, .filter__text {
+	.where__text,
+	.filter__text {
 		color: var(--white);
 		font-size: 1.25rem;
 		line-height: 150%;
@@ -420,7 +422,7 @@ import bigstar from "../assets/heroimg/bigstar.svg";
 	}
 
 	.shake {
-		margin-top: 10rem
+		margin-top: 10rem;
 	}
 
 	.filter {
