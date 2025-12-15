@@ -10,20 +10,185 @@ import "leaflet/dist/leaflet.css";
     const map = L.map("map").setView([50.8285, 3.264], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap",
+        attribution: "Â© OpenStreetMap",
     }).addTo(map);
 
-    fetch("/data/KPR+Kortrijk.geojson")
+    let selectedMarker = 0;
+
+    function artworkIcon(feature) {
+        const isFeatured = feature.properties.featured;
+        const image = feature.properties.image;
+
+        return L.divIcon({
+            className: "artwork-marker",
+            html: `
+      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
+        <img src="${image || "/behindthelabel/public/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
+        <div class="artwork-pin"></div>
+      </div>
+    `,
+            iconSize: [220, 160],
+            iconAnchor: [110, 160],
+        });
+    }
+
+    fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
             L.geoJSON(data, {
-                onEachFeature(feature, layer) {
-                    let popup = `<b>${feature.properties.name}</b>`;
-                    if (feature.properties.description) {
-                        popup += `<br><i>${feature.properties.description}</i>`;
+                pointToLayer: (feature, latlng) => {
+                    if (feature.properties.image) {
+                        return L.marker(latlng, { icon: artworkIcon(feature) });
                     }
+
+                    const isFeatured = feature.properties.featured;
+                    const customIcon = L.icon({
+                        iconUrl: isFeatured
+                            ? "/behindthelabel/public/assets/markers/marker__yellow.svg"
+                            : "/behindthelabel/public/assets/markers/marker__gray.svg",
+                        iconSize: isFeatured ? [32, 32] : [24, 24],
+                        iconAnchor: isFeatured ? [16, 32] : [12, 24],
+                        popupAnchor: isFeatured ? [0, -32] : [0, -24],
+                    });
+                    return L.marker(latlng, { icon: customIcon });
+                },
+
+                onEachFeature(feature, layer) {
+                    layer.feature = feature;
+                    const coords = feature.geometry.coordinates;
+                    const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
+
+                    let popup = `
+                     <div class="card">
+                     
+                         <div class="card-place">
+                             ${feature.properties.location || ""}
+                         </div>
+                     
+                         <div class="card-body">
+                     
+                             ${
+                                 feature.properties.image
+                                     ? `<img src="${feature.properties.image}" class="card-image" />`
+                                     : ""
+                             }
+                     
+                             <div class="card-title">${feature.properties.name}</div>
+                     
+                             <a href="${routeUrl}" target="_blank" class="card-button">
+                                 See route
+                             </a>
+                         </div>
+                     
+                     </div>
+                     `;
+
                     layer.bindPopup(popup);
+
+                    layer.on("click", () => {
+                        if (selectedMarker && selectedMarker._iconEl) {
+                            selectedMarker._iconEl.classList.remove(
+                                "is-selected",
+                            );
+                        }
+                        selectedMarker = layer;
+                        if (layer._iconEl) {
+                            layer._iconEl.classList.add("is-selected");
+                        }
+                    });
                 },
             }).addTo(map);
         });
 </script>
+
+<style>
+    :global(.card) {
+        width: 17rem;
+        background: #1b1b1b;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        padding-bottom: 1rem;
+        font-family: Obviously, sans-serif;
+    }
+
+    :global(.card-place) {
+        background: #ff6249;
+        color: white;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 450;
+        padding: 0.7rem 0;
+    }
+
+    :global(.card-body) {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    :global(.card-image) {
+        width: 100%;
+        height: 10rem;
+        object-fit: contain;
+        margin-bottom: 1rem;
+    }
+
+    :global(.card-title) {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 560;
+        margin-bottom: 1rem;
+    }
+
+    :global(.card-button) {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: #d4f75f;
+        border: 2px solid #1b1b1b;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #1b1b1b;
+        text-decoration: none;
+        outline: 5px solid #d4f75f;
+        border-radius: 0.25rem;
+    }
+
+    :global(.leaflet-popup-content-wrapper) {
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0.75rem !important;
+        padding: 0 !important;
+    }
+
+    :global(.leaflet-popup-content) {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    :global(.leaflet-tile) {
+        filter: grayscale(100%) contrast(95%) brightness(95%);
+    }
+
+    :global(.artwork-marker-inner) {
+        position: relative;
+        display: inline-block;
+        transform: translateY(-20px);
+    }
+
+    :global(.artwork-thumb) {
+        width: 100px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    :global(.artwork-pin) {
+        position: absolute;
+        left: 50%;
+        width: 24px;
+        height: 32px;
+        bottom: -10px;
+        transform: translateX(-50%);
+        background: url("/behindthelabel/public/assets/markers/marker__orange.svg")
+            center/contain no-repeat;
+    }
+</style>
