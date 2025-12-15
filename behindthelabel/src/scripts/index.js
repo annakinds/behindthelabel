@@ -36,7 +36,7 @@ const pinAndAnimate = ({
 
 const header = document.querySelector(".header");
 const setupScrollAnimations = () => {
-    const headerOffset = header.offsetHeight - 1;
+    const headerOffset = header ? header.offsetHeight - 1 : 0;
 
     const quotes = gsap.utils.toArray(".subtitle__item");
     const mouths = gsap.utils.toArray(".mouth2");
@@ -141,14 +141,6 @@ const shakeScreen = () => {
     const maskLazy= document.querySelector(".mask-lazy");
     const flapOnline= document.querySelector(".flap-online");
     const maskOnline= document.querySelector(".mask-online");
-    const isnt = document.querySelector(".label-isnt");
-    const distracted = document.querySelector(".label-distracted");
-    const lazy = document.querySelector(".label-lazy")
-    const online = document.querySelector(".label-online")
-
-
-
-
     let hasShaken = false;
     const threshold = 15;
 
@@ -171,7 +163,6 @@ const shakeScreen = () => {
             flapOnline.id = "flap-online";
             maskOnline.id = "label_mask-online";
             hasShaken = true;
-            setupScrollAnimations();
         }
     };
 
@@ -185,11 +176,12 @@ const shakeScreen = () => {
         flapOnline.id = "flap-online";
         maskOnline.id = "label_mask-online";
         hasShaken = true;
-        setupScrollAnimations();
     });
 
     console.log("shake");
     window.addEventListener("devicemotion", handleMotionEvent);
 
 }
-document.addEventListener("DOMContentLoaded", shakeScreen);
+
+shakeScreen();
+setupScrollAnimations();
