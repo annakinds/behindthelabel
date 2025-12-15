@@ -141,6 +141,13 @@ const shakeScreen = () => {
     const maskLazy= document.querySelector(".mask-lazy");
     const flapOnline= document.querySelector(".flap-online");
     const maskOnline= document.querySelector(".mask-online");
+    const isnt = document.querySelector(".label-isnt");
+    const distracted = document.querySelector(".label-distracted");
+    const lazy = document.querySelector(".label-lazy")
+    const online = document.querySelector(".label-online")
+
+
+
 
     let hasShaken = false;
     const threshold = 15;
@@ -157,12 +164,12 @@ const shakeScreen = () => {
         if (totalAcceleration > threshold) {
             flapIsnt.id = "flap-isnt";
             maskIsnt.id = "label_mask-isnt";
-            flapDistracted.id = "flap-isnt";
-            maskDistracted.id = "label_mask-isnt";
-            flapLazy.id = "flap-isnt";
-            maskLazy.id = "label_mask-isnt";
-            flapOnline.id = "flap-isnt";
-            maskOnline.id = "label_mask-isnt";
+            flapDistracted.id = "flap-distracted";
+            maskDistracted.id = "label_mask-distracted";
+            flapLazy.id = "flap-lazy";
+            maskLazy.id = "label_mask-lazy";
+            flapOnline.id = "flap-online";
+            maskOnline.id = "label_mask-online";
             hasShaken = true;
             setupScrollAnimations();
         }
@@ -171,12 +178,12 @@ const shakeScreen = () => {
     heroimg.addEventListener("click", () => {
         flapIsnt.id = "flap-isnt";
         maskIsnt.id = "label_mask-isnt";
-        flapDistracted.id = "flap-isnt";
-        maskDistracted.id = "label_mask-isnt";
-        flapLazy.id = "flap-isnt";
-        maskLazy.id = "label_mask-isnt";
-        flapOnline.id = "flap-isnt";
-        maskOnline.id = "label_mask-isnt";
+        flapDistracted.id = "flap-distracted";
+        maskDistracted.id = "label_mask-distracted";
+        flapLazy.id = "flap-lazy";
+        maskLazy.id = "label_mask-lazy";
+        flapOnline.id = "flap-online";
+        maskOnline.id = "label_mask-online";
         hasShaken = true;
         setupScrollAnimations();
     });
