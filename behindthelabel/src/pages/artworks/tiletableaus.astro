@@ -54,11 +54,15 @@ import Map from "../../components/Map.astro";
                     <Image class="ear" src={ear} alt="mouth" />
                 </div>
                 <div class="story__animation2">
-                    <Image class="stomp" src={stomp} alt="stomp foot" />
+                    <Image class="stomp stomp1" src={stomp} alt="stomp foot" />
                     <Image class="foot1" src={foot} alt="foot" />
+                    <Image class="stomp stomp2" src={stomp} alt="stomp foot" />
                     <Image class="foot2" src={foot} alt="foot" />
+                    <Image class="stomp stomp3" src={stomp} alt="stomp foot" />
                     <Image class="foot3" src={foot} alt="foot" />
+                    <Image class="stomp stomp4" src={stomp} alt="stomp foot" />
                     <Image class="foot4" src={foot} alt="foot" />
+                    <Image class="stomp stomp5" src={stomp} alt="stomp foot" />
                     <Image class="foot5" src={foot} alt="foot" />
                 </div>
                 <div class="story__animation3">
@@ -219,21 +223,48 @@ import Map from "../../components/Map.astro";
         top: 68vw;
     }
 
-    .stomp,
+    .stomp1,
+    .stomp2,
+    .stomp3,
+    .stomp4,
+    .stomp5,
     .foot1,
     .foot2,
     .foot3,
     .foot4,
     .foot5 {
-        opacity: 0;
         position: absolute;
         z-index: 5;
     }
 
-    .stomp {
-        scale: 0.3;
+    .stomp1 {
+        scale: 0;
         z-index: 0;
-        top: 50vw;
+        top: 25vh;
+        left: 30vw;
+    }
+
+    .stomp2 {
+        scale: 0;
+        top: 15vh;
+        left: 1vw;
+    }
+
+    .stomp3 {
+        scale: 0;
+        top: 8vh;
+        left: 30vw;
+    }
+
+    .stomp4 {
+        scale: 0;
+        top: -5vh;
+        left: 1vw;
+    }
+
+    .stomp5 {
+        scale: 0;
+        top: -12vh;
         left: 30vw;
     }
 
@@ -241,29 +272,34 @@ import Map from "../../components/Map.astro";
         rotate: -10deg;
         top: 65vw;
         left: 50vw;
+        opacity: 0;
     }
 
     .foot2 {
         rotate: 10deg;
         top: 45vw;
         left: 20vw;
+        opacity: 0;
     }
 
     .foot3 {
         rotate: 10deg;
         top: 25vw;
         left: 50vw;
+        opacity: 0;
     }
 
     .foot4 {
         top: 5vw;
         left: 20vw;
+        opacity: 0;
     }
 
     .foot5 {
         rotate: -10deg;
         top: -15vw;
         left: 50vw;
+        opacity: 0;
     }
 
     .HC {

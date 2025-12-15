@@ -240,7 +240,7 @@ h2 {
 .image-wrapper {
     position: relative;
     z-index: 2;
-    margin-top: 10rem;
+    margin-top: 3rem;
     grid-column: 1;
     grid-row: 2;
     display: flex;
