@@ -2,6 +2,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 const pinAndAnimate = ({
     trigger,
     endTrigger,
@@ -20,7 +22,7 @@ const pinAndAnimate = ({
             scrub: true,
             pin,
             pinSpacing: false,
-            markers: markers, 
+            markers: markers,
             invalidateOnRefresh: true,
         },
     });
@@ -57,7 +59,7 @@ const setupScrollAnimations = () => {
         trigger: ".mouth1",
         animations: [
             { target: ".mouth1", vars: { x: "10%" } },
-        ],        
+        ],
         headerOffset
     });
     const mouthAnimations = mouths.map((mouth, index) => ({
@@ -73,7 +75,7 @@ const setupScrollAnimations = () => {
     //shakeboards
     pinAndAnimate({
         trigger: ".shake__imgs",
-        animations:[
+        animations: [
             { target: ".shakeboard1", vars: { rotate: "10deg" } },
             { target: ".shakeboard2", vars: { rotate: "10deg", height: "12rem", width: "110%" } },
             { target: ".shakeboard3", vars: { rotate: "10deg", height: "16rem", width: "120%" } },
@@ -86,7 +88,7 @@ const setupScrollAnimations = () => {
             { target: ".shakeboard4", vars: { rotate: "-10deg" } },
             // { target: ".shakeboard5", vars: { rotate: "-10deg" } },
             // { target: ".shakeboard6", vars: { rotate: "-10deg" } },
-        ], 
+        ],
         headerOffset,
         yoyo: true
     });
@@ -116,16 +118,71 @@ const setupScrollAnimations = () => {
     const eyeAnimations = eyes.map((eye, index) => ({
         target: eye,
         vars: { opacity: 1 },
-        position: index === 0 ? 0 : `+=0.3` 
+        position: index === 0 ? 0 : `+=0.3`
 
     }))
 
     pinAndAnimate({
         trigger: ".eyes",
         animations: eyeAnimations,
-        headerOffset, 
+        headerOffset,
     });
 
 };
 
-setupScrollAnimations();
+//heroimage interaction
+const shakeScreen = () => {
+    const heroimg = document.querySelector(".heroimg");
+    const flapIsnt = document.querySelector(".flap-isnt");
+    const maskIsnt = document.querySelector(".mask-isnt");
+    const flapDistracted = document.querySelector(".flap-distracted");
+    const maskDistracted = document.querySelector(".mask-distracted");
+    const flapLazy= document.querySelector(".flap-lazy");
+    const maskLazy= document.querySelector(".mask-lazy");
+    const flapOnline= document.querySelector(".flap-online");
+    const maskOnline= document.querySelector(".mask-online");
+
+    let hasShaken = false;
+    const threshold = 15;
+
+    const handleMotionEvent = (event) => {
+        if (hasShaken) return;
+
+        const x = event.accelerationIncludingGravity.x;
+        const y = event.accelerationIncludingGravity.y;
+        const z = event.accelerationIncludingGravity.z;
+
+        const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
+
+        if (totalAcceleration > threshold) {
+            flapIsnt.id = "flap-isnt";
+            maskIsnt.id = "label_mask-isnt";
+            flapDistracted.id = "flap-isnt";
+            maskDistracted.id = "label_mask-isnt";
+            flapLazy.id = "flap-isnt";
+            maskLazy.id = "label_mask-isnt";
+            flapOnline.id = "flap-isnt";
+            maskOnline.id = "label_mask-isnt";
+            hasShaken = true;
+            setupScrollAnimations();
+        }
+    };
+
+    heroimg.addEventListener("click", () => {
+        flapIsnt.id = "flap-isnt";
+        maskIsnt.id = "label_mask-isnt";
+        flapDistracted.id = "flap-isnt";
+        maskDistracted.id = "label_mask-isnt";
+        flapLazy.id = "flap-isnt";
+        maskLazy.id = "label_mask-isnt";
+        flapOnline.id = "flap-isnt";
+        maskOnline.id = "label_mask-isnt";
+        hasShaken = true;
+        setupScrollAnimations();
+    });
+
+    console.log("shake");
+    window.addEventListener("devicemotion", handleMotionEvent);
+
+}
+document.addEventListener("DOMContentLoaded", shakeScreen);

@@ -12,7 +12,17 @@
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap",
+        className: "grayscale-tiles",
     }).addTo(map);
+
+    // Add CSS for grayscale tiles
+    const style = document.createElement("style");
+    style.textContent = `
+        .grayscale-tiles {
+            filter: grayscale(100%) contrast(95%) brightness(95%);
+        }
+    `;
+    document.head.appendChild(style);
 
     let selectedMarker: any = 0;
 
@@ -158,10 +168,6 @@
     :global(.leaflet-popup-content) {
         margin: 0 !important;
         padding: 0 !important;
-    }
-
-    :global(.leaflet-tile) {
-        filter: grayscale(100%) contrast(95%) brightness(95%);
     }
 
     :global(.artwork-marker-inner) {
