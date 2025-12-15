@@ -247,3 +247,7 @@ h2 {
     justify-self: center;
     align-self: center;
 }
+
+#map {
+    max-height: 50vh;
+}
