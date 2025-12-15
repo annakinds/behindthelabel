@@ -16,10 +16,10 @@ export const setupScrollAnimations = () => {
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
             { target: ".bottom1", vars: { x: "-0%", opacity: 1 }, position: 0.1 },
             { target: ".machine", vars: { opacity: 1 }, position: 0.2 },
-            { target: ".vroom1", vars: { opacity: 1 }, position: 0.5 },
-            { target: ".vroom2", vars: { opacity: 1 }, position: 0.8 },
-            { target: ".vroom3", vars: { opacity: 1 }, position: 1.1 },
-            { target: ".made", vars: { opacity: 1 }, position: 1.5 },
+            { target: ".vroom1", vars: { opacity: 1, duration: 0 }, position: 0.5 },
+            { target: ".vroom2", vars: { opacity: 1, duration: 0 }, position: 0.8 },
+            { target: ".vroom3", vars: { opacity: 1, duration: 0 }, position: 1.1 },
+            { target: ".made", vars: { opacity: 1, duration: 0 }, position: 1.5 },
             {
                 target: ".story__text1",
                 vars: { opacity: 1 },
@@ -42,10 +42,10 @@ export const setupScrollAnimations = () => {
 
             // //chapter 2
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 3.1 },
-            { target: ".smallquestion-left", vars: { opacity: 1 }, position: 3.2 },
-            { target: ".smallquestion-right", vars: { opacity: 1 }, position: 3.5 },
-            { target: ".star", vars: { opacity: 1 }, position: 3.8 },
-            { target: ".bigquestion", vars: { opacity: 1 }, position: 3.8 },
+            { target: ".smallquestion-left", vars: { opacity: 1, duration: 0 }, position: 3.2 },
+            { target: ".smallquestion-right", vars: { opacity: 1, duration: 0 }, position: 3.5 },
+            { target: ".star", vars: { opacity: 1, duration: 0 }, position: 3.8 },
+            { target: ".bigquestion", vars: { opacity: 1, duration: 0 }, position: 3.8 },
             { target: ".what", vars: { opacity: 1 }, position: 4 },
             {
                 target: ".story__text2",
@@ -63,16 +63,16 @@ export const setupScrollAnimations = () => {
             { target: ".star", vars: { opacity: 0 }, position: 5 },
             { target: ".bigquestion", vars: { opacity: 0 }, position: 5 },
             { target: ".what", vars: { opacity: 0 }, position: 5 },
-            { target: ".story__text2", vars: { opacity: 0 }, position: 5},
+            { target: ".story__text2", vars: { opacity: 0 }, position: 5 },
             { target: ".top2", vars: { x: "-100%", opacity: 1 }, position: 5 },
 
             // //chapter 3
             { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 5.1 },
             { target: ".image-wrapper", vars: { opacity: 0 }, position: 5.1 },
-            { target: ".part1", vars: { opacity: 1 }, position: 5.2 },
-            { target: ".part2", vars: { opacity: 1 }, position: 5.5 },
-            { target: ".part3", vars: { opacity: 1 }, position: 5.8 },
-            { target: ".part4", vars: { opacity: 1 }, position: 6.1 },
+            { target: ".part1", vars: { opacity: 1, duration: 0 }, position: 5.3 },
+            { target: ".part2", vars: { opacity: 1, duration: 0 }, position: 5.6 },
+            { target: ".part3", vars: { opacity: 1, duration: 0 }, position: 5.9 },
+            { target: ".part4", vars: { opacity: 1, duration: 0 }, position: 6.2 },
             {
                 target: ".story__text3",
                 vars: { opacity: 1 },
@@ -84,10 +84,10 @@ export const setupScrollAnimations = () => {
                     revealDelay: 0.05,
                 }
             },
-            { target: ".part1", vars: { opacity: 0 }, position: 7 },
-            { target: ".part2", vars: { opacity: 0 }, position: 7 },
-            { target: ".part3", vars: { opacity: 0 }, position: 7 },
-            { target: ".part4", vars: { opacity: 0 }, position: 7 },
+            { target: ".part1", vars: { opacity: 0 }, position: 7.2 },
+            { target: ".part2", vars: { opacity: 0 }, position: 7.2 },
+            { target: ".part3", vars: { opacity: 0 }, position: 7.2 },
+            { target: ".part4", vars: { opacity: 0 }, position: 7.2 },
             { target: ".story__text3", vars: { opacity: 0 }, position: 7.5 },
             { target: ".top3", vars: { x: "-100%", opacity: 1 }, position: 7.6 },
 
