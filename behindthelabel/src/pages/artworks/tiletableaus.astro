@@ -7,12 +7,13 @@ import ear from "../../assets/animations/ear.svg";
 import stomp from "../../assets/animations/stomp.svg";
 import foot from "../../assets/animations/foot.svg";
 import writing from "../../assets/animations/writing.svg";
+import peel from "../../assets/icon/wiggle.svg";
 import Map from "../../components/Map.astro";
 ---
 
 <Layout>
-    <div class="detail">
-        <div class="start">
+    <div class="detail peel-container">
+        <div class="start content">
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Tegeltableaus?
             </h2>
@@ -761,9 +762,13 @@ import Map from "../../components/Map.astro";
                 </div>
             </div>
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
-        <div class="story hidden">
+        <div class="story hidden peel-effect">
             <!-- <div id="scrollHint">⬇ Scroll naar beneden</div> -->
             <div class="story__bg"></div>
             <div class="story__subtitles">
@@ -1283,7 +1288,7 @@ import Map from "../../components/Map.astro";
 
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/tiletableaus.js";
-
+    import { startPeel } from "../../components/Peel.js";
     const start = document.querySelector(".start");
     const story = document.querySelector(".story");
 
@@ -1301,24 +1306,32 @@ import Map from "../../components/Map.astro";
             const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
             if (totalAcceleration > threshold) {
-                story.classList.remove("hidden");
-                start.classList.add("hidden");
-                hasShaken = true;
-                requestAnimationFrame(() => {
-                    setupScrollAnimations();
+                startPeel(() => {
+                    story.classList.remove("hidden");
+                    start.classList.add("hidden");
+                    hasShaken = true;
+                    requestAnimationFrame(() => {
+                        setupScrollAnimations();
+                    });
                 });
             }
         };
 
         start.addEventListener("click", () => {
             if (hasShaken) return;
-            story.classList.remove("hidden");
-            start.classList.add("hidden");
-            hasShaken = true;
-            requestAnimationFrame(() => {
-                setupScrollAnimations();
+
+            startPeel(() => {
+                story.classList.remove("hidden");
+                start.classList.add("hidden");
+
+                hasShaken = true;
+
+                requestAnimationFrame(() => {
+                    setupScrollAnimations();
+                });
             });
         });
+
         console.log("shake");
         window.addEventListener("devicemotion", (event: DeviceMotionEvent) => {
             handleMotionEvent(event);

@@ -12,7 +12,7 @@ export const setupScrollAnimations = () => {
     const text3 = document.querySelector(".story__text3")?.textContent || "";
     pinAndAnimate({
         trigger: ".story",
-        end: "+=20000",
+        end: () => document.body.scrollHeight - window.innerHeight,
         animations: [
             //chapter 1
             { target: ".top1", vars: { x: "0%", opacity: 1 }, position: 0 },
@@ -51,7 +51,7 @@ export const setupScrollAnimations = () => {
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 1.8 },
             { target: ".bottom2", vars: { x: "-0%", opacity: 1 }, position: 1.8 },
             { target: ".stomp1", vars: { scale: .6, opacity: 1, duration: 0 }, position: 1.9 },
-            { target: ".foot1", vars: { opacity: 1, duration:0 }, position: 1.9 },
+            { target: ".foot1", vars: { opacity: 1, duration: 0 }, position: 1.9 },
             { target: ".stomp1", vars: { opacity: 0, duration: 0 }, position: 2.2 },
             { target: ".stomp2", vars: { scale: .6, opacity: 1, duration: 0 }, position: 2.2 },
             { target: ".foot2", vars: { opacity: 1, duration: 0 }, position: 2.2 },
@@ -127,4 +127,5 @@ export const setupScrollAnimations = () => {
         ],
         pin: ".story",
     });
+    ScrollTrigger.refresh();
 };

@@ -24,8 +24,8 @@ export const pinAndAnimate = ({ trigger, end, animations, pin }) => {
             tl.to(target, vars, position);
         }
     });
-
-    console.log("pin animate");
+    ScrollTrigger.refresh();
+    ScrollTrigger.update();
     return tl;
 };
 
