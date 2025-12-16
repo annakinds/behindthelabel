@@ -768,7 +768,7 @@ import Map from "../../components/Map.astro";
                 <Image class="sticker-wrapper" src={peel} alt="peel" />
             </div>
         </div>
-        <div class="story hidden peel-effect">
+        <div class="story peel-effect">
             <!-- <div id="scrollHint">⬇ Scroll naar beneden</div> -->
             <div class="story__bg"></div>
             <div class="story__subtitles">
@@ -1307,8 +1307,8 @@ import Map from "../../components/Map.astro";
 
             if (totalAcceleration > threshold) {
                 startPeel(() => {
-                    story.classList.remove("hidden");
-                    start.classList.add("hidden");
+                    // story.classList.remove("hidden");
+                    // start.classList.add("hidden");
                     hasShaken = true;
                     requestAnimationFrame(() => {
                         setupScrollAnimations();
@@ -1321,8 +1321,8 @@ import Map from "../../components/Map.astro";
             if (hasShaken) return;
 
             startPeel(() => {
-                story.classList.remove("hidden");
-                start.classList.add("hidden");
+                // story.classList.remove("hidden");
+                // start.classList.add("hidden");
 
                 hasShaken = true;
 

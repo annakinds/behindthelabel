@@ -6,8 +6,8 @@ export const startPeel = (onComplete) => {
     const triangleFill = peelContainer.querySelector(".triangle-fill");
     const cornerPeel = peelContainer.querySelector(".corner-peel");
 
-    gsap.set(peelEffect, {
-        clipPath: "polygon(80% 85%, 100% 85%, 100% 100%, 80% 100%)"
+    gsap.set('.start.content', {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
     });
 
     const tl = gsap.timeline({
@@ -23,8 +23,8 @@ export const startPeel = (onComplete) => {
         ease: "power2.out"
     }, 0);
 
-    tl.to(peelEffect, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    tl.to('.start.content', {
+        clipPath: "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
         duration: 1,
         ease: "power2.out"
     }, 0);
