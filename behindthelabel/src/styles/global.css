@@ -82,6 +82,26 @@ h2 {
     height: 90vh;
 }
 
+.start__image {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content;
+}
+
+.start__img,
+.start__labels {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 100vw;
+}
+
+.start__labels {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+
 .start__subtitle {
     color: var(--white);
     font-size: 1.5rem;
