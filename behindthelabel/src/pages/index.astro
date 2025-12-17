@@ -800,7 +800,7 @@ import wiggle from "../assets/icon/wiggle.svg";
 				</div>
 			</div>
 			<div class="button-wrapper">
-				<a class="button" href="/behindthelabel/artworks/tiletableaus"
+				<a class="button" href="/behindthelabel/overview"
 					>Discover the artworks</a
 				>
 			</div>
@@ -889,7 +889,7 @@ import wiggle from "../assets/icon/wiggle.svg";
 					> behind the artworks.
 				</p>
 				<div class="button-wrapper">
-					<a href="../pages/artworks/overview" class="button"
+					<a href="/behindthelabel/overview" class="button"
 						>Shake off those labels</a
 					>
 				</div>
@@ -1218,7 +1218,7 @@ import wiggle from "../assets/icon/wiggle.svg";
 
 	.label-distracted {
 		position: absolute;
-		top: 34vh;
+		top: 32vh;
 		left: -120vw;
 		rotate: 3deg;
 	}
@@ -1270,10 +1270,8 @@ import wiggle from "../assets/icon/wiggle.svg";
 	}
 
 	.lastDiv {
-		margin-top:-.8rem;
+		margin-top: -0.8rem;
 	}
-
-
 
 	@keyframes wiggle {
 		0% {
@@ -1512,5 +1510,9 @@ import wiggle from "../assets/icon/wiggle.svg";
 		font-weight: 600;
 		color: var(--white);
 		margin: 1rem;
+	}
+
+	.button-wrapper {
+		z-index: 99;
 	}
 </style>
