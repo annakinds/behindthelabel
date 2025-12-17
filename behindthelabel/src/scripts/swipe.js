@@ -29,8 +29,6 @@ const showArtwork = () => {
     });
 
     artworkArray[current].style.opacity = 1;
-    console.log(artworkArray[current]);
-
 };
 
 const nextArtwork = () => {

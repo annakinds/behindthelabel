@@ -33,7 +33,6 @@ export const shakeScreen = () => {
         // setupScrollAnimations();
     });
 
-    console.log("shake");
     window.addEventListener("devicemotion", handleMotionEvent);
 
 }

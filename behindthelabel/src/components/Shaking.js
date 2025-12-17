@@ -1,5 +1,3 @@
-console.log("Script loaded");
-
 export const shakeScreen = () => {
     const start = document.querySelector(".start");
     const story = document.querySelector(".story");

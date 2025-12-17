@@ -177,8 +177,6 @@ const shakeScreen = () => {
         maskOnline.id = "label_mask-online";
         hasShaken = true;
     });
-
-    console.log("shake");
     window.addEventListener("devicemotion", handleMotionEvent);
 
 }
