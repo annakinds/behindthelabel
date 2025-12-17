@@ -27,7 +27,7 @@ import Tile from "../../components/artworks/Tile.astro";
             </div>
         </div>
         <div class="story hidden">
-            <!-- <div id="scrollHint">⬇ Scroll naar beneden</div> -->
+            <div id="scrollHint">⬇ Scroll naar beneden</div>
             <div class="story__bg"></div>
             <div class="story__subtitles">
                 <h2 class="story__subtitle1 top1">These artworks tell</h2>
@@ -111,6 +111,9 @@ import Tile from "../../components/artworks/Tile.astro";
             </div> -->
         </div>
     </div>
+    <script>
+        import "../../scripts/scroll.js";
+    </script>
 </Layout>
 <style>
     #scrollHint {
@@ -123,6 +126,8 @@ import Tile from "../../components/artworks/Tile.astro";
         font-size: 16px;
         animation: bounce 1.5s infinite;
         transition: opacity 0.3s ease;
+        color: var(--white);
+        z-index: 99;
     }
 
     #scrollHint.visible {

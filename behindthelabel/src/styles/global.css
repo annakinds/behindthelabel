@@ -321,9 +321,37 @@ h2 {
 .home,
 .overviewPage,
 .detail {
-    max-width: 410px;
+    max-width: 411px;
     margin: 0 auto;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+}
+
+#scrollHint {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    font-size: 16px;
+    animation: bounce 1.5s infinite;
+    transition: opacity 0.3s ease;
+}
+
+#scrollHint.visible {
+    opacity: 1;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -10px);
+    }
 }
