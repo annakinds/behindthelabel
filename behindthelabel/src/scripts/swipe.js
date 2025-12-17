@@ -95,7 +95,7 @@ const endDrag = (e) => {
                 window.location.href = cardEl.dataset.url;
             } else {
                 // swipe left = pass
-                showArtwork();
+                nextArtwork();
             }
         }, 300);
     } else {
