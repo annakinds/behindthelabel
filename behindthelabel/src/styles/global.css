@@ -10,6 +10,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    padding-top: 2.8rem;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -79,7 +80,7 @@ h2 {
     align-items: center;
     height: auto;
     position: relative;
-    height: 90vh;
+    height: 100vh;
 }
 
 .start.content {
@@ -130,13 +131,13 @@ h2 {
 
 .story {
     position: relative;
-    margin-top: 1rem;
+    padding-top: 4.8rem;
     grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: min-content 30% 2fr;
-    height: 90vh;
+    height: 80vh;
 }
 
 .story__subtitles {
