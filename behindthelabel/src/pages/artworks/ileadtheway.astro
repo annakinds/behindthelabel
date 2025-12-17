@@ -10,6 +10,7 @@ import bottle from "../../assets/animations/bottle.svg";
 import free from "../../assets/animations/free.svg";
 import bigstar1 from "../../assets/animations/yellowstar.svg";
 import bigstar2 from "../../assets/animations/bigStar.svg";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -18,9 +19,13 @@ import bigstar2 from "../../assets/animations/bigStar.svg";
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Ik leid de weg?
             </h2>
-            <Leid/>
+            <Leid />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>

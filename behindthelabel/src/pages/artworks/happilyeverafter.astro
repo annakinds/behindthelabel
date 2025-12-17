@@ -8,6 +8,7 @@ import thunder from "../../assets/animations/thunder.svg";
 import meter from "../../assets/animations/meter.svg";
 import bigstar from "../../assets/animations/bigStar.svg";
 import eye from "../../assets/animations/eye.svg";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -18,7 +19,11 @@ import eye from "../../assets/animations/eye.svg";
             </h2>
             <Happily />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>

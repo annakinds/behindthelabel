@@ -11,6 +11,7 @@ import loop2 from "../../assets/animations/loop2.svg";
 import loop3 from "../../assets/animations/loop3.svg";
 import loop4 from "../../assets/animations/loop4.svg";
 import bling from "../../assets/animations/bling.svg";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -19,9 +20,13 @@ import bling from "../../assets/animations/bling.svg";
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Untitled?
             </h2>
-           <Untitled/>
+            <Untitled />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>
@@ -338,7 +343,6 @@ import bling from "../../assets/animations/bling.svg";
     .part4 {
         opacity: 0;
     }
-
 </style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/plinth.js";

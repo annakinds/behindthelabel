@@ -13,12 +13,12 @@ import Tile from "../../components/artworks/Tile.astro";
 ---
 
 <Layout>
-    <div class="detail peel-container">
-        <div class="start content">
+    <div class="detail">
+        <div class="start">
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Tegeltableaus?
             </h2>
-            <Tile/>
+            <Tile />
             <p class="start__text">Shake the labels off</p>
             <div class="corner-peel">
                 <div class="triangle-mask"></div>
@@ -26,7 +26,7 @@ import Tile from "../../components/artworks/Tile.astro";
                 <Image class="sticker-wrapper" src={peel} alt="peel" />
             </div>
         </div>
-        <div class="story peel-effect">
+        <div class="story hidden">
             <!-- <div id="scrollHint">⬇ Scroll naar beneden</div> -->
             <div class="story__bg"></div>
             <div class="story__subtitles">
@@ -106,9 +106,9 @@ import Tile from "../../components/artworks/Tile.astro";
                     > in Aalbeke.
                 </p>
             </div>
-            <div class="map">
+            <!-- <div class="map">
                 <Map />
-            </div>
+            </div> -->
         </div>
     </div>
 </Layout>
@@ -412,7 +412,6 @@ import Tile from "../../components/artworks/Tile.astro";
 
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/tiletableaus.js";
-    import { startPeel } from "../../components/Peel.js";
     const start = document.querySelector(".start");
     const story = document.querySelector(".story");
 
@@ -430,13 +429,11 @@ import Tile from "../../components/artworks/Tile.astro";
             const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
             if (totalAcceleration > threshold) {
-                startPeel(() => {
-                    // story.classList.remove("hidden");
-                    // start.classList.add("hidden");
-                    hasShaken = true;
-                    requestAnimationFrame(() => {
-                        setupScrollAnimations();
-                    });
+                story.classList.remove("hidden");
+                start.classList.add("hidden");
+                hasShaken = true;
+                requestAnimationFrame(() => {
+                    setupScrollAnimations();
                 });
             }
         };
@@ -444,15 +441,13 @@ import Tile from "../../components/artworks/Tile.astro";
         start.addEventListener("click", () => {
             if (hasShaken) return;
 
-            startPeel(() => {
-                // story.classList.remove("hidden");
-                // start.classList.add("hidden");
+            story.classList.remove("hidden");
+            start.classList.add("hidden");
 
-                hasShaken = true;
+            hasShaken = true;
 
-                requestAnimationFrame(() => {
-                    setupScrollAnimations();
-                });
+            requestAnimationFrame(() => {
+                setupScrollAnimations();
             });
         });
 

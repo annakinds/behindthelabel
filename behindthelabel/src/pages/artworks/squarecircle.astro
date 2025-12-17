@@ -8,6 +8,7 @@ import rectangle from "../../assets/animations/rectangle.svg";
 import circle from "../../assets/animations/circle.svg";
 import window from "../../assets/animations/window.svg";
 import Square from "../../components/artworks/Square.astro";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -16,9 +17,13 @@ import Square from "../../components/artworks/Square.astro";
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Cirkel & Vierkant?
             </h2>
-            <Square/>
+            <Square />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>

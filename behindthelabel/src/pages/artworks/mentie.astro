@@ -12,6 +12,7 @@ import yellowstar from "../../assets/animations/yellowstar.svg";
 import glass from "../../assets/animations/glass.svg";
 import star from "../../assets/animations/bling.svg";
 import cyclist from "../../assets/animations/cyclist.svg";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -20,9 +21,13 @@ import cyclist from "../../assets/animations/cyclist.svg";
             <h2 class="start__subtitle">
                 What is hiding behind the labels of Mentie?
             </h2>
-            <Mentieb/>
+            <Mentieb />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>
@@ -328,8 +333,6 @@ import cyclist from "../../assets/animations/cyclist.svg";
         top: 45vh;
         font-size: 1.5rem;
     }
-
-   
 </style>
 <script>
     import { setupScrollAnimations } from "../../scripts/artworks/mentie.js";

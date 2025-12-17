@@ -12,6 +12,7 @@ import weight from "../../assets/animations/weight.svg";
 import littlemagnifyingglass from "../../assets/animations/littlemagnifyingglass.svg";
 import heart from "../../assets/animations/heart.svg";
 import Skribbels from "../../components/artworks/Skribbels.astro";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -22,7 +23,11 @@ import Skribbels from "../../components/artworks/Skribbels.astro";
             </h2>
             <Skribbels />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>

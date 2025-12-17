@@ -61,8 +61,7 @@ h2 {
 }
 
 .hidden {
-    visibility: hidden;
-    opacity: 0;
+    display: none !important;
 }
 
 .detail {
@@ -137,6 +136,7 @@ h2 {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: min-content 30% 2fr;
+    height: 90vh;
 }
 
 .story__subtitles {
@@ -318,11 +318,12 @@ h2 {
 }
 
 
-.home, .overviewPage, .detail {
-    max-width: 400px;
+.home,
+.overviewPage,
+.detail {
+    max-width: 410px;
     margin: 0 auto;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
-

@@ -11,6 +11,7 @@ import yellowstar from "../../assets/animations/yellowstar.svg";
 import hammer from "../../assets/animations/hammer.svg";
 import chisel from "../../assets/animations/chisel.svg";
 import bigstar from "../../assets/animations/bigStar.svg";
+import peel from "../../assets/icon/wiggle.svg";
 ---
 
 <Layout>
@@ -21,7 +22,11 @@ import bigstar from "../../assets/animations/bigStar.svg";
             </h2>
             <Ballerina />
             <p class="start__text">Shake the labels off</p>
-            <div class="corner-square"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+                <Image class="sticker-wrapper" src={peel} alt="peel" />
+            </div>
         </div>
         <div class="story hidden">
             <div class="story__bg"></div>
@@ -110,9 +115,9 @@ import bigstar from "../../assets/animations/bigStar.svg";
                     It’s typical for <span class="bold">Stephan Balkenhol</span> to
                     let the sculpture speak for itself, rather than bending it to
                     a specific message or meaning. He’s a classic sculptor, working
-                    wood with <span class="bold">chisel and hammer</span>. But he also
-                    experiments with bronze, and you can see the same kind of
-                    texture in the metal as in his wooden pieces.
+                    wood with <span class="bold">chisel and hammer</span>. But
+                    he also experiments with bronze, and you can see the same
+                    kind of texture in the metal as in his wooden pieces.
                 </p>
             </div>
         </div>
