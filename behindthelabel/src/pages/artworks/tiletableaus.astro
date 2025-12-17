@@ -788,7 +788,7 @@ import Map from "../../components/Map.astro";
                     Where to see <span class="bold blue">Tegel Tableaus</span>?
                 </h2>
             </div>
-            <div class="image-wrapper">
+            <!-- <div class="image-wrapper">
                 <Image class="image" src={tile} alt="tegeltableaus" />
             </div>
             <div class="story__animations">
@@ -847,7 +847,7 @@ import Map from "../../components/Map.astro";
                         class="bold">boarding school</span
                     > in Aalbeke.
                 </p>
-            </div>
+            </div> -->
             <div class="map">
                 <Map />
             </div>
@@ -1143,9 +1143,9 @@ import Map from "../../components/Map.astro";
         opacity: 0;
     }
 
-    .map {
+    /* .map {
         margin-top: 10rem;
-    }
+    } */
 
     .start__image {
         position: relative;
@@ -1306,30 +1306,30 @@ import Map from "../../components/Map.astro";
             const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
 
             if (totalAcceleration > threshold) {
-                startPeel(() => {
-                    // story.classList.remove("hidden");
-                    // start.classList.add("hidden");
-                    hasShaken = true;
-                    requestAnimationFrame(() => {
-                        setupScrollAnimations();
-                    });
-                });
+                //startPeel(() => {
+                // story.classList.remove("hidden");
+                // start.classList.add("hidden");
+                //hasShaken = true;
+                //requestAnimationFrame(() => {
+                //    setupScrollAnimations();
+                //});
+                //});
             }
         };
 
         start.addEventListener("click", () => {
             if (hasShaken) return;
 
-            startPeel(() => {
-                // story.classList.remove("hidden");
-                // start.classList.add("hidden");
+            //startPeel(() => {
+            // story.classList.remove("hidden");
+            start.classList.add("hidden");
 
-                hasShaken = true;
+            //hasShaken = true;
 
-                requestAnimationFrame(() => {
-                    setupScrollAnimations();
-                });
-            });
+            //requestAnimationFrame(() => {
+            //    setupScrollAnimations();
+            //});
+            //});
         });
 
         console.log("shake");
