@@ -319,9 +319,10 @@ h2 {
 
 
 .home, .overviewPage, .detail {
-    max-width: 390px;
+    max-width: 400px;
     margin: 0 auto;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
 }
 
