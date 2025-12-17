@@ -19,6 +19,8 @@ import Mentieb from "../components/artworks/Mentieb.astro";
 import Leid from "../components/artworks/Leid.astro";
 import Happily from "../components/artworks/Happily.astro";
 import Ballerina from "../components/artworks/Ballerina.astro";
+import eye from "../assets/heroimg/eye.svg";
+import Map from "../components/Map.astro";
 ---
 
 <Layout>
@@ -209,10 +211,39 @@ import Ballerina from "../components/artworks/Ballerina.astro";
 					</div>
 				</div>
 			</div>
+			<div class="where">
+				<div class="eyes">
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+					<Image class="eye" src={eye} alt="eye" />
+				</div>
+				<h2 class="where__subtitle">Where to find them?</h2>
+			</div>
+			<div class="map">
+				<Map />
+			</div>
 		</section>
 	</div>
 	<script>
 		import "../scripts/swipe.js";
+	</script>
+	<script>
+		import "../scripts/overview.js";
 	</script>
 </Layout>
 
@@ -234,7 +265,7 @@ import Ballerina from "../components/artworks/Ballerina.astro";
 	.orange {
 		background-color: var(--secondary-color);
 		padding: 0rem 0.5rem;
-		padding-bottom: .3rem;
+		padding-bottom: 0.3rem;
 		font-style: italic;
 	}
 
@@ -491,5 +522,26 @@ import Ballerina from "../components/artworks/Ballerina.astro";
 		font-weight: 400;
 		padding: 1rem 0rem;
 		line-height: 150%;
+	}
+
+	.eyes {
+		margin-top: 15rem;
+	}
+
+	.eye {
+		display: flex;
+		justify-self: center;
+		margin-top: -10rem;
+		opacity: 0;
+		transition:
+			opacity 0.4s ease,
+			transform 0.4s ease;
+	}
+
+	.where__subtitle {
+		font-size: 1.875rem;
+		font-weight: 600;
+		color: var(--white);
+		margin: 3rem 1rem;
 	}
 </style>
