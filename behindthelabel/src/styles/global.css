@@ -316,3 +316,12 @@ h2 {
     clip-path: polygon(0% 100%, 0% 100%, 0% 0%);
     transform: rotate(-90deg);
 }
+
+
+.home, .overviewPage, .detail {
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
