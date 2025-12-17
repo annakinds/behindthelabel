@@ -48,7 +48,7 @@ export const setupScrollAnimations = () => {
             { target: ".top1", vars: { x: "-100%", opacity: 1 }, position: 3 },
             { target: ".bottom1", vars: { x: "100%", opacity: 1 }, position: 3 },
 
-            // //chapter 2
+            //chapter 2
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 3.1 },
             { target: ".bottom2", vars: { x: "-0%", opacity: 1 }, position: 3.1 },
             { target: ".meter", vars: { opacity: 1 }, position: 3.2},
@@ -79,7 +79,7 @@ export const setupScrollAnimations = () => {
             { target: ".top2", vars: { x: "-100%", opacity: 1 }, position: 4.7 },
             { target: ".bottom2", vars: { x: "100%", opacity: 1 }, position: 4.7 },
 
-            // //chapter 3
+            //chapter 3
             { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 4.8 },
             { target: ".bottom3", vars: { x: "-0%", opacity: 1 }, position: 4.8 },
             { target: ".eye1", vars: { opacity: 1 }, position: 4.9 },
@@ -109,7 +109,7 @@ export const setupScrollAnimations = () => {
             { target: ".top3", vars: { x: "-100%", opacity: 1 }, position: 7.2 },
             { target: ".bottom3", vars: { x: "100%", opacity: 1 }, position: 7.2 },
 
-            // //map
+            //map
             { target: ".top4", vars: { x: "0%", opacity: 1 }, position: 7.3 },
             { target: ".image-wrapper", vars: { opacity: 0 }, position: 7.3 },
             { target: ".map", vars: { opacity: 1 }, position: 7.3 },

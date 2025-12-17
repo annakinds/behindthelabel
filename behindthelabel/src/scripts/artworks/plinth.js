@@ -40,7 +40,7 @@ export const setupScrollAnimations = () => {
             { target: ".top1", vars: { x: "-100%", opacity: 1 }, position: 3 },
             { target: ".bottom1", vars: { x: "100%", opacity: 1 }, position: 3 },
 
-            // //chapter 2
+            //chapter 2
             { target: ".top2", vars: { x: "0%", opacity: 1 }, position: 3.1 },
             { target: ".smallquestion-left", vars: { opacity: 1, duration: 0 }, position: 3.2 },
             { target: ".smallquestion-right", vars: { opacity: 1, duration: 0 }, position: 3.5 },
@@ -66,7 +66,7 @@ export const setupScrollAnimations = () => {
             { target: ".story__text2", vars: { opacity: 0 }, position: 5 },
             { target: ".top2", vars: { x: "-100%", opacity: 1 }, position: 5 },
 
-            // //chapter 3
+            //chapter 3
             { target: ".top3", vars: { x: "0%", opacity: 1 }, position: 5.1 },
             { target: ".image-wrapper", vars: { opacity: 0 }, position: 5.1 },
             { target: ".part1", vars: { opacity: 1, duration: 0 }, position: 5.3 },
@@ -91,7 +91,7 @@ export const setupScrollAnimations = () => {
             { target: ".story__text3", vars: { opacity: 0 }, position: 7.5 },
             { target: ".top3", vars: { x: "-100%", opacity: 1 }, position: 7.6 },
 
-            // //map
+            //map
             { target: ".top4", vars: { x: "0%", opacity: 1 }, position: 8 },
             { target: ".image-wrapper", vars: { opacity: 0 }, position: 8 },
             { target: ".map", vars: { opacity: 1 }, position: 8 },
