@@ -24,6 +24,22 @@ import "leaflet/dist/leaflet.css";
 
     let selectedMarker: any = null;
 
+    function slugify(input: any) {
+        return String(input || "")
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, "-")
+            .replace(/[^\w-]/g, "");
+    }
+
+    function computeSlug(feature: any) {
+        return (
+            feature.properties.slug ||
+            feature.properties.id ||
+            (feature.properties.link ? slugify(feature.properties.link) : "")
+        );
+    }
+
     function artworkIcon(feature: any, isSelected = false) {
         const isFeatured = feature.properties.featured;
         const image = feature.properties.image;
@@ -36,9 +52,9 @@ import "leaflet/dist/leaflet.css";
             <div class="artwork-pin"></div>
           </div>
         `,
-            iconSize: [120, 120], // closer to real content box
-            iconAnchor: [60, 120], // bottom middle = pin tip
-            popupAnchor: [0, -120], // popup above pin
+            iconSize: [120, 120],
+            iconAnchor: [60, 120],
+            popupAnchor: [0, -120],
         });
     }
 
@@ -48,11 +64,27 @@ import "leaflet/dist/leaflet.css";
         layer.setIcon(newIcon);
     }
 
+    // read target slug from the current URL if present: /.../artworks/:slug
+    function getTargetSlugFromPath() {
+        const parts = window.location.pathname
+            .replace(/\/$/, "")
+            .split("/")
+            .filter(Boolean);
+        const idx = parts.indexOf("artworks");
+        if (idx !== -1 && parts.length > idx + 1) {
+            return decodeURIComponent(parts[idx + 1]);
+        }
+        return null;
+    }
+
+    const targetSlug = getTargetSlugFromPath();
+
     fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
-            L.geoJSON(data, {
-                pointToLayer: (feature: any, latlng: any) => {
+            // add geoJSON and keep a reference to the layer group
+            const geo = L.geoJSON(data, {
+                pointToLayer: (feature, latlng) => {
                     if (feature.properties.image) {
                         return L.marker(latlng, { icon: artworkIcon(feature) });
                     }
@@ -69,28 +101,23 @@ import "leaflet/dist/leaflet.css";
                     return L.marker(latlng, { icon: customIcon });
                 },
 
-                // ...existing code...
                 onEachFeature(feature: any, layer: any) {
                     layer.feature = feature;
                     const coords = feature.geometry.coordinates;
                     const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
 
-                    const slug =
-                        feature.properties.slug ||
-                        feature.properties.id ||
-                        (feature.properties.link
-                            ? feature.properties.link
-                                  .toLowerCase()
-                                  .replace(/\s+/g, "-")
-                                  .replace(/[^\w-]/g, "")
-                            : "");
+                    const slug = computeSlug(feature);
                     const detailUrl = slug
                         ? `/behindthelabel/artworks/${encodeURIComponent(slug)}`
                         : null;
-                    const detailsLink = detailUrl
-                        ? `<a href="${detailUrl}" class="card-button" style="margin-left:0.5rem;" title="Open detail page">Details</a>`
-                        : "";
 
+                    // hide "Details" when we're already on that artwork's detail page
+                    let detailsLink = "";
+                    if (!(targetSlug && slug && targetSlug === slug)) {
+                        detailsLink = detailUrl
+                            ? `<a href="${detailUrl}" class="card-button" style="margin-left:0.5rem;" title="Open detail page">Details</a>`
+                            : "";
+                    }
                     const popupHtml = `
         <div class="card">
             <div class="card-place">
@@ -103,15 +130,17 @@ import "leaflet/dist/leaflet.css";
                         : ""
                 }
                 <div class="card-title">${feature.properties.name}</div>
-                <a href="${routeUrl}" target="_blank" class="card-button">
+                <div class="buttons">
+                <a href="${routeUrl}" target="_blank" class="card-button route-button">
                     See route
                 </a>
-+               ${detailsLink}
+                ${detailsLink}
+                </div>
             </div>
         </div>
     `;
+
                     const popupOptions = {
-                        // offset: L.point(-40, 80),
                         closeButton: true,
                         autoPan: true,
                     };
@@ -127,6 +156,35 @@ import "leaflet/dist/leaflet.css";
                     });
                 },
             }).addTo(map);
+
+            // If we are on a detail page for an artwork, open its popup
+            if (targetSlug) {
+                let opened = false;
+                geo.eachLayer((layer: any) => {
+                    if (!layer.feature) return;
+                    const slug = computeSlug(layer.feature);
+                    if (slug && slug === targetSlug) {
+                        layer.openPopup();
+                        if (selectedMarker)
+                            updateMarkerIcon(selectedMarker, false);
+                        selectedMarker = layer;
+                        updateMarkerIcon(selectedMarker, true);
+
+                        if (layer.getLatLng) {
+                            map.setView(
+                                layer.getLatLng(),
+                                Math.max(map.getZoom(), 15),
+                                { animate: true },
+                            );
+                        }
+                        opened = true;
+                    }
+                });
+
+                if (!opened) {
+                    console.info("No matching artwork for slug", targetSlug);
+                }
+            }
         });
 </script>
 
@@ -163,7 +221,7 @@ import "leaflet/dist/leaflet.css";
 
     :global(.card-title) {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 560;
         margin-bottom: 1rem;
     }
@@ -176,9 +234,10 @@ import "leaflet/dist/leaflet.css";
         font-size: 1rem;
         font-weight: 500;
         color: #1b1b1b;
-        text-decoration: none;
+        text-decoration: none !important;
         outline: 5px solid #d4f75f;
         border-radius: 0.25rem;
+        margin: 0.5rem;
     }
 
     :global(.leaflet-popup-content-wrapper) {
@@ -228,5 +287,13 @@ import "leaflet/dist/leaflet.css";
 
     :global(.leaflet-popup-tip) {
         background-color: #1b1b1b;
+    }
+
+    :global(.route-button) {
+        background-color: #1b1b1b;
+        border: 2px solid #d4f75f;
+        outline: none;
+        border-radius: 0;
+        color: #1b1b1b;
     }
 </style>
