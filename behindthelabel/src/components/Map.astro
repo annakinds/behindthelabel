@@ -1,18 +1,16 @@
 ---
-
+import "leaflet/dist/leaflet.css";
 ---
 
 <div id="map"></div>
 
 <script>
-    import "leaflet/dist/leaflet.css";
     import L from "leaflet";
 
     const map = L.map("map").setView([50.8285, 3.264], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap",
-        className: "grayscale-tiles",
     }).addTo(map);
 
     // Add CSS for grayscale tiles
@@ -24,31 +22,69 @@
     `;
     document.head.appendChild(style);
 
-    let selectedMarker: any = 0;
+    let selectedMarker: any = null;
 
-    // Type toevoegen aan feature parameter
-    const artworkIcon = (feature: any) => {
+    function slugify(input: any) {
+        return String(input || "")
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, "-")
+            .replace(/[^\w-]/g, "");
+    }
+
+    function computeSlug(feature: any) {
+        return (
+            feature.properties.slug ||
+            feature.properties.id ||
+            (feature.properties.link ? slugify(feature.properties.link) : "")
+        );
+    }
+
+    function artworkIcon(feature: any, isSelected = false) {
         const isFeatured = feature.properties.featured;
         const image = feature.properties.image;
 
         return L.divIcon({
             className: "artwork-marker",
             html: `
-                <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
-                    <img src="${image || "/behindthelabel/public/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
-                    <div class="artwork-pin"></div>
-                </div>
-            `,
-            iconSize: [220, 160],
-            iconAnchor: [110, 160],
+          <div class="artwork-marker-inner ${isFeatured ? "featured" : ""} ${isSelected ? "is-selected" : ""}">
+            <img src="${image || "/behindthelabel/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
+            <div class="artwork-pin"></div>
+          </div>
+        `,
+            iconSize: [120, 120],
+            iconAnchor: [60, 120],
+            popupAnchor: [0, -120],
         });
-    };
+    }
+
+    function updateMarkerIcon(layer: any, isSelected: any) {
+        const feature = layer.feature;
+        const newIcon = artworkIcon(feature, isSelected);
+        layer.setIcon(newIcon);
+    }
+
+    // read target slug from the current URL if present: /.../artworks/:slug
+    function getTargetSlugFromPath() {
+        const parts = window.location.pathname
+            .replace(/\/$/, "")
+            .split("/")
+            .filter(Boolean);
+        const idx = parts.indexOf("artworks");
+        if (idx !== -1 && parts.length > idx + 1) {
+            return decodeURIComponent(parts[idx + 1]);
+        }
+        return null;
+    }
+
+    const targetSlug = getTargetSlugFromPath();
 
     fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
-            L.geoJSON(data, {
-                pointToLayer: (feature: any, latlng: any) => {
+            // add geoJSON and keep a reference to the layer group
+            const geo = L.geoJSON(data, {
+                pointToLayer: (feature, latlng) => {
                     if (feature.properties.image) {
                         return L.marker(latlng, { icon: artworkIcon(feature) });
                     }
@@ -65,51 +101,96 @@
                     return L.marker(latlng, { icon: customIcon });
                 },
 
-                onEachFeature: (feature: any, layer: any) => {
+                onEachFeature(feature: any, layer: any) {
                     layer.feature = feature;
                     const coords = feature.geometry.coordinates;
                     const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
 
-                    let popup = `
-                        <div class="card">
-                            <div class="card-place">
-                                ${feature.properties.location || ""}
-                            </div>
-                            <div class="card-body">
-                                ${
-                                    feature.properties.image
-                                        ? `<img src="${feature.properties.image}" class="card-image" />`
-                                        : ""
-                                }
-                                <div class="card-title">${feature.properties.name}</div>
-                                <a href="${routeUrl}" target="_blank" class="card-button">
-                                    See route
-                                </a>
-                            </div>
-                        </div>
-                    `;
+                    const slug = computeSlug(feature);
+                    const detailUrl = slug
+                        ? `/behindthelabel/artworks/${encodeURIComponent(slug)}`
+                        : null;
 
-                    layer.bindPopup(popup);
+                    // hide "Details" when we're already on that artwork's detail page
+                    let detailsLink = "";
+                    if (!(targetSlug && slug && targetSlug === slug)) {
+                        detailsLink = detailUrl
+                            ? `<a href="${detailUrl}" class="card-button" style="margin-left:0.5rem;" title="Open detail page">See story</a>`
+                            : "";
+                    }
+                    const popupHtml = `
+        <div class="card">
+            <div class="card-place">
+                ${feature.properties.location || ""}
+            </div>
+            <div class="card-body">
+                ${
+                    feature.properties.image
+                        ? `<img src="${feature.properties.image}" class="card-image" />`
+                        : ""
+                }
+                <div class="card-title">${feature.properties.name}</div>
+                <div class="buttons">
+                <a href="${routeUrl}" target="_blank" class="card-button route-button">
+                    See route
+                </a>
+                ${detailsLink}
+                </div>
+            </div>
+        </div>
+    `;
+
+                    const popupOptions = {
+                        closeButton: true,
+                        autoPan: true,
+                    };
+
+                    layer.bindPopup(popupHtml, popupOptions);
 
                     layer.on("click", () => {
-                        if (selectedMarker && selectedMarker._iconEl) {
-                            selectedMarker._iconEl.classList.remove(
-                                "is-selected",
-                            );
+                        if (selectedMarker) {
+                            updateMarkerIcon(selectedMarker, false);
                         }
                         selectedMarker = layer;
-                        if (layer._iconEl) {
-                            layer._iconEl.classList.add("is-selected");
-                        }
+                        updateMarkerIcon(selectedMarker, true);
                     });
                 },
             }).addTo(map);
+
+            // If we are on a detail page for an artwork, open its popup
+            if (targetSlug) {
+                let opened = false;
+                geo.eachLayer((layer: any) => {
+                    if (!layer.feature) return;
+                    const slug = computeSlug(layer.feature);
+                    if (slug && slug === targetSlug) {
+                        layer.openPopup();
+                        if (selectedMarker)
+                            updateMarkerIcon(selectedMarker, false);
+                        selectedMarker = layer;
+                        updateMarkerIcon(selectedMarker, true);
+
+                        if (layer.getLatLng) {
+                            map.setView(
+                                layer.getLatLng(),
+                                Math.max(map.getZoom(), 15),
+                                { animate: true },
+                            );
+                        }
+                        opened = true;
+                    }
+                });
+
+                if (!opened) {
+                    console.info("No matching artwork for slug", targetSlug);
+                }
+            }
         });
 </script>
 
 <style>
     :global(.card) {
-        width: 17rem;
+        width: 11rem;
         background: #1b1b1b;
         border-radius: 0.75rem;
         overflow: hidden;
@@ -121,7 +202,7 @@
         background: #ff6249;
         color: white;
         text-align: center;
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 450;
         padding: 0.7rem 0;
     }
@@ -133,54 +214,59 @@
 
     :global(.card-image) {
         width: 100%;
-        height: 10rem;
+        height: 6rem;
         object-fit: contain;
         margin-bottom: 1rem;
     }
 
     :global(.card-title) {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 560;
         margin-bottom: 1rem;
     }
 
     :global(.card-button) {
         display: inline-block;
-        padding: 0.5rem 1.5rem;
+        padding: 0.4rem 1rem;
         background: #d4f75f;
         border: 2px solid #1b1b1b;
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 500;
         color: #1b1b1b;
-        text-decoration: none;
+        text-decoration: none !important;
         outline: 5px solid #d4f75f;
         border-radius: 0.25rem;
+        margin: 0.5rem;
     }
 
     :global(.leaflet-popup-content-wrapper) {
-        background: transparent !important;
-        box-shadow: none !important;
-        border-radius: 0.75rem !important;
-        padding: 0 !important;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0.75rem;
+        padding: 0;
     }
 
     :global(.leaflet-popup-content) {
-        margin: 0 !important;
-        padding: 0 !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    :global(.leaflet-tile) {
+        filter: grayscale(100%) contrast(95%) brightness(95%);
     }
 
     :global(.artwork-marker-inner) {
         position: relative;
         display: inline-block;
-        transform: translateY(-20px);
     }
 
     :global(.artwork-thumb) {
-        width: 100px;
-        height: 80px;
+        width: 90px;
+        height: 70px;
         object-fit: cover;
         border-radius: 0.5rem;
+        margin-bottom: 20px;
     }
 
     :global(.artwork-pin) {
@@ -190,7 +276,24 @@
         height: 32px;
         bottom: -10px;
         transform: translateX(-50%);
+        background: url("/behindthelabel/assets/markers/marker__yellow.svg")
+            center/contain no-repeat;
+    }
+
+    :global(.artwork-marker-inner.is-selected .artwork-pin) {
         background: url("/behindthelabel/assets/markers/marker__orange.svg")
             center/contain no-repeat;
+    }
+
+    :global(.leaflet-popup-tip) {
+        background-color: #1b1b1b;
+    }
+
+    :global(.route-button) {
+        background-color: #1b1b1b;
+        border: 2px solid #d4f75f;
+        outline: none;
+        border-radius: 0;
+        color: #1b1b1b;
     }
 </style>

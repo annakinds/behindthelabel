@@ -84,6 +84,9 @@ import Tile from "../../components/artworks/Tile.astro";
                     <p class="titleHC4">De metsiers</p>
                     <Image class="writing" src={writing} alt="writing hand" />
                 </div>
+                <div class="map">
+                    <Map />
+                </div>
             </div>
             <div class="story__texts">
                 <p class="story__text1">
@@ -109,9 +112,6 @@ import Tile from "../../components/artworks/Tile.astro";
                     > in Aalbeke.
                 </p>
             </div>
-            <!-- <div class="map">
-                <Map />
-            </div> -->
         </div>
     </div>
     <script>
@@ -119,6 +119,11 @@ import Tile from "../../components/artworks/Tile.astro";
     </script>
 </Layout>
 <style>
+    .map {
+        opacity: 0;
+        position: relative;
+        top: -20vh;
+    }
     @keyframes bounce {
         0%,
         100% {
