@@ -8,6 +8,7 @@ import stomp from "../../assets/animations/stomp.svg";
 import foot from "../../assets/animations/foot.svg";
 import writing from "../../assets/animations/writing.svg";
 import peel from "../../assets/icon/wiggle.svg";
+import scroll from "../../assets/icon/scroll.svg";
 import Map from "../../components/Map.astro";
 import Tile from "../../components/artworks/Tile.astro";
 ---
@@ -27,7 +28,9 @@ import Tile from "../../components/artworks/Tile.astro";
             </div>
         </div>
         <div class="story hidden">
-            <div id="scrollHint">⬇ Scroll naar beneden</div>
+            <div id="scrollHint">
+                <Image class="scroll" src={scroll} alt="scroll" />
+            </div>
             <div class="story__bg"></div>
             <div class="story__subtitles">
                 <h2 class="story__subtitle1 top1">These artworks tell</h2>
@@ -116,24 +119,6 @@ import Tile from "../../components/artworks/Tile.astro";
     </script>
 </Layout>
 <style>
-    #scrollHint {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        pointer-events: none;
-        font-size: 16px;
-        animation: bounce 1.5s infinite;
-        transition: opacity 0.3s ease;
-        color: var(--white);
-        z-index: 99;
-    }
-
-    #scrollHint.visible {
-        opacity: 1;
-    }
-
     @keyframes bounce {
         0%,
         100% {

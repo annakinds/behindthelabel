@@ -330,7 +330,7 @@ h2 {
 
 #scrollHint {
     position: fixed;
-    bottom: 24px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -338,6 +338,16 @@ h2 {
     font-size: 16px;
     animation: bounce 1.5s infinite;
     transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.scroll {
+    width: 5rem;
+    height: 5rem;
+    display: block;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 #scrollHint.visible {

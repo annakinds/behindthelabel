@@ -12,6 +12,7 @@ import loop3 from "../../assets/animations/loop3.svg";
 import loop4 from "../../assets/animations/loop4.svg";
 import bling from "../../assets/animations/bling.svg";
 import peel from "../../assets/icon/wiggle.svg";
+import scroll from "../../assets/icon/scroll.svg";
 ---
 
 <Layout>
@@ -29,6 +30,9 @@ import peel from "../../assets/icon/wiggle.svg";
             </div>
         </div>
         <div class="story hidden">
+            <div id="scrollHint">
+                <Image class="scroll" src={scroll} alt="scroll" />
+            </div>
             <div class="story__bg"></div>
             <div class="story__subtitles">
                 <h2 class="story__subtitle1 top1">This artwork is made</h2>
@@ -119,6 +123,9 @@ import peel from "../../assets/icon/wiggle.svg";
             </div>
         </div>
     </div>
+    <script>
+        import "../../scripts/scroll.js";
+    </script>
 </Layout>
 <style>
     .start__subtitle::after {

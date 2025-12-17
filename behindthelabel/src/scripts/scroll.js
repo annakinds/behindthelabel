@@ -1,23 +1,31 @@
-console.log("scroll");
-let inactivityTimer;
-const delay = 3000; // 3 seconden
-const hint = document.getElementById('scrollHint');
+document.addEventListener('DOMContentLoaded', () => {
+    const hint = document.getElementById('scrollHint');
+    if (!hint) return;
 
-function resetTimer() {
-    clearTimeout(inactivityTimer);
-    hint.classList.remove('visible');
+    const INACTIVITY_DELAY = 3000;
+    let inactivityTimer = null;
 
-    inactivityTimer = setTimeout(() => {
-        if (window.scrollY === 0) {
+    const showHint = () => {
+        if (window.scrollY < 10) {
             hint.classList.add('visible');
         }
-    }, delay);
-}
+    }
 
-// Interacties detecteren
-['scroll', 'touchstart', 'touchmove', 'click'].forEach(event => {
-    window.addEventListener(event, resetTimer, { passive: true });
+    const hideHint = () => {
+        hint.classList.remove('visible');
+    }
+
+    const resetTimer = () => {
+        hideHint();
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(showHint, INACTIVITY_DELAY);
+    }
+
+    window.addEventListener('scroll', resetTimer, { passive: true });
+    window.addEventListener('touchstart', resetTimer, { passive: true });
+    window.addEventListener('touchmove', resetTimer, { passive: true });
+    window.addEventListener('wheel', resetTimer, { passive: true });
+    window.addEventListener('click', resetTimer);
+
+    resetTimer();
 });
-
-// Start meteen
-resetTimer();
