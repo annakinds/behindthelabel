@@ -14,12 +14,14 @@ const urls = [
     "/behindthelabel/artworks/plinth",
 ];
 
+
+
 artworkArray.forEach((el, i) => {
     el.style.opacity = 0;
     el.dataset.url = urls[i];
 });
 
-let current = 0;
+let current = Math.floor(Math.random() * artworkArray.length);
 
 const showArtwork = () => {
     artworkArray.forEach(a => {
@@ -27,20 +29,24 @@ const showArtwork = () => {
         a.style.transform = "";
     });
 
-    current = Math.floor(Math.random() * artworkArray.length);
     artworkArray[current].style.opacity = 1;
-}
+};
+
+const nextArtwork = () => {
+    current = (current + 1) % artworkArray.length;
+    showArtwork();
+};
 
 showArtwork();
 
+
 smashBtn.addEventListener("click", () => {
-    const url = artworkArray[current].dataset.url;
-    window.location.href = url;
+    window.location.href = artworkArray[current].dataset.url;
+
 });
 
-passBtn.addEventListener("click", () => {
-    showArtwork();
-});
+passBtn.addEventListener("click", nextArtwork);
+
 
 let isDragging = false;
 let startX = 0;
