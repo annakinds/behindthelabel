@@ -15,7 +15,6 @@ const urls = [
 ];
 
 
-
 artworkArray.forEach((el, i) => {
     el.style.opacity = 0;
     el.dataset.url = urls[i];
@@ -30,6 +29,8 @@ const showArtwork = () => {
     });
 
     artworkArray[current].style.opacity = 1;
+    console.log(artworkArray[current]);
+
 };
 
 const nextArtwork = () => {
@@ -42,8 +43,9 @@ showArtwork();
 
 smashBtn.addEventListener("click", () => {
     window.location.href = artworkArray[current].dataset.url;
-
+    
 });
+
 
 passBtn.addEventListener("click", nextArtwork);
 
