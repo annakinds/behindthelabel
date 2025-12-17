@@ -7,133 +7,123 @@ import "leaflet/dist/leaflet.css";
 <script>
     import L from "leaflet";
 
-    const map = L.map("map", {
-        center: [50.8285, 3.264],
-        zoom: 13,
-        zoomControl: true,
-        touchZoom: true,
-        scrollWheelZoom: true,
-        doubleClickZoom: true,
-        boxZoom: false,
-        keyboard: true,
-        dragging: true,
-        tapTolerance: 15,
-        trackResize: true,
-        worldCopyJump: false,
-        closePopupOnClick: true,
-        zoomSnap: 1,
-        zoomDelta: 1,
-    });
+    const initMap = () => {
+        const map = L.map("map").setView([50.8285, 3.264], 13);
 
-    // Add CSS for grayscale tiles
-    const style = document.createElement("style");
-    style.textContent = `
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "© OpenStreetMap",
+        }).addTo(map);
+
+        // Add CSS for grayscale tiles
+        const style = document.createElement("style");
+        style.textContent = `
         .grayscale-tiles {
             filter: grayscale(100%) contrast(95%) brightness(95%);
         }
-        #map {
-            touch-action: none;
-        }
     `;
-    document.head.appendChild(style);
+        document.head.appendChild(style);
 
-    let selectedMarker: any = null;
+        let selectedMarker: any = null;
 
-    function slugify(input: any) {
-        return String(input || "")
-            .toLowerCase()
-            .trim()
-            .replace(/\s+/g, "-")
-            .replace(/[^\w-]/g, "");
-    }
+        function slugify(input: any) {
+            return String(input || "")
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, "-")
+                .replace(/[^\w-]/g, "");
+        }
 
-    function computeSlug(feature: any) {
-        return (
-            feature.properties.slug ||
-            feature.properties.id ||
-            (feature.properties.link ? slugify(feature.properties.link) : "")
-        );
-    }
+        function computeSlug(feature: any) {
+            return (
+                feature.properties.slug ||
+                feature.properties.id ||
+                (feature.properties.link
+                    ? slugify(feature.properties.link)
+                    : "")
+            );
+        }
 
-    function artworkIcon(feature: any, isSelected = false) {
-        const isFeatured = feature.properties.featured;
-        const image = feature.properties.image;
+        function artworkIcon(feature: any, isSelected = false) {
+            const isFeatured = feature.properties.featured;
+            const image = feature.properties.image;
 
-        return L.divIcon({
-            className: "artwork-marker",
-            html: `
+            return L.divIcon({
+                className: "artwork-marker",
+                html: `
           <div class="artwork-marker-inner ${isFeatured ? "featured" : ""} ${isSelected ? "is-selected" : ""}">
             <img src="${image || "/behindthelabel/assets/markers/marker__gray.svg"}" class="artwork-thumb" />
             <div class="artwork-pin"></div>
           </div>
         `,
-            iconSize: [80, 80],
-            iconAnchor: [40, 80],
-            popupAnchor: [0, -80],
-        });
-    }
-
-    function updateMarkerIcon(layer: any, isSelected: any) {
-        const feature = layer.feature;
-        const newIcon = artworkIcon(feature, isSelected);
-        layer.setIcon(newIcon);
-    }
-
-    // read target slug from the current URL if present: /.../artworks/:slug
-    function getTargetSlugFromPath() {
-        const parts = window.location.pathname
-            .replace(/\/$/, "")
-            .split("/")
-            .filter(Boolean);
-        const idx = parts.indexOf("artworks");
-        if (idx !== -1 && parts.length > idx + 1) {
-            return decodeURIComponent(parts[idx + 1]);
+                iconSize: [120, 120],
+                iconAnchor: [60, 120],
+                popupAnchor: [0, -30],
+            });
         }
-        return null;
-    }
 
-    const targetSlug = getTargetSlugFromPath();
+        function updateMarkerIcon(layer: any, isSelected: any) {
+            const feature = layer.feature;
+            const newIcon = artworkIcon(feature, isSelected);
+            layer.setIcon(newIcon);
+        }
 
-    fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
-        .then((r) => r.json())
-        .then((data) => {
-            // Create geoJSON layer directly (without clustering for compatibility)
-            const geo = L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => {
-                    if (feature.properties.image) {
-                        return L.marker(latlng, { icon: artworkIcon(feature) });
-                    }
+        // read target slug from the current URL if present: /.../artworks/:slug
+        function getTargetSlugFromPath() {
+            const parts = window.location.pathname
+                .replace(/\/$/, "")
+                .split("/")
+                .filter(Boolean);
+            const idx = parts.indexOf("artworks");
+            if (idx !== -1 && parts.length > idx + 1) {
+                return decodeURIComponent(parts[idx + 1]);
+            }
+            return null;
+        }
 
-                    const isFeatured = feature.properties.featured;
-                    const customIcon = L.icon({
-                        iconUrl: isFeatured
-                            ? "/behindthelabel/assets/markers/marker__yellow.svg"
-                            : "/behindthelabel/assets/markers/marker__gray.svg",
-                        iconSize: isFeatured ? [24, 24] : [18, 18],
-                        iconAnchor: isFeatured ? [12, 24] : [9, 18],
-                        popupAnchor: isFeatured ? [0, -24] : [0, -18],
-                    });
-                    return L.marker(latlng, { icon: customIcon });
-                },
+        const targetSlug = getTargetSlugFromPath();
 
-                onEachFeature(feature: any, layer: any) {
-                    layer.feature = feature;
-                    const coords = feature.geometry.coordinates;
-                    const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
+        fetch("/behindthelabel/data/KPR+Kortrijk.geojson")
+            .then((r) => r.json())
+            .then((data) => {
+                // add geoJSON and keep a reference to the layer group
+                const geo = L.geoJSON(data, {
+                    pointToLayer: (feature, latlng) => {
+                        if (feature.properties.image) {
+                            return L.marker(latlng, {
+                                icon: artworkIcon(feature),
+                            });
+                        }
 
-                    const slug = computeSlug(feature);
-                    const detailUrl = slug
-                        ? `/behindthelabel/artworks/${encodeURIComponent(slug)}`
-                        : null;
+                        const isFeatured = feature.properties.featured;
+                        const customIcon = L.icon({
+                            iconUrl: isFeatured
+                                ? "/behindthelabel/assets/markers/marker__yellow.svg"
+                                : "/behindthelabel/assets/markers/marker__gray.svg",
+                            iconSize: isFeatured ? [32, 32] : [24, 24],
+                            iconAnchor: isFeatured ? [16, 32] : [12, 24],
+                            popupAnchor: isFeatured ? [0, -32] : [0, -24],
+                        });
+                        return L.marker(latlng, { icon: customIcon });
+                    },
 
-                    // hide "Details" when we're already on that artwork's detail page
-                    let detailsLink = "";
-                    if (!(targetSlug && slug && targetSlug === slug)) {
-                        detailsLink = detailUrl
-                            ? `<a href="${detailUrl}" class="card-button" style="margin-left:0.5rem;" title="Open detail page">See story</a>`
-                            : "";
-                    }
-                    const popupHtml = `
+                    onEachFeature(feature: any, layer: any) {
+                        layer.feature = feature;
+                        const coords = feature.geometry.coordinates;
+                        const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
+
+                        const slug = computeSlug(feature);
+                        const detailUrl = slug
+                            ? `/behindthelabel/artworks/${encodeURIComponent(slug)}`
+                            : null;
+
+                        // hide "Details" when we're already on that artwork's detail page
+                        let detailsLink = "";
+                        if (!(targetSlug && slug && targetSlug === slug)) {
+                            detailsLink = detailUrl
+                                ? `<a href="${detailUrl}" class="card-button" style="margin-left:0.5rem;" title="Open detail page">See story</a>`
+                                : "";
+                        }
+                        const popupHtml = `
         <div class="card">
             <div class="card-place">
                 ${feature.properties.location || ""}
@@ -155,55 +145,72 @@ import "leaflet/dist/leaflet.css";
         </div>
     `;
 
-                    const popupOptions = {
-                        closeButton: true,
-                        autoPan: true,
-                    };
+                        const popupOptions = {
+                            closeButton: true,
+                            autoPan: true,
+                        };
 
-                    layer.bindPopup(popupHtml, popupOptions);
+                        layer.bindPopup(popupHtml, popupOptions);
 
-                    layer.on("click", () => {
-                        if (selectedMarker) {
-                            updateMarkerIcon(selectedMarker, false);
+                        layer.on("click", () => {
+                            if (selectedMarker) {
+                                updateMarkerIcon(selectedMarker, false);
+                            }
+                            selectedMarker = layer;
+                            updateMarkerIcon(selectedMarker, true);
+                        });
+                    },
+                }).addTo(map);
+
+                // If we are on a detail page for an artwork, open its popup
+                if (targetSlug) {
+                    let opened = false;
+                    geo.eachLayer((layer: any) => {
+                        if (!layer.feature) return;
+                        const slug = computeSlug(layer.feature);
+                        if (slug && slug === targetSlug) {
+                            layer.openPopup();
+                            if (selectedMarker)
+                                updateMarkerIcon(selectedMarker, false);
+                            selectedMarker = layer;
+                            updateMarkerIcon(selectedMarker, true);
+
+                            if (layer.getLatLng) {
+                                map.setView(
+                                    layer.getLatLng(),
+                                    Math.max(map.getZoom(), 1),
+                                    { animate: true },
+                                );
+                            }
+                            opened = true;
                         }
-                        selectedMarker = layer;
-                        updateMarkerIcon(selectedMarker, true);
                     });
-                },
-            });
 
-            // Add geo layer directly to map
-            map.addLayer(geo);
-
-            // If we are on a detail page for an artwork, open its popup
-            if (targetSlug) {
-                let opened = false;
-                geo.eachLayer((layer: any) => {
-                    if (!layer.feature) return;
-                    const slug = computeSlug(layer.feature);
-                    if (slug && slug === targetSlug) {
-                        layer.openPopup();
-                        if (selectedMarker)
-                            updateMarkerIcon(selectedMarker, false);
-                        selectedMarker = layer;
-                        updateMarkerIcon(selectedMarker, true);
-
-                        if (layer.getLatLng) {
-                            map.setView(
-                                layer.getLatLng(),
-                                Math.max(map.getZoom(), 15),
-                                { animate: true },
-                            );
-                        }
-                        opened = true;
+                    if (!opened) {
+                        console.info(
+                            "No matching artwork for slug",
+                            targetSlug,
+                        );
                     }
-                });
-
-                if (!opened) {
-                    console.info("No matching artwork for slug", targetSlug);
                 }
+            });
+    };
+
+    const mapEl = document.getElementById("map");
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                initMap();
+                observer.disconnect(); // maar 1x laden
             }
-        });
+        },
+        {
+            rootMargin: "200px", // start iets vóór zichtbaar
+        },
+    );
+
+    observer.observe(mapEl);
 </script>
 
 <style>

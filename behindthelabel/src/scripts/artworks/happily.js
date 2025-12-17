@@ -111,8 +111,8 @@ export const setupScrollAnimations = () => {
 
             // //map
             { target: ".top4", vars: { x: "0%", opacity: 1 }, position: 7.3 },
-            // { target: ".map", vars: { x: "0%", opacity: 1 }, position: 10.3 },
-
+            { target: ".image-wrapper", vars: { opacity: 0 }, position: 7.3 },
+            { target: ".map", vars: { opacity: 1 }, position: 7.3 },
         ],
         pin: ".story",
     });
